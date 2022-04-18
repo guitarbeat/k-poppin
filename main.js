@@ -9072,7 +9072,7 @@ var app = (function() {
       "WJSN - I Wish",
       "Red Velvet - Really Bad Boy",
       "T-ara - Roly Poly",
-      "Girl's Day - Something",
+      "Sistar - Touch My Body",
       "ITZY - Wannabe",
       "Loona - favOriTe",
       "Girl's Generation - Party",
@@ -9139,35 +9139,35 @@ var app = (function() {
     On = {
       subscribe: ue(
         [{
-            url: "https://soundcloud.com/rodsepp/we-like/",
+            url: "https://soundcloud.com/rodsepp/we-like",
             answer: "Pristin - We Like",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/too-much-feat-timbaland",
+            url: "https://soundcloud.com/twice-57013/the-feels",
             answer: "Twice - The Feels",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/calamity",
+            url: "https://soundcloud.com/xikanist/fromis_9-glass-shoes",
             answer: "fromis_9 - Glass Shoes",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/blue",
+            url: "https://soundcloud.com/destinee-nsombe/wjsn-cosmic-girls-i-wish",
             answer: "WJSN - I Wish",
           },
           {
-            url: "https://soundcloud.com/miauk/freedun-1",
+            url: "https://soundcloud.com/seasaltfishes/red-velvet-rbb-really-bad",
             answer: "Red Velvet - Really Bad Boy",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/common",
+            url: "https://soundcloud.com/kekkun89/t-ara-roly-poly",
             answer: "T-ara - Roly Poly",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/pillowtalk-remix-1",
-            answer: "Girl's Day - Something",
+            url: "https://soundcloud.com/wahyu_putra/sistar-touch-my-body-at-wahyoe",
+            answer: "Sistar - Touch My Body",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/wrong-1",
+            url: "https://soundcloud.com/itzy-music/wannabe",
             answer: "ITZY - Wannabe",
           },
           {
