@@ -9066,7 +9066,7 @@ var app = (function() {
     })();
   });
   const Cn = ue([
-      "Pristin - We Like",
+      "Red Velvet - Psycho",
       "Twice - The Feels",
       "fromis_9 - Glass Shoes",
       "WJSN - I Wish",
@@ -9083,7 +9083,7 @@ var app = (function() {
       "Brown Eyed Girls - Kill Bill",
       "Twice - Fancy",
       "Sunmi - pporappippam",
-      "Red Velvet - Psycho",
+      "Pristin - We Like",
       "Girl's Generation - The Boys",
       "I.O.I - Very Very Very",
       "AOA - Short Hair",
@@ -9139,8 +9139,8 @@ var app = (function() {
     On = {
       subscribe: ue(
         [{
-            url: "https://soundcloud.com/rodsepp/we-like",
-            answer: "Pristin - We Like",
+            url: "https://soundcloud.com/l2share95/red-velvet-psycho",
+            answer: "Red Velvet - Psycho",
           },
           {
             url: "https://soundcloud.com/twice-57013/the-feels",
@@ -9207,8 +9207,8 @@ var app = (function() {
             answer: "Sunmi - pporappippam",
           },
           {
-            url: "https://soundcloud.com/l2share95/red-velvet-psycho",
-            answer: "Red Velvet - Psycho",
+            url: "https://soundcloud.com/alvint-harry-alhamid/pristin-we-like-color-coded",
+            answer: "Pristin - We Like",
           },
           {
             url: "https://soundcloud.com/interscope/girls-generation-the-boys-8",
