@@ -4080,9 +4080,9 @@ var app = (function() {
       attemptInterval: 1.5e3,
       attemptIntervalAlt: [1e3, 2e3, 4e3, 7e3, 11e3, 16e3],
       maxAttempts: 6,
-      startDate: "2022-04-07",
+      startDate: "2022-04-011",
     },
-    Jt = ["Tsk tsk", "That's inZAYN!", "Zquad indeed!", "AmaZAYN", "You must've done this BeFoUr", "Nicely done", "Almost got exposed"];
+    Jt = ["Unlucky! At least you discovered a new song!", "You're a true girl group fan!", "!", "Amazing!", "Look at you go!", "Nicely done", "Almost got exposed!"];
 
   function Kt(t) {
     let n, r;
