@@ -9259,23 +9259,23 @@ var app = (function() {
             answer: "Girl's Generation - I Got A Boy",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/fingers",
+            url: "https://soundcloud.com/exo-baekhyun/miss-a-hush",
             answer: "Miss A - Hush",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/tio",
+            url: "https://soundcloud.com/user746128857/aoa-heart-attack",
             answer: "AOA - Heart Attack",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/fresh-air",
+            url: "https://soundcloud.com/4minute/hot-issue",
             answer: "4Minute - Hot Issue",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/windowsill-feat-devlin",
+            url: "https://soundcloud.com/boatbanana/red-velvet-dumb-dumb",
             answer: "Red Velvet - Dumb Dumb",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/scripted",
+            url: "https://soundcloud.com/sophia-jesa/la-vie-en-rose-izone",
             answer: "IZONE - La Vie En Rose",
           },
           {
