@@ -4644,7 +4644,7 @@ var app = (function() {
         c,
         () => {
           // console.log('answer', r.length)
-          let e = "ZAYN Heardle #" + (s.id + 1),
+          let e = "K-pop Girl Group Heardle #" + (s.id + 1),
             t = "";
           a
             ?
@@ -4754,7 +4754,7 @@ var app = (function() {
           (t = w("div")),
           (n = w("div")),
           (n.innerHTML =
-            '<div class="mr-4 w-8 text-custom-line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="15.5" r="2.5"></circle><path d="M8 17V5l12-2v12"></path></svg></div> \n        <div><p>Listen to the intro, then find the correct ZAYN song in the list.</p></div>'),
+            '<div class="mr-4 w-8 text-custom-line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="15.5" r="2.5"></circle><path d="M8 17V5l12-2v12"></path></svg></div> \n        <div><p>Listen to the intro, then find the correct K-pop Girl Group song in the list.</p></div>'),
           (r = x()),
           (s = w("div")),
           (s.innerHTML =
