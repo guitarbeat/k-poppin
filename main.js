@@ -787,7 +787,7 @@ var app = (function() {
             Q(a.$$.fragment),
             (l = x()),
             (u = w("h1")),
-            (u.textContent = "ZAYN Heardle"),
+            (u.textContent = "K-Pop GG Heardle"),
             (c = x()),
             (d = w("div")),
             Q(h.$$.fragment),
@@ -3810,7 +3810,7 @@ var app = (function() {
       c() {
         (n = w("div")),
         (n.innerHTML =
-          '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for ZAYN songs. Each song is randomly chosen from his discography, including features.</p> \n\n<p class="mb-3">Made by <a href="https://twitter.com/eggtartemily">@eggtartemily</a>. All copyright goes to ZAYN, RCA Records, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/zayn-heardle">here</a>.'),
+          '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for K-pop Girl Group songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Made by <a href="https://twitter.com/wysteriaseeds">@wysteriaseeds</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/kpopgg-heardle">here</a>.'),
         M(n, "class", "text");
       },
       m(e, t) {
@@ -4206,14 +4206,14 @@ var app = (function() {
             (f = w("div")),
             (m = w("div")),
             (k = w("div")),
-            (k.textContent = "Next ZAYN song in:"),
+            (k.textContent = "Next Girl Group song in:"),
             (b = x()),
             Q(S.$$.fragment),
             (D = x()),
             (T = w("div")),
             (Y = w("div")),
             // (Y.innerHTML =
-            //   '<span class="text-custom-negative"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span> \n                <span class="px-1">ZAYN Heardle?</span>'),
+            //   '<span class="text-custom-negative"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span> \n                <span class="px-1">K-pop GG Heardle?</span>'),
             (C = x()),
             Q(O.$$.fragment),
             M(n, "class", "text-lg text-custom-line"),
@@ -4431,7 +4431,7 @@ var app = (function() {
       s = (e[0].length * e[1].attemptInterval) / 1e3 + "";
     return {
       c() {
-        (t = _("You got today's ZAYN Heardle within the first ")),
+        (t = _("You got today's K-Pop Girl Group Heardle within the first ")),
         (n = _(s)),
         (r = _(" seconds."));
       },
@@ -4459,7 +4459,7 @@ var app = (function() {
       a = e[1].attemptIntervalAlt[e[0].length - 1] / 1e3 > 1 ? "s" : "";
     return {
       c() {
-        (t = _("You got today's ZAYN Heardle within ")),
+        (t = _("You got today's K-pop Girl Group Heardle within ")),
         (n = _(o)),
         (r = _("\n                second")),
         (s = _(a)),
@@ -4490,7 +4490,7 @@ var app = (function() {
     let n;
     return {
       c() {
-        n = _("You didn't get today's ZAYN Heardle. Better luck tomorrow!");
+        n = _("You didn't get today's K-pop Girl Group Heardle. Better luck tomorrow!");
       },
       m(e, t) {
         g(e, n, t);
@@ -4667,7 +4667,7 @@ var app = (function() {
             "\n\n" +
             t +
             "\n\n" +
-            "https://zayn-heardle.glitch.me/";
+            "https://kpopgg-heardle.glitch.me/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -9351,7 +9351,7 @@ var app = (function() {
             answer: "Twice - Alcohol Free",
           },
           {
-            url: "https://soundcloud.com/zaynofficial/connexion",
+            url: "https://soundcloud.com/dcloud.com/zaynofficial/connexion",
             answer: "Red Velvet - Power Up",
           },
           {
@@ -9767,12 +9767,12 @@ var app = (function() {
           Q(Y.$$.fragment),
           (C = x()),
           H && H.c(),
-          (An.title = "ZAYN Heardle"),
+          (An.title = "K=pop Girl Group Heardle"),
           M(t, "name", "description"),
           M(
             t,
             "content",
-            "Guess the ZAYN song from the intro in as few tries as possible"
+            "Guess the K-pop Girl Group song from the intro in as few tries as possible"
           ),
           M(n, "rel", "apple-touch-icon"),
           M(n, "sizes", "180x180"),
