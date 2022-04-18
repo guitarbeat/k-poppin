@@ -786,8 +786,8 @@ a:active {
   text-indent: 0.25em;
 }
 :root {
-  --color-positive: #252c52; /* Submit button */
-  --color-negative: #c8613d;
+  --color-positive: #db97ac; /* Submit button */
+  --color-negative: #cfb8bf;
   --color-fg: #eff0e7; /* Font color and accents */
   --color-mg: #cec3c1; /* Skip button, progress bar */
   --color-bg: #121212;

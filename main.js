@@ -4082,7 +4082,7 @@ var app = (function() {
       maxAttempts: 6,
       startDate: "2022-04-011",
     },
-    Jt = ["Unlucky! At least you discovered a new song!", "You're a true girl group fan!", "!", "Amazing!", "Look at you go!", "Nicely done", "Almost got exposed!"];
+    Jt = ["Unlucky! At least you discovered a new song!", "You're a true girl group fan!", "Had to think twice?", "Amazing!", "Look at you go!", "Nicely done", "Almost got exposed!"];
 
   function Kt(t) {
     let n, r;
