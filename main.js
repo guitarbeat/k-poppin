@@ -9076,7 +9076,7 @@ var app = (function() {
       "ITZY - Wannabe",
       "Loona - favOriTe",
       "Girl's Generation - Party",
-      "Red Velvet - Zimzalabim",
+      "Somi - Birthday",
       "I.O.I - Whatta Man",
       "EXID - Up&Down",
       "F(X) - Nu Abo",
@@ -9130,121 +9130,121 @@ var app = (function() {
       "Blackpink - As If It's Your Last",
       "Wonder Girls - Tell Me",
       "Weki Meki - Crush",
-      "ZAYN - ",
-      "ZAYN - All That",
-      "ZAYN - Entertainer",
-      "ZAYN - Imprint",
-      "ZAYN - tRuTh",
+      "Hyuna - Babe",
+      "Red Velvet - Zimzalabim",
+      "Twice - I Can't Stop Me",
+      "T-ara - Lovey Dovey",
+      "Miss A - Bad Girl Good Girl",
     ]),
     On = {
       subscribe: ue(
         [{
             url: "https://soundcloud.com/zaynofficial/talk-to-me",
-            answer: "ZAYN - Talk To Me - ZAYN",
+            answer: "Pristin - We Like",
           },
           {
             url: "https://soundcloud.com/zaynofficial/too-much-feat-timbaland",
-            answer: "ZAYN - Too Much (feat. Timbaland)",
+            answer: "Twice - The Feels",
           },
           {
             url: "https://soundcloud.com/zaynofficial/calamity",
-            answer: "ZAYN - Calamity",
+            answer: "fromis_9 - Glass Shoes",
           },
           {
             url: "https://soundcloud.com/zaynofficial/blue",
-            answer: "ZAYN - BLUE",
+            answer: "WJSN - I Wish",
           },
           {
             url: "https://soundcloud.com/miauk/freedun-1",
-            answer: "M.I.A. - Freedun",
+            answer: "Red Velvet - Really Bad Boy",
           },
           {
             url: "https://soundcloud.com/zaynofficial/common",
-            answer: "ZAYN - Common",
+            answer: "T-ara - Roly Poly",
           },
           {
             url: "https://soundcloud.com/zaynofficial/pillowtalk-remix-1",
-            answer: "ZAYN - PILLOWTALK REMIX (feat. Lil Wayne)",
+            answer: "Girl's Day - Something",
           },
           {
             url: "https://soundcloud.com/zaynofficial/wrong-1",
-            answer: "ZAYN - wRoNg (feat. Kehlani)",
+            answer: "ITZY - Wannabe",
           },
           {
             url: "https://soundcloud.com/zaynofficial/bright-1",
-            answer: "ZAYN - BRIGHT",
+            answer: "Loona - favOriTe",
           },
           {
             url: "https://soundcloud.com/ingridmusic/to-begin-again",
-            answer: "Ingrid Michaelson - To Begin Again",
+            answer: "Girl's Generation - Party",
           },
           {
             url: "https://soundcloud.com/zaynofficial/satisfaction",
-            answer: "ZAYN - Satisfaction",
+            answer: "Somi - Birthday",
           },
           {
             url: "https://soundcloud.com/zaynofficial/who",
-            answer: "ZAYN - wHo",
+            answer: "I.O.I - Whatta Man",
           },
           {
             url: "https://soundcloud.com/zaynofficial/i-dont-mind",
-            answer: "ZAYN - I Don't Mind",
+            answer: "EXID - Up&Down",
           },
           {
             url: "https://soundcloud.com/zaynofficial/drunk",
-            answer: "ZAYN - dRuNk",
+            answer: "F(X) - Nu Abo",
           },
           {
             url: "https://soundcloud.com/zaynofficial/tightrope",
-            answer: "ZAYN - Tightrope",
+            answer: "Brown Eyed Girls - Kill Bill",
           },
           {
             url: "https://soundcloud.com/zaynofficial/insomnia",
-            answer: "ZAYN - Insomnia",
+            answer: "Twice - Fancy",
           },
           {
             url: "https://soundcloud.com/fiftyshadesdarker/taylor-swift-i-dont-wanna-live",
-            answer: "ZAYN - I Don’t Wanna Live Forever (Fifty Shades Darker)",
+            answer: "Sunmi - pporappippam",
           },
           {
             url: "https://soundcloud.com/zaynofficial/she-dont-love-me",
-            answer: "ZAYN - SHE DON'T LOVE ME",
+            answer: "Red Velvet - Psycho",
           },
           {
             url: "https://soundcloud.com/zaynofficial/fool-for-you",
-            answer: "ZAYN - fOoL fOr YoU",
+            answer: "Girl's Generation - The Boys",
           },
           {
             url: "https://soundcloud.com/zaynofficial/pillowtalk",
-            answer: "ZAYN - PILLOWTALK",
+            answer: "I.O.I - Very Very Very",
           },
           {
             url: "https://soundcloud.com/zaynofficial/you-wish-you-knew",
-            answer: "ZAYN - You Wish You Knew",
+            answer: "AOA - Short Hair",
           },
           {
             url: "https://soundcloud.com/zaynofficial/rainberry",
-            answer: "ZAYN - Rainberry",
+            answer: "Twice - Cheer Up",
           },
           {
             url: "https://soundcloud.com/r3hab/flames-feat-jungleboi",
-            answer: "R3HAB - Flames",
+            answer: "Red Velvet Irene & Seulgi - Monster",
           },
           {
             url: "https://soundcloud.com/zaynofficial/if-i-got-you",
-            answer: "ZAYN - If I Got You",
+            answer: "fromis_9 - We Go",
           },
           {
             url: "https://soundcloud.com/zaynofficial/its-you-1",
-            answer: "ZAYN - iT's YoU",
+            answer: "IVE - Eleven",
           },
           {
             url: "https://soundcloud.com/zaynofficial/intermission-flower",
-            answer: "ZAYN - INTERMISSION: fLoWer",
+            answer: "F(X) - 4 Walls",
           },
           {
             url: "https://soundcloud.com/zaynofficial/no-candle-no-light-feat-nicki",
-            answer: "ZAYN - No Candle No Light (feat. Nicki Minaj)",
+            answer: "Hyuna - How's This?",
           },
           {
             url: "https://soundcloud.com/zaynofficial/unfuckwitable",
