@@ -9088,7 +9088,7 @@ var app = (function() {
       "IVE - Eleven",
       "AOA - Short Hair",
       "Twice - Cheer Up",
-      "Red Velvet Irene & Seulgi - Monster",
+      "Blackpink - How You Like That",
       "fromis_9 - We Go",
       "I.O.I - Very Very Very",
       "F(X) - 4 Walls",
@@ -9227,8 +9227,8 @@ var app = (function() {
             answer: "Twice - Cheer Up",
           },
           {
-            url: "https://soundcloud.com/l2share106/red-velvet-irene-seulgi-monster",
-            answer: "Red Velvet Irene & Seulgi - Monster",
+            url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
+            answer: "Blackpink - How You Like That",
           },
           {
             url: "https://soundcloud.com/l2share131/fromis_9-we-go",
@@ -9767,7 +9767,7 @@ var app = (function() {
           Q(Y.$$.fragment),
           (C = x()),
           H && H.c(),
-          (An.title = "K=pop Girl Group Heardle"),
+          (An.title = "K-pop Girl Group Heardle"),
           M(t, "name", "description"),
           M(
             t,
