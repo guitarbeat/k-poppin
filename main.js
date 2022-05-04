@@ -9126,6 +9126,10 @@ var app = (function () {
       "Cherry Bullet - Love So Sweet",
       "Taeyeon - Weekend",
       "GFriend - Glass Bead",
+    "Brave Girls - Rollin'",
+    "Oh My Girl - Coloring Book",
+    "Fanatics - Sunday",
+    "2NE1 - I Am The Best",
     ]),
     On = {
       subscribe: ue(
@@ -9431,16 +9435,20 @@ var app = (function () {
             answer: "GFriend - Glass Bead",
           },
           {
-            url: "https://soundcloud.com/l2kpop12/dolphin-oh-my-girl",
+            url: "https://soundcloud.com/wfxb0pd3jqyx/brave-girls-rollin",
             answer: "Brave Girls - Rollin'",
           },
           {
-            url: "https://soundcloud.com/karina-irgintya/gfriend-glass-bead",
-            answer: "GFriend - Glass Bead",
+            url: "https://soundcloud.com/ohmygirl-music/coloring-book",
+            answer: "Oh My Girl - Coloring Book",
           },
           {
-            url: "https://soundcloud.com/karina-irgintya/gfriend-glass-bead",
-            answer: "GFriend - Glass Bead",
+            url: "https://soundcloud.com/l2share86/fanatics-sunday",
+            answer: "Fanatics - Sunday",
+          },
+          {
+            url: "https://soundcloud.com/2ne1official/i-am-the-best",
+            answer: "2NE1 - I Am The Best",
           },
         ],
         Pn
