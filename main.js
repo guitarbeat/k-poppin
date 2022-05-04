@@ -9135,6 +9135,8 @@ var app = (function() {
       "Twice - I Can't Stop Me",
       "T-ara - Lovey Dovey",
       "Miss A - Bad Girl Good Girl",
+      "IZONE - Violeta",
+      "APink - I'm So Sick"
     ]),
     On = {
       subscribe: ue(
