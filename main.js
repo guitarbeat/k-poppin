@@ -9136,7 +9136,8 @@ var app = (function() {
       "T-ara - Lovey Dovey",
       "Miss A - Bad Girl Good Girl",
       "IZONE - Violeta",
-      "APink - I'm So Sick"
+      "APink - I'm So Sick",
+      "LovelyZ - Obliviate"
     ]),
     On = {
       subscribe: ue(
@@ -9415,6 +9416,18 @@ var app = (function() {
           {
             url: "https://soundcloud.com/hoxl1e5ylvbp/miss-a-bad-girl-good-girl",
             answer: "Miss A - Bad Girl Good Girl",
+          },
+          {
+            url: "https://soundcloud.com/l2share52/izone-violeta",
+            answer: "IZONE - Violeta",
+          },
+          {
+            url: "https://soundcloud.com/ph-ng-vy-35477112/im-so-sick",
+            answer: "APink - I'm So Sick",
+          },
+         {
+            url: "https://soundcloud.com/quan-mai-anh/lovelyz-obliviate",
+            answer: "LovelyZ - Obliviate",
           },
         ],
         Pn
