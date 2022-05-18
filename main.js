@@ -9126,10 +9126,10 @@ var app = (function () {
       "Cherry Bullet - Love So Sweet",
       "Taeyeon - Weekend",
       "GFriend - Glass Bead",
-    "Brave Girls - Rollin'",
-    "Oh My Girl - Coloring Book",
-    "Fanatics - Sunday",
-    "2NE1 - I Am The Best",
+      "Brave Girls - Rollin'",
+      "Oh My Girl - Coloring Book",
+      "Fanatics - Sunday",
+      "2NE1 - I Am The Best",
     ]),
     On = {
       subscribe: ue(
