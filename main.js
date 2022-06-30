@@ -773,7 +773,7 @@ var app = (function () {
             Q(a.$$.fragment),
             (l = x()),
             (u = w("h1")),
-            (u.textContent = "K-Pop GG Heardle"),
+            (u.textContent = "K-Pop GG Heardle round 2"),
             (c = x()),
             (d = w("div")),
             Q(h.$$.fragment),
@@ -4625,7 +4625,7 @@ var app = (function () {
         c,
         () => {
           // console.log('answer', r.length)
-          let e = "K-pop Girl Group Heardle #" + (s.id + 1),
+          let e = "K-pop Girl Group Heardle (round 2) #" + (s.id + 1),
             t = "";
           a
             ? r.length < i.maxAttempts / 3
@@ -4642,7 +4642,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + "https://kpopgg-heardle.glitch.me/";
+          let o = e + "\n\n" + t + "\n\n" + "https://kpopgg-heardle-round2.glitch.me/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -9743,7 +9743,7 @@ var app = (function () {
     G(e[18]),
       (l = new me({
         props: {
-          properties: ["G-3QSG4MYSLD"],
+          properties: ["G-VC91QPG37E"],
         },
       }));
     let L = e[10].isActive && Nn(e);
