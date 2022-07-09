@@ -3785,7 +3785,7 @@ var app = (function () {
       c() {
         (n = w("div")),
           (n.innerHTML =
-            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Made by <a href="https://twitter.com/wysteriaseeds">@wysteriaseeds</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/kpopgg-heardle">here</a>.'),
+            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Original version made by <a href="https://twitter.com/wysteriaseeds">@wysteriaseeds</a>. Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/kpopgg-heardle-round2">here</a>.'),
           M(n, "class", "text");
       },
       m(e, t) {
@@ -3812,14 +3812,14 @@ var app = (function () {
         (n = w("div")),
           (r = w("a")),
           (r.innerHTML =
-            '<span class="kofitext svelte-1d3p4dy"><img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg mr-2 mb-1 svelte-1d3p4dy"/>Support the original Heardle on Ko-fi</span><svg xmlns="http://www.w3.org/2000/svg" class="ml-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>'),
+            '<span class="kofitext svelte-1d3p4dy"><img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg mr-2 mb-1 svelte-1d3p4dy"/>Support me on Ko-Fi</span><svg xmlns="http://www.w3.org/2000/svg" class="ml-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>'),
           M(
             r,
             "class",
             "kofi-button py-2 px-3 rounded-lg items-center flex  svelte-1d3p4dy"
           ),
-          M(r, "href", "https://ko-fi.com/heardle"),
-          M(r, "title", "Support the original Heardle on Ko-fi"),
+          M(r, "href", "https://ko-fi.com/itsderek"),
+          M(r, "title", "Support me on Ko-Fi"),
           M(
             n,
             "class",
@@ -4006,9 +4006,11 @@ var app = (function () {
           (n = w("p")),
             (s = w("p")),
             (n.innerHTML =
-              "If you like this game, please consider supporting the original Heardle creators on Ko-fi."),
+              "If you enjoyed the game and would like to support me with server costs to keep the game running, please consider donating!"),
             (r = x()),
             (s = w("p")),
+            (s.innerHTML =
+              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/heardle">real Heardle devs</a> and the <a href="https://ko-fi.com/heardlekpop">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
             (i = x()),
             (o = w("div")),
             Q(a.$$.fragment),
