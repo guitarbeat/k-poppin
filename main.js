@@ -9177,7 +9177,7 @@ var app = (function () {
             answer: "Girl's Generation - Party",
           },
           {
-            url: "https://soundcloud.com/princessluzelena-xox/somi-birthday",
+            url: "https://soundcloud.com/user-313773669/birthday-somi",
             answer: "Somi - Birthday",
           },
           {
@@ -9777,6 +9777,7 @@ var app = (function () {
       trackDuration: e[2].duration,
       currentAttempt: e[6].length + 1,
     };
+    //console.log(N); // show the game debug info
     (Y = new gt({
       props: N,
     })),
