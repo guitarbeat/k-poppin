@@ -9249,7 +9249,7 @@ var app = (function () {
             answer: "Twice - More and More",
           },
           {
-            url: "https://soundcloud.com/l2share141/stayc-stereotype",
+            url: "https://soundcloud.com/lisalady-yedek/stayc-stereotype",
             answer: "StayC - Stereotype",
           },
           {
