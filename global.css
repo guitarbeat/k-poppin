@@ -54,3 +54,13 @@ button:focus {
 button:not(:disabled):active {
     background-color: #e173d3;
 }
+.h-full.absolute.bg-custom-mg.overflow-hidden {
+  background-color: var(--color-playback-bar);
+  background-color: var(--color-mg);
+}
+.border-custom-mg {
+  border-color: var(--color-line) !important;
+}
+.border-custom-line {
+  border-color: var(--color-mg) !important;
+}

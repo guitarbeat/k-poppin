@@ -714,7 +714,7 @@ video {
   color: var(--color-mg);
 }
 .text-custom-line {
-  color: var(--color-line);
+  /*color: var(--color-line);*/
 }
 .no-underline {
   text-decoration: none;
@@ -780,7 +780,7 @@ a:active {
 .text-custom-line a,
 .text-custom-line a:visited,
 .text-custom-line a:active {
-  color: var(--color-line);
+  /*color: var(--color-line);*/
 }
 .tracking-widest {
   text-indent: 0.25em;
@@ -790,10 +790,11 @@ a:active {
   --color-negative: #cfb8bf;
   --color-fg: #ffffff; /* Font color and accents */
   --color-mg: #666666; /* Skip button, progress bar */
-  --color-bg: #121212;
-  --color-line: #666666; /* Line color for current guess box, top line, and song player lines */
+  --color-bg: #111111;
+  --color-line: #333333; /* Line color for current guess box, top line, and song player lines */
   --color-shade: rgba(0, 0, 0, 0.1);
   --color-highlight: rgba(255, 255, 255, 0.05);
+  --color-playback-bar: #272b46;
 }
 @media (min-width: 640px) {
 }
