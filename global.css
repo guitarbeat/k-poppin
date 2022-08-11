@@ -52,5 +52,5 @@ button:focus {
     border-color: #666666;
 }
 button:not(:disabled):active {
-    background-color: #dddddd;
+    background-color: #e173d3;
 }
