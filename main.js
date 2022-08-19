@@ -4598,7 +4598,7 @@ var app = (function () {
   }
 
   function fn(e, t, n) {
-    // console.log("current", t);
+    console.log("current", t);
     let { userGuesses: r } = t,
       { currentHeardle: s } = t,
       { config: i } = t,
@@ -4607,6 +4607,7 @@ var app = (function () {
       { guessRef: l } = t,
       { isPrime: u } = t,
       c = !1;
+    // console.log({currentHeardle});
     return (
       A(),
       (e.$$set = (e) => {
