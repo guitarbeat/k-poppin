@@ -2,7 +2,7 @@
 
 Remixed from the original K-Pop GG Heardle, that was itself remixed from the _[ZAYN Heardle](https://zayn-heardle.glitch.me/) (or Zeardle, if you will) by [@eggtartemily](https://twitter.com/eggtartemily)_
 
-This is a spin-off of the original [Heardle](https://www.heardle.app/) but for ZAYN songs. Each song is randomly chosen from his discography, including features. I do not own any rights to the songs used in this game. All copyright goes to ZAYN, RCA Records, and other relevant parties.
+This is a spin-off of the original [Heardle](https://www.heardle.app/) but for K-Pop Girl Group songs. Each song is randomly chosen from soundclud. I do not own any rights to the songs used in this game. All copyright goes to the relevant parties.
 
 The code for this project is remixed from the [Taylor Swift Heardle](https://taylor-swift-heardle.glitch.me/).
 
