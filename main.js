@@ -4063,7 +4063,7 @@ var app = (function () {
       startDate: "2022-08-27",
     },
     Jt = [
-      "Kicked out of the ReVe Festival", // FAILED
+      "Unlucky! At least you found a new song...", // FAILED
       "The Velvets would be proud.", // First try
       "You're so good... so good to me",
       "That was pretty good.",
@@ -9352,7 +9352,7 @@ var app = (function () {
     G(e[18]),
       (l = new me({
         props: {
-          properties: ["G-VC91QPG37E"],
+          properties: ["G-38MQD842FV"],
         },
       }));
     let L = e[10].isActive && Nn(e);
