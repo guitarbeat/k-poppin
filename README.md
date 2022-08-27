@@ -1,16 +1,27 @@
-# K-Pop Girl Group Heardle - round 2
+# Red Velvet Heardle
 
-Remixed and extended from the original K-Pop GG Heardle (which ran out of songs).
+One of my fave Kpop groups ever. 
 
-This is a spin-off of the original [Heardle](https://www.heardle.app/) but for K-Pop Girl Group songs. Each song is randomly chosen from soundclud. I do not own any rights to the songs used in this game. All copyright goes to the relevant parties.
+OK, I love Heardles.
 
-The code for this project is remixed from the [ZAYN Heardle](https://zayn-heardle.glitch.me/) (by [@eggtartemily](https://twitter.com/eggtartemily)) and [Taylor Swift Heardle](https://taylor-swift-heardle.glitch.me/) projects.
+This one is remixed and extended from the original [Red Velvet Heardle](https://rvheardle.me/), which ran out of songs.
 
-If you have any questions DM me on Twitter at [@derekahmedzai](https://twitter.com/derekahmedzai). I also made the [Harry Styles Heardle](https://harry-styles-heardle.glitch.me), also on [Glitch](https://glitch.com/edit/#!/harry-styles-heardle)
+If you have any questions DM me on Twitter at [@derekahmedzai](https://twitter.com/derekahmedzai).
 
-### How to create your own custom Heardle
+I also made the [Harry Styles Heardle](https://harry-styles-heardle.glitch.me) and run the updated [Kpop Girl Group Heardle](https://kpopgg-heardle-round2.glitch.me/)
 
-1. Create a Glitch account.
+If you have a dead Heardle let me know and I can help you resurrect it.
+
+## Want to create your own Heardle?
+
+A few things to know before you start
+- you'll need to be comfortable editing some HTML, Javascript and CSS
+- the songs all come from Soundcloud
+- you'll need a Glitch account (free to remix and host yours (or you can download the code and host wherever)
+
+## How to remix and create your own
+
+1. Register a Glitch account.
 2. Remix this project (or another existing custom Heardle project on Glitch) and rename the project to what you want the game link to be (e.g. artist-heardle).
 3. In the `index.html` file, change every instance of 'K-Pop Girl Group' to your artist. You can find and replace by hitting command+option+F on Mac (I don't know what the shortcut is on Windows).
 4. In the `index.html` file, there is a long link to a photo. Replace every instance of this link with a URL to a photo of your choice.
