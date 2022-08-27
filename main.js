@@ -773,7 +773,7 @@ var app = (function () {
             Q(a.$$.fragment),
             (l = x()),
             (u = w("h1")),
-            (u.textContent = "K-Pop Girl Group Heardle"),
+            (u.textContent = "Red Velvet Heardle"),
             (c = x()),
             (d = w("div")),
             Q(h.$$.fragment),
@@ -4060,7 +4060,7 @@ var app = (function () {
       attemptInterval: 1.5e3,
       attemptIntervalAlt: [1e3, 2e3, 4e3, 7e3, 11e3, 16e3],
       maxAttempts: 6,
-      startDate: "2022-06-30",
+      startDate: "2022-08-27",
     },
     Jt = [
       "Unlucky! At least you discovered a new song!",
@@ -4420,7 +4420,7 @@ var app = (function () {
       s = (e[0].length * e[1].attemptInterval) / 1e3 + "";
     return {
       c() {
-        (t = _("You got today's K-Pop Girl Group Heardle within the first ")),
+        (t = _("You got today's Red Velvet Heardle within the first ")),
           (n = _(s)),
           (r = _(" seconds."));
       },
@@ -4598,7 +4598,7 @@ var app = (function () {
   }
 
   function fn(e, t, n) {
-    console.log("welcome to K-Pop Girl Group Heardle, day #", t.currentHeardle.id);
+    console.log("welcome to Red Velvet Heardle, day #", t.currentHeardle.id);
     console.log("if you have any questions, DM me on twitter at @derekahmedzai");
     let { userGuesses: r } = t,
       { currentHeardle: s } = t,
