@@ -8,6 +8,14 @@ let songs = [
     answer: "Red Velvet - First Time",
   },
   {
+    url: "https://soundcloud.com/user-838571425/red-velvet-automatic",
+    answer: "Red Velvet - Automatic",
+  },
+  {
+    url: "https://soundcloud.com/user-913229388/red-velvet-kingdom-come",
+    answer: "Red Velvet - Kingdom Come",
+  },
+  {
     url: "https://soundcloud.com/l2share95/red-velvet-remember-forever",
     answer: "Red Velvet - Remember Forever",
   },
@@ -38,10 +46,6 @@ let songs = [
   {
     url: "https://soundcloud.com/reveluv-stuff/red-velvet-so-good",
     answer: "Red Velvet - So Good",
-  },
-  {
-    url: "https://soundcloud.com/user-838571425/red-velvet-automatic",
-    answer: "Red Velvet - Automatic",
   },
   {
     url: "https://soundcloud.com/reveluv-stuff/red-velvet-happiness",
@@ -82,10 +86,6 @@ let songs = [
   {
     url: "https://soundcloud.com/reveluv-stuff/red-velvet-sunny-afternoon",
     answer: "Red Velvet - Sunny Afternoon",
-  },
-  {
-    url: "https://soundcloud.com/user-913229388/red-velvet-kingdom-come",
-    answer: "Red Velvet - Kingdom Come",
   },
   {
     url: "https://soundcloud.com/l2share42/ladies-night",
