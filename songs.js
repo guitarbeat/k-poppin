@@ -184,7 +184,7 @@ let songs = [
     answer: "Red Velvet - Zoo",
   },
   {
-    url: "https://soundcloud.com/l2share154/red-velvet-good-bad-ugly",
+    url: "https://soundcloud.com/srfg3j5jublx/good-bad-ugly",
     answer: "Red Velvet - Good, Bad, Ugly",
   },
   {
