@@ -4212,7 +4212,7 @@ var app = (function () {
             (f = w("div")),
             (m = w("div")),
             (k = w("div")),
-            (k.textContent = "Next Girl Group song in:"),
+            (k.textContent = "Next "+HEARDLE_ARTIST+" song in:"),
             (b = x()),
             Q(S.$$.fragment),
             (D = x()),
