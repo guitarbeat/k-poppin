@@ -1,6 +1,29 @@
 var app = (function () {
   "use strict";
-
+  
+  
+//   EDIT THINGS HERE
+  
+  const HEARDLE_ARTIST = "Depth Charge";
+  
+  const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
+  
+  const HEARDLE_START_DATE = "2023-04-09";
+  
+  const HEARDLE_GAME_COMMENTS = [
+      "Unlucky! At least you found a new song...", // FAILED
+      "Romario would be proud.", // First try
+      "You're so good... so good to me",
+      "That was pretty good.",
+      "Not good, not bad, not ugly.",
+      "Could've been worse...",
+      "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
+    ]; // 7 comments are required
+  
+  
+//   STOP EDITING NOW
+  
+  
   function e() {}
 
   function t(e) {
@@ -773,7 +796,7 @@ var app = (function () {
             Q(a.$$.fragment),
             (l = x()),
             (u = w("h1")),
-            (u.textContent = "Red Velvet Heardle"),
+            (u.textContent = HEARDLE_NAME),
             (c = x()),
             (d = w("div")),
             Q(h.$$.fragment),
@@ -3785,7 +3808,7 @@ var app = (function () {
       c() {
         (n = w("div")),
           (n.innerHTML =
-            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for Red Velvet songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3"></p> \n\n<p class="mb-3">If you like this then check out the <a href="https://kpopgg-heardle-round2.glitch.me/">K-Pop Girl Group Heardle</a> and the <a href="https://harry-styles-heardle.glitch.me/">Harry Styles Heardle</a></p> \n\n\n\n <p class="mb-3"></p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/red-velvet-heardle">here</a>.'),
+            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for '+HEARDLE_ARTIST+' songs. Each song is randomly chosen from a selection of their tracks.</p> \n\n<p class="mb-3">Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3"></p> \n\n<p class="mb-3">If you like this then check out the <a href="https://kpopgg-heardle-round2.glitch.me/">K-Pop Girl Group Heardle</a> and the <a href="https://harry-styles-heardle.glitch.me/">Harry Styles Heardle</a></p> \n\n\n\n <p class="mb-3"></p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/red-velvet-heardle">here</a>.'),
           M(n, "class", "text");
       },
       m(e, t) {
@@ -4060,17 +4083,9 @@ var app = (function () {
       attemptInterval: 1.5e3,
       attemptIntervalAlt: [1e3, 2e3, 4e3, 7e3, 11e3, 16e3],
       maxAttempts: 6,
-      startDate: "2022-08-27",
+      startDate: HEARDLE_START_DATE,
     },
-    Jt = [
-      "Unlucky! At least you found a new song...", // FAILED
-      "The Velvets would be proud.", // First try
-      "You're so good... so good to me",
-      "That was pretty good.",
-      "Not good, not bad, not ugly.",
-      "Could've been worse...",
-      "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
-    ];
+    Jt = HEARDLE_GAME_COMMENTS;
 
   function Kt(t) {
     let n, r;
@@ -4420,7 +4435,7 @@ var app = (function () {
       s = (e[0].length * e[1].attemptInterval) / 1e3 + "";
     return {
       c() {
-        (t = _("You got today's Red Velvet Heardle within the first ")),
+        (t = _("You got today's "+HEARDLE_NAME+" within the first ")),
           (n = _(s)),
           (r = _(" seconds."));
       },
@@ -4448,7 +4463,7 @@ var app = (function () {
       a = e[1].attemptIntervalAlt[e[0].length - 1] / 1e3 > 1 ? "s" : "";
     return {
       c() {
-        (t = _("You got today's Red Velvet Heardle within ")),
+        (t = _("You got today's "+HEARDLE_NAME+" within ")),
           (n = _(o)),
           (r = _("\n                second")),
           (s = _(a)),
@@ -4480,7 +4495,7 @@ var app = (function () {
     return {
       c() {
         n = _(
-          "You didn't get today's Red Velvet Heardle. Better luck tomorrow!"
+          "You didn't get today's "+HEARDLE_NAME+". Better luck tomorrow!"
         );
       },
       m(e, t) {
@@ -4598,7 +4613,7 @@ var app = (function () {
   }
 
   function fn(e, t, n) {
-    console.log("welcome to Red Velvet Heardle, day #", t.currentHeardle.id);
+    console.log("welcome to " + HEARDLE_NAME + ", day #", t.currentHeardle.id + 1);
     console.log("if you have any questions, DM me on twitter at @derekahmedzai");
     let { userGuesses: r } = t,
       { currentHeardle: s } = t,
@@ -4629,7 +4644,7 @@ var app = (function () {
         c,
         () => {
           // console.log('answer', r.length)
-          let e = "Red Velvet Heardle #" + (s.id + 1),
+          let e = HEARDLE_NAME + " #" + (s.id + 1),
             t = "";
           a
             ? r.length < i.maxAttempts / 3
@@ -4646,7 +4661,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + "https://red-velvet-heardle.glitch.me/";
+          let o = e + "\n\n" + t + "\n\n" + "https://depth-charge-heardle.glitch.me/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -4734,7 +4749,7 @@ var app = (function () {
           (t = w("div")),
             (n = w("div")),
             (n.innerHTML =
-              '<div class="mr-4 w-8 text-custom-line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="15.5" r="2.5"></circle><path d="M8 17V5l12-2v12"></path></svg></div> \n        <div><p>Listen to the intro, then find the correct Red Velvet song in the list.</p></div>'),
+              '<div class="mr-4 w-8 text-custom-line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="15.5" r="2.5"></circle><path d="M8 17V5l12-2v12"></path></svg></div> \n        <div><p>Listen to the intro, then find the correct '+HEARDLE_ARTIST+' song in the list.</p></div>'),
             (r = x()),
             (s = w("div")),
             (s.innerHTML =
@@ -9417,12 +9432,12 @@ var app = (function () {
           Q(Y.$$.fragment),
           (C = x()),
           H && H.c(),
-          (An.title = "Red Velvet Heardle"),
+          (An.title = HEARDLE_NAME),
           M(t, "name", "description"),
           M(
             t,
             "content",
-            "Guess the Red Velvet song from the intro in as few tries as possible"
+            "Guess the "+HEARDLE_ARTIST+" song from the intro in as few tries as possible"
           ),
           M(n, "rel", "apple-touch-icon"),
           M(n, "sizes", "180x180"),
