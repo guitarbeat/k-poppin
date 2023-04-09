@@ -4,6 +4,8 @@ var app = (function () {
   
 //   EDIT THINGS HERE
   
+  const HEARDLE_URL = "https://depth-charge-heardle.glitch.me/";
+  
   const HEARDLE_ARTIST = "Depth Charge";
   
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
@@ -4661,7 +4663,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + "https://depth-charge-heardle.glitch.me/";
+          let o = e + "\n\n" + t + "\n\n" + HEARDLE_URL;
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
