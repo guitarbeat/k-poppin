@@ -22,6 +22,8 @@ var app = (function () {
       "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
     ]; // 7 comments are required
   
+  const HEARDLE_GOOGLE_ANALYTICS = "G-CB1FTDPNLH";
+  
   
 //   STOP EDITING NOW
   
@@ -9369,7 +9371,7 @@ var app = (function () {
     G(e[18]),
       (l = new me({
         props: {
-          properties: ["G-38MQD842FV"],
+          properties: [HEARDLE_GOOGLE_ANALYTICS],
         },
       }));
     let L = e[10].isActive && Nn(e);
