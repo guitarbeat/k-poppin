@@ -4,7 +4,9 @@ var app = (function () {
   
 //   EDIT THINGS HERE
   
-  const HEARDLE_URL = "https://shonen-knife-heardle.glitch.me/";
+  const HEARDLE_GLITCH_NAME = "shonen-knife-heardle";
+  
+  const HEARDLE_URL = "https://"+HEARDLE_GLITCH_NAME+".glitch.me/";
   
   const HEARDLE_ARTIST = "Shonen Knife";
   
@@ -22,7 +24,7 @@ var app = (function () {
       "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
     ]; // 7 comments are required
   
-  const HEARDLE_GOOGLE_ANALYTICS = "G-xxx";
+  const HEARDLE_GOOGLE_ANALYTICS = "G-11PSJFQ97R";
   
   
 //   STOP EDITING NOW
@@ -3812,7 +3814,7 @@ var app = (function () {
       c() {
         (n = w("div")),
           (n.innerHTML =
-            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for '+HEARDLE_ARTIST+' songs. Each song is randomly chosen from a selection of their tracks.</p> \n\n<p class="mb-3">Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3"></p> \n\n<p class="mb-3">If you like this then check out the <a href="https://kpopgg-heardle-round2.glitch.me/">K-Pop Girl Group Heardle</a> and the <a href="https://harry-styles-heardle.glitch.me/">Harry Styles Heardle</a></p> \n\n\n\n <p class="mb-3"></p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/red-velvet-heardle">here</a>.'),
+            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for '+HEARDLE_ARTIST+' songs. Each song is randomly chosen from a selection of their tracks.</p> \n\n<p class="mb-3">Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3"></p> \n\n<p class="mb-3">If you like this then check out the <a href="https://harry-styles-heardle.glitch.me/">Harry Styles Heardle</a>, <a href="https://kpopgg-heardle-round2.glitch.me/">K-Pop Girl Group Heardle</a> and the <a href="https://depth-charge-heardle.glitch.me/">Depth Charge Heardle</a></p> \n\n\n\n <p class="mb-3"></p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/red-velvet-heardle">here</a>.'),
           M(n, "class", "text");
       },
       m(e, t) {
