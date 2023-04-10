@@ -52,7 +52,7 @@ button:focus {
     border-color: #666666;
 }
 button:not(:disabled):active {
-    background-color: #ad1515;
+    background-color: #ff8800;
 }
 .h-full.absolute.bg-custom-mg.overflow-hidden {
   background-color: var(--color-playback-bar);

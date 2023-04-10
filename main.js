@@ -4,13 +4,13 @@ var app = (function () {
   
 //   EDIT THINGS HERE
   
-  const HEARDLE_URL = "https://depth-charge-heardle.glitch.me/";
+  const HEARDLE_URL = "https://shonen-knife-heardle.glitch.me/";
   
-  const HEARDLE_ARTIST = "Depth Charge";
+  const HEARDLE_ARTIST = "Shonen Knife";
   
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
   
-  const HEARDLE_START_DATE = "2023-04-09";
+  const HEARDLE_START_DATE = "2023-04-10";
   
   const HEARDLE_GAME_COMMENTS = [
       "Unlucky! At least you found a new song...", // FAILED
@@ -22,7 +22,7 @@ var app = (function () {
       "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
     ]; // 7 comments are required
   
-  const HEARDLE_GOOGLE_ANALYTICS = "G-CB1FTDPNLH";
+  const HEARDLE_GOOGLE_ANALYTICS = "G-xxx";
   
   
 //   STOP EDITING NOW
