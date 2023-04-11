@@ -14,6 +14,7 @@ var app = (function () {
   
   const HEARDLE_START_DATE = "2023-04-10";
   
+  // make sure you have 7 comments here
   const HEARDLE_GAME_COMMENTS = [
       "Unlucky! At least you found a new song...", // FAILED
       "Romario would be proud.", // First try
@@ -22,7 +23,7 @@ var app = (function () {
       "Not good, not bad, not ugly.",
       "Could've been worse...",
       "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
-    ]; // 7 comments are required
+    ]; 
   
   const HEARDLE_GOOGLE_ANALYTICS = "G-11PSJFQ97R";
   
