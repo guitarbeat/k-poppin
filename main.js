@@ -2824,12 +2824,22 @@ var app = (function () {
               } else l();
             }),
               n.filter && (s = n.filter(s));
+            // var o = s.slice(0, t.resultsList.maxResults);
+            //   (t.feedback = {
+            //     query: e,
+            //     matches: s,
+            //     results: o,
+            //   }),
+            //   d("results", t);
+            
+            // remove duplicates
             var o = s.slice(0, t.resultsList.maxResults);
-            (t.feedback = {
-              query: e,
-              matches: s,
-              results: o,
-            }),
+            var o_uniq = o.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v2) === JSON.stringify(v)))===i);
+              (t.feedback = {
+                query: e,
+                matches: s,
+                results: o_uniq,
+              }),
               d("results", t);
           },
           p = "aria-expanded",
