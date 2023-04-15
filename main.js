@@ -4050,7 +4050,7 @@ var app = (function () {
             (r = x()),
             (s = w("p")),
             (s.innerHTML =
-              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/heardle">real Heardle devs</a> and the <a href="https://ko-fi.com/heardlekpop">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
+              '<p class="mb-3">If you have any questions or suggestions, send me <a href="https://twitter.com/derekahmedzai">a tweet or DM</a></p>'),
             (i = x()),
             (o = w("div")),
             Q(a.$$.fragment),
