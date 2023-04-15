@@ -1,23 +1,107 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");
 
+
+
 /* EDIT THINGS HERE */
 
-/* colour theme */
 :root {
   --color-positive: #1d7e05; /* Submit button */
-  --color-negative: #ff0000;
-  --color-fg: #ffffff; /* Font color and accents */
-  --color-mg: #444444; /* Skip button, progress bar */
-  --color-bg: #121212;
-  --color-line: #888888; /* Line color for current guess box, top line, and song player lines */
-  --color-shade: rgba(0, 0, 0, 0.1);
-  --color-highlight: rgba(255, 255, 255, 0.05);
-  --color-playback-bar: #272b46;
+  --color-negative: #ff0000; /* Incorrect answer */
+  --color-fg: #ffffff;       /* Font color and accents */
+  --color-mg: #444444;       /* Skip button, progress bar, line colour for inactive guesses */
+  --color-bg: #121212;       /* Page background colour */
+  --color-line: #888888;     /* Line color for current guess box, top line, and song player lines */
 }
 
 /* STOP EDITING HERE */
 
+
+
+
+/* global.css */
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+body {
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+a {
+  color: rgb(0, 100, 200);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: rgb(0, 80, 160);
+}
+label {
+  display: block;
+}
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+}
+input:disabled {
+  color: #cccccc;
+}
+/* button {
+    color: #333333;
+    background-color: #f4f4f4;
+    outline: none;
+} */
+button:disabled {
+  color: #999999;
+}
+button:focus {
+  border-color: #666666;
+}
+button:not(:disabled):active {
+  background-color: #dddddd;
+  color: #333333;
+}
+
+/* kofi button */
+.kofi-button svg,
+.kofi-button .kofitext {
+  color: #ffffff;
+}
+
+/* play button */
+.svelte-1r54uzk:active svg {
+  color: #333333;
+}
+.svelte-1r54uzk:active .text-custom-fg {
+  border-color: #333333;
+}
+
+
+
+
 /* bundle.css */
+:root {
+  --color-shade: rgba(0, 0, 0, 0.1);
+  --color-highlight: rgba(255, 255, 255, 0.05);
+  --color-playback-bar: #272b46;
+}
 svg {color: #ffffff; }
 *,
 ::before,
@@ -1031,79 +1115,4 @@ a.svelte-1d3p4dy.svelte-1d3p4dy {
   100% {
     transform: rotate(0) scale(1);
   }
-}
-
-/* global.css */
-
-html,
-body {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-body {
-  color: #333333;
-  margin: 0;
-  padding: 8px;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-a {
-  color: rgb(0, 100, 200);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-a:visited {
-  color: rgb(0, 80, 160);
-}
-label {
-  display: block;
-}
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-padding: 0.4em 0;
-  padding: 0.4em;
-  margin: 0 0 0.5em 0;
-  box-sizing: border-box;
-  border: 1px solid #cccccc;
-  border-radius: 2px;
-}
-input:disabled {
-  color: #cccccc;
-}
-/* button {
-    color: #333333;
-    background-color: #f4f4f4;
-    outline: none;
-} */
-button:disabled {
-  color: #999999;
-}
-button:focus {
-  border-color: #666666;
-}
-button:not(:disabled):active {
-  background-color: #dddddd;
-  color: #333333;
-}
-
-/* kofi button */
-.kofi-button svg,
-.kofi-button .kofitext {
-  color: #ffffff;
-}
-
-/* play button */
-.svelte-1r54uzk:active svg {
-  color: #333333;
-}
-.svelte-1r54uzk:active .text-custom-fg {
-  border-color: #333333;
 }
