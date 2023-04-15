@@ -12,17 +12,17 @@ var app = (function () {
   
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
   
-  const HEARDLE_START_DATE = "2023-04-10";
+  const HEARDLE_START_DATE = "2022-03-27";
   
   // make sure you have 7 comments here
   const HEARDLE_GAME_COMMENTS = [
-      "Unlucky! At least you found a new song...", // FAILED
-      "Romario would be proud.", // First try
-      "You're so good... so good to me",
-      "That was pretty good.",
-      "Not good, not bad, not ugly.",
-      "Could've been worse...",
-      "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
+      "Unlucky!", // FAILED
+      "A virtuoso performance!", // First try
+      "An act of genius!",
+      "You're a star!",
+      "What a pro!",
+      "You're a winner!",
+      "Good result!" // Sixth try
     ]; 
   
   const HEARDLE_GOOGLE_ANALYTICS = "G-GPSR1C0Q60";
