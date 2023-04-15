@@ -4,11 +4,11 @@ var app = (function () {
   
 //   EDIT THINGS HERE
   
-  const HEARDLE_GLITCH_NAME = "shonen-knife-heardle";
+  const HEARDLE_GLITCH_NAME = "harry-styles-heardle";
   
   const HEARDLE_URL = "https://"+HEARDLE_GLITCH_NAME+".glitch.me/";
   
-  const HEARDLE_ARTIST = "Shonen Knife";
+  const HEARDLE_ARTIST = "Harry Styles";
   
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
   
@@ -25,7 +25,7 @@ var app = (function () {
       "Took you 6 tries... Hey now, you'll be okay!", // Sixth try
     ]; 
   
-  const HEARDLE_GOOGLE_ANALYTICS = "G-11PSJFQ97R";
+  const HEARDLE_GOOGLE_ANALYTICS = "G-GPSR1C0Q60";
   
   
 //   STOP EDITING NOW

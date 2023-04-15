@@ -1,12 +1,12 @@
-# Depth Charge Heardle
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M2CHKFQ)
 
-One of my fave artists ever.
+# Harry Styles Heardle
 
-OK, I love Heardles.
+Over 5000 people play this every day!
 
 If you have any questions DM me on Twitter at [@derekahmedzai](https://twitter.com/derekahmedzai).
 
-I also made the [Harry Styles Heardle](https://harry-styles-heardle.glitch.me) and run the updated [Kpop Girl Group Heardle](https://kpopgg-heardle-round2.glitch.me/) and [Red Velvet Heardle](https://red-velvet-heardle.glitch.me/)
+[See all my Heardle clones](https://glitch.com/@derekahmedzai/heardle-clones)
 
 If you have a dead Heardle let me know and I can help you resurrect it.
 
