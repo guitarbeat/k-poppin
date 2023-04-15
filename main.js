@@ -2739,6 +2739,9 @@ var app = (function () {
             var n = t.data,
               r = t.searchEngine,
               s = [];
+            // console.log(t)
+            // remove duplicates
+            var n_uniq = n.src.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v2) === JSON.stringify(v)))===i);
             n.store.forEach(function (o, a) {
               var l = function (n) {
                 var i = n ? o[n] : o,
@@ -2824,6 +2827,7 @@ var app = (function () {
               } else l();
             }),
               n.filter && (s = n.filter(s));
+            // console.log(s)
             // var o = s.slice(0, t.resultsList.maxResults);
             //   (t.feedback = {
             //     query: e,
@@ -2833,7 +2837,9 @@ var app = (function () {
             //   d("results", t);
             
             // remove duplicates
+            // console.log(t.resultsList)
             var o = s.slice(0, t.resultsList.maxResults);
+            // console.log(o)
             var o_uniq = o.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v2) === JSON.stringify(v)))===i);
               (t.feedback = {
                 query: e,
