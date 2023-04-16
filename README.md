@@ -10,6 +10,10 @@ If you have any questions DM me on Twitter at [@derekahmedzai](https://twitter.c
 
 If you have a dead Heardle let me know and I can help you resurrect it.
 
+## New faster version!
+
+Updated this recently to avoid long load times. If you remixed this in the past and want to upgrade yours too, read UPGRADE.md
+
 ## Want to create your own Heardle?
 
 A few things to know before you start
@@ -27,7 +31,7 @@ A few things to know before you start
 ## Make it your own
 
 1. In the `index.html` file, change every instance of *Harry Styles* to your artist's name. You can find and replace by hitting command+option+F on Mac, or ctrl+F on Windows.
-2. Songs and answers are defined in the `songs.js` file. The songs should go in the order you want the game to go. You can manually enter the songs or if you know how to, you can write a separate script to randomize the tracks and then just copy and paste (see getsongs.md). **Note: These tracks have to follow the format `Artist - Track Title` for it to display correctly in the SoundCloud widget.**
+2. Songs and answers are defined in the `songs.js` file. The songs should go in the order you want the game to go. You can manually enter the songs or if you know how to, you can write a separate script to randomize the tracks and then just copy and paste (see SONGS.md). **Note: These tracks have to follow the format `Artist - Track Title` for it to display correctly in the SoundCloud widget.**
 3. In the `main.js` file, edit the details at the top. This should be enough to customise your game. If there is any other text you'd like to change, search for it and update it. **Important:** If you don't update the game URL then users who copy their results will copy the link to this Heardle instead.
 4. Also in this section is the variable `HEARDLE_START_DATE`. Change this to the current date so that the game starts with the first track in your songs list.
 

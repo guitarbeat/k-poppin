@@ -1,8 +1,11 @@
-go to the artist's tracks page on soundcloud
+## A simple way to get songs form Soundcloud
 
-keep scrolling to make sure all the tracks are loaded
+1. go to the artist's tracks page on soundcloud
 
-run this in your browser's developer tools console
+2. keep scrolling to make sure all the tracks are loaded
+
+3. run this in your browser's developer tools console  
+(press F12 or similar and go to the `console` tab)
 
 ```
 let songs = []
@@ -17,4 +20,4 @@ let songs_json = JSON.stringify(songs)
 songs_json
 ```
 
-copy the json string - without the outer quotes - and paste it into the `songs.js` file
+4. copy the json string - without the outer quotes - and paste it into the `songs.js` file
