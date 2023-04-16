@@ -12,7 +12,7 @@ If you have a dead Heardle let me know and I can help you resurrect it.
 
 ## New faster version!
 
-Updated this recently to avoid long load times. If you remixed this in the past and want to upgrade yours too, read UPGRADE.md
+I updated this recently to avoid long load times. If you remixed this in the past and want to upgrade yours too, read UPGRADE.md
 
 ## Want to create your own Heardle?
 

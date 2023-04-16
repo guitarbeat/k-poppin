@@ -11,13 +11,13 @@ If you made a Hearle by remixing this in the past and want to upgrade yours too,
 
 1. remix your app and call the new one something like `yourappname-static` (for example `taylor-swift-static`)
 
-2. change the game name and details in `main.js`
-   there are full customisation details in 
+2. change the game name and details in `index.html` and `main.js`  
+   there are full customisation details in `README.md`
 
-3. copy the songs into `songs.js`
+3. copy the songs array into `songs.js`
 
 4. test it to make sure it's still working
 
-5. switch the sites over  
+5. switch the sites over
    - go to Settings > Edit project details and change the name of your old app to `yourappname-node`
    - go to Settings > Edit project details and change the name of your new app to the existing name `yourappname`
