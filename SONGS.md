@@ -1,6 +1,6 @@
-## A simple way to get songs from Soundcloud (Tracks or Playlists)
+## A simple way to get songs from Soundcloud (Tracks, Playlists, or Albums)
 
-1. Go to the playlist page on soundcloud
+1. Go to the playlist/album page on soundcloud
 
 2. Keep scrolling to make sure all the tracks are loaded
 
@@ -11,15 +11,44 @@
 let songs = [];
 // Wait for page load and try multiple selectors
 setTimeout(() => {
-    // Try different selectors specific to playlist tracks
-    const items = document.querySelectorAll('.trackList__item, .playableTile__mainHeading, [role="listitem"]');
+    // Try different selectors for both playlists and albums
+    const items = document.querySelectorAll(`
+        .trackList__item,
+        .playableTile__mainHeading,
+        [role="listitem"],
+        .trackItem,
+        .soundList__item,
+        .trackList__track,
+        .trackList__item--track
+    `);
     
     items.forEach(item => {
         try {
-            // For playlist view specific selectors
-            const titleEl = item.querySelector('.trackItem__trackTitle, .playableTile__heading span');
-            const artistEl = item.querySelector('.trackItem__username, .playableTile__usernameText');
-            const linkEl = item.querySelector('.trackItem__trackTitle, .playableTile__heading');
+            // Try multiple selectors for different layouts
+            const titleEl = item.querySelector(`
+                .trackItem__trackTitle,
+                .playableTile__heading span,
+                .trackItem__title,
+                .soundTitle__title,
+                .trackItem__trackTitle span
+            `);
+            
+            const artistEl = item.querySelector(`
+                .trackItem__username,
+                .playableTile__usernameText,
+                .trackItem__username span,
+                .soundTitle__username,
+                .trackItem__username
+            `);
+            
+            const linkEl = item.querySelector(`
+                .trackItem__trackTitle,
+                .playableTile__heading,
+                .trackItem__title,
+                .soundTitle__title,
+                a[href*="/sets/"],
+                a[href*="/tracks/"]
+            `);
 
             // Skip if we can't find all elements
             if (!titleEl || !artistEl || !linkEl) return;
@@ -60,7 +89,8 @@ setTimeout(() => {
 5. Create/open `songs.js` and replace its entire contents with what you copied
 
 If you're still not getting all songs:
-- Make sure to scroll all the way down in the playlist to load all tracks
+- Make sure to scroll all the way down in the playlist/album to load all tracks
 - Try increasing the timeout (change 2000 to 5000 for 5 seconds)
 - Check if any tracks are in a "Show more" section and click to expand it
-- Refresh the page and wait for it to fully load before running the script 
+- Refresh the page and wait for it to fully load before running the script
+- If some tracks are still missing, try running the script multiple times as you scroll down 

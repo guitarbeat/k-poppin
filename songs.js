@@ -1,5 +1,25 @@
 const SONGS = [
   {
+    "url": "https://soundcloud.com/kiiikiii-music/debut-song",
+    "answer": "KiiiKiii - DEBUT SONG"
+  },
+  {
+    "url": "https://soundcloud.com/kiiikiii-music/one-off",
+    "answer": "KiiiKiii - 한 개뿐인 (ONE OFF)"
+  },
+  {
+    "url": "https://soundcloud.com/kiiikiii-music/there-they-go",
+    "answer": "KiiiKiii - THERE THEY GO"
+  },
+  {
+    "url": "https://soundcloud.com/kiiikiii-music/btg",
+    "answer": "KiiiKiii - BTG"
+  },
+  {
+    "url": "https://soundcloud.com/kiiikiii-music/groundwork",
+    "answer": "KiiiKiii - GROUNDWORK"
+  },
+  {
     "url": "https://soundcloud.com/aespaofficial/spicy?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "aespa - Spicy"
   },

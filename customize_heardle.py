@@ -6,21 +6,21 @@ import json
 # Edit these values to customize your Heardle game
 
 # App name (used throughout the app)
-APP_NAME = "aarons-playlist"
-APP_DISPLAY_NAME = "Aaron's Playlist"  # How it appears to users
+APP_NAME = "kpop-heardle"
+APP_DISPLAY_NAME = "K-Pop Girl Groups"  # How it appears to users
 
 # Google Analytics ID (leave empty if you don't want to use GA)
 GOOGLE_ANALYTICS_ID = ""
 
 # Your favicon/icon URL
-NEW_FAVICON_URL = ""
+NEW_FAVICON_URL = "https://cdn-icons-png.flaticon.com/512/2111/2111463.png"  # K-pop music icon
 
 # Color scheme (HEX colors)
 COLORS = {
-    "primary": "#FF69B4",       # Main accent color
-    "secondary": "#FF1493",     # Secondary accent color
-    "background": "#000000",    # Background color
-    "text": "#FFFFFF"           # Text color
+    "primary": "#FF1493",       # Hot pink - classic K-pop color
+    "secondary": "#FF69B4",     # Light pink - for accents
+    "background": "#000000",    # Black background for contrast
+    "text": "#FFFFFF"           # White text for readability
 }
 
 # ===============================================
