@@ -1,4 +1,108 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");
+
+
+
+/* EDIT THINGS HERE */
+
+:root {
+  --color-primary: #FF1493;
+  --color-secondary: #FF69B4;
+  --color-fg: #FFFFFF;
+  --color-mg: #333333;
+  --color-bg: #000000;
+  --color-line: #FF69B4;   /* Line color for current guess box, top line, and song player lines */
+}
+
+/* STOP EDITING HERE */
+
+
+
+
+/* global.css */
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+body {
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+a {
+  color: rgb(0, 100, 200);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: rgb(0, 80, 160);
+}
+label {
+  display: block;
+}
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+}
+input:disabled {
+  color: #cccccc;
+}
+/* button {
+    color: #333333;
+    background-color: #f4f4f4;
+    outline: none;
+} */
+button:disabled {
+  color: #999999;
+}
+button:focus {
+  border-color: #666666;
+}
+button:not(:disabled):active {
+  background-color: #dddddd;
+  color: #333333;
+}
+
+/* kofi button */
+.kofi-button svg,
+.kofi-button .kofitext {
+  color: #ffffff;
+}
+
+/* play button */
+.svelte-1r54uzk:active svg {
+  color: #333333;
+}
+.svelte-1r54uzk:active .text-custom-fg {
+  border-color: #333333;
+}
+
+
+
+
+/* bundle.css */
+:root {
+  --color-shade: rgba(0, 0, 0, 0.1);
+  --color-highlight: rgba(255, 255, 255, 0.05);
+  --color-playback-bar: #272b46;
+}
+svg {color: #ffffff; }
 *,
 ::before,
 ::after {
@@ -714,7 +818,7 @@ video {
   color: var(--color-mg);
 }
 .text-custom-line {
-  /*color: var(--color-line);*/
+  color: var(--color-line);
 }
 .no-underline {
   text-decoration: none;
@@ -780,22 +884,12 @@ a:active {
 .text-custom-line a,
 .text-custom-line a:visited,
 .text-custom-line a:active {
-  /*color: var(--color-line);*/
+  color: var(--color-line);
 }
 .tracking-widest {
   text-indent: 0.25em;
 }
-:root {
-  --color-positive: #e173d3; /* Submit button */
-  --color-negative: #cfb8bf;
-  --color-fg: #ffffff; /* Font color and accents */
-  --color-mg: #666666; /* Skip button, progress bar */
-  --color-bg: #111111;
-  --color-line: #333333; /* Line color for current guess box, top line, and song player lines */
-  --color-shade: rgba(0, 0, 0, 0.1);
-  --color-highlight: rgba(255, 255, 255, 0.05);
-  --color-playback-bar: #272b46;
-}
+/* colours defined at top of file */
 @media (min-width: 640px) {
 }
 @media (min-width: 768px) {
