@@ -1,6 +1,6 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M2CHKFQ)
 
-# K-Pop Girl Groups Heardle
+# Harry Styles Heardle
 
 Over 5000 people play this every day!
 
@@ -9,44 +9,6 @@ If you have any questions DM me on Twitter at [@derekahmedzai](https://twitter.c
 [See all my Heardle clones](https://glitch.com/@derekahmedzai/heardle-clones)
 
 If you have a dead Heardle let me know and I can help you resurrect it.
-
-## Configuration
-
-Edit these values to customize your Heardle game:
-
-- App Name: `kpop-heardle-by-aaron`
-- App Display Name: `K-Pop Girl Groups Heardle 💝`
-- Glitch Project Name: `kpop-heardle-by-aaron`
-- Artist Name: `K-Pop Girl Groups`
-- Start Date: `2024-04-15`
-- Google Analytics ID: `G-9J2HGENGFC`
-- Favicon URL: `https://cdn.glitch.global/example/kpop-icon.png`
-
-### Game Comments
-```
-Failed 😭
-Perfect! 🎯
-Amazing! ⭐
-Great! 👍
-Well done! 👏
-Good! 👌
-Not bad! 🙂
-```
-
-### Colors
-```
-primary: #2a2139
-secondary: #4a4352
-background: #121212
-text: #ffffff
-positive: #4caf50
-negative: #f44336
-foreground: #ffffff
-midground: #2a2139
-line: #4a4352
-playback-bar: #272b46
-```
-
 
 ## New faster version!
 
@@ -88,3 +50,77 @@ Now you're done with all the necessary changes. Congrats! Read on for optional e
 And don't forget to share your custom Heardle!
 
 Reddit, WhatsApp, Facebook and Twitter are good places to share.
+
+## Using Configuration Files
+
+You can now use a JSON configuration file with the `customize_heardle.py` script for easier customization:
+
+1. Edit the `heardle_config.json` file with your Heardle game settings:
+   ```json
+   {
+     "version": "1.0.0",
+     "project": {
+       "app_name": "your-heardle-name",
+       "app_display_name": "Your Artist Heardle",
+       "glitch_name": "your-glitch-project-name",
+       "game_url": "https://your-glitch-project-name.glitch.me/",
+       "artist_name": "Your Artist",
+       "game_name": "Your Artist Heardle",
+       "start_date": "2024-04-25"
+     },
+     "game_comments": [
+       "Failed 😭",
+       "Perfect! 🎯",
+       "Amazing! ⭐",
+       "Great! 👍",
+       "Good! 👌",
+       "Close! 😅",
+       "Phew! 😮‍💨"
+     ],
+     "appearance": {
+       "favicon_url": "https://your-favicon-url-here.png",
+       "colors": {
+         "primary": "#4c9aff",
+         "secondary": "#0052cc",
+         "background": "#0d1424",
+         "text": "#ffffff",
+         "positive": "#36b37e",
+         "negative": "#ff5630",
+         "foreground": "#ffffff",
+         "midground": "#505f79",
+         "line": "#6554c0",
+         "playback-bar": "#344563"
+       }
+     },
+     "analytics": {
+       "google_analytics_id": ""
+     }
+   }
+   ```
+
+2. Run the customization script:
+   ```
+   python customize_heardle.py
+   ```
+
+3. Advanced usage options:
+   ```
+   # Use a different config file
+   python customize_heardle.py --config my_custom_config.json
+
+   # Skip specific customization steps
+   python customize_heardle.py --skip-ga --skip-favicon
+
+   # Generate a template config file
+   python customize_heardle.py --generate-template
+
+   # Perform a dry run without making changes
+   python customize_heardle.py --dry-run
+
+   # Enable verbose logging
+   python customize_heardle.py --verbose
+   ```
+
+4. The script automatically creates backups of modified files in a `backups` directory before making changes.
+
+This approach allows you to easily switch between different configurations or create backup configurations for different artists or themes.
