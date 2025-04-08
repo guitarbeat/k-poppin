@@ -981,6 +981,7 @@ def main():
             logger.info(f"Favicon URL: {NEW_FAVICON_URL}")
             logger.info(f"Ko-fi URL: {config['project'].get('ko_fi_url', 'Not set')}")
             logger.info(f"About text: {config['project'].get('about_text', 'Not set')[:50]}...")
+
             
             # Show skip steps from config
             if skip_config:
@@ -994,41 +995,50 @@ def main():
         success = True
         
         if not (args.skip_app_name or skip_config.get('app_name', False)):
+
             if not update_app_name():
                 logger.warning("Failed to update app name")
                 success = False
         
-        if not (args.skip_ga or skip_config.get('ga', False)):
             if not update_google_analytics():
                 logger.warning("Failed to update Google Analytics")
                 success = False
-            
+
         if not (args.skip_favicon or skip_config.get('favicon', False)):
+
             if not update_favicon():
                 logger.warning("Failed to update favicon")
                 success = False
             
+
         if not (args.skip_colors or skip_config.get('colors', False)):
+
             if not update_colors():
                 logger.warning("Failed to update colors")
                 success = False
             
+
         if not (args.skip_html or skip_config.get('html', False)):
+
             if not update_html_content():
                 logger.warning("Failed to update HTML content")
                 success = False
-            
+
         if not (args.skip_css or skip_config.get('css', False)):
+
             if not ensure_css_imports():
                 logger.warning("Failed to ensure CSS imports")
                 success = False
-            
+
         if not (args.skip_ko_fi or skip_config.get('ko_fi', False)):
+
             if not update_ko_fi_link(config):
                 logger.warning("Failed to update Ko-fi link")
                 success = False
             
+
         if not (args.skip_about or skip_config.get('about', False)):
+
             if not update_about_text(config):
                 logger.warning("Failed to update about text")
                 success = False

@@ -4659,7 +4659,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + "https://kpopgg-heardle-round2.glitch.me/";
+          let o = e + "\n\n" + t + "\n\n" + "https://k-poppin.glitch.me/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
