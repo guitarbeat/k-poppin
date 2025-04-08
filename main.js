@@ -1,35 +1,6 @@
 var app = (function () {
   "use strict";
-  
-  
-//   EDIT THINGS HERE
 
-  const HEARDLE_GLITCH_NAME = "kpop-heardle-by-aaron";
-  
-  const HEARDLE_URL = "https://"+HEARDLE_GLITCH_NAME+".glitch.me/";
-  
-  const HEARDLE_ARTIST = "K-POP Girl Groups";
-  
-  const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
-  
-  const HEARDLE_START_DATE = "2025-04-08";
-  // make sure you have 7 comments here
-  const HEARDLE_GAME_COMMENTS = [
-      "Unlucky!", // FAILED
-      "A virtuoso performance!", // First try
-      "An act of genius!",
-      "You're a star!",
-      "What a pro!",
-      "You're a winner!",
-      "Good result!" // Sixth try
-    ]; 
-  
-  const HEARDLE_GOOGLE_ANALYTICS = "G-GPSR1C0Q60";
-  
-  
-//   STOP EDITING NOW
-  
-  
   function e() {}
 
   function t(e) {
@@ -802,7 +773,7 @@ var app = (function () {
             Q(a.$$.fragment),
             (l = x()),
             (u = w("h1")),
-            (u.textContent = HEARDLE_NAME),
+            (u.textContent = "K-Pop Girl Group Heardle"),
             (c = x()),
             (d = w("div")),
             Q(h.$$.fragment),
@@ -1350,6 +1321,11 @@ var app = (function () {
   }
 
   function He(e, t, n) {
+    //console.log(e)
+    //console.log(t)
+    //console.log(n)
+    // console.log("welcome to K-Pop Girl Group Heardle, day #", t.currentHeardle.id);
+    // console.log("if you have any questions, DM me on twitter at @derekahmedzai");
     let r,
       { userGuesses: s } = t,
       { maxAttempts: i } = t,
@@ -2827,24 +2803,17 @@ var app = (function () {
               } else l();
             }),
               n.filter && (s = n.filter(s));
-            // var o = s.slice(0, t.resultsList.maxResults);
-            //   (t.feedback = {
-            //     query: e,
-            //     matches: s,
-            //     results: o,
-            //   }),
-            //   d("results", t);
-            
-            // remove duplicates
             var o = s.slice(0, t.resultsList.maxResults);
+            // remove duplicate answers from the autocomplete
+            // var o_uniq = [...new Map(o.map(v => [v.id, v])).values()];
             var o_uniq = o.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v2) === JSON.stringify(v)))===i);
-              (t.feedback = {
-                query: e,
-                matches: s,
-                results: o_uniq,
-              }),
+            (t.feedback = {
+              query: e,
+              matches: s,
+              // results: o,
+              results: o_uniq,
+            }),
               d("results", t);
-            
           },
           p = "aria-expanded",
           g = "aria-activedescendant",
@@ -3829,7 +3798,7 @@ var app = (function () {
       c() {
         (n = w("div")),
           (n.innerHTML =
-            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> for '+HEARDLE_ARTIST+' songs.</p><p class="mb-3">Each Harry Styles Heardle is randomly chosen from Harry Styles\'s discography on Soundcloud</p> \n\n<p class="mb-3">Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3"></p> \n\n<p class="mb-3">I also maintain the <a href="https://red-velvet-heardle.glitch.me/">Red Velvet</a>, <a href="https://kpopgg-heardle-round2.glitch.me/">K-Pop Girl Group</a>, <a href="https://shonen-knife-heardle.glitch.me/">Shonen Knife</a> and the <a href="https://depth-charge-heardle.glitch.me/">Depth Charge</a> Heardles</p> \n\n\n\n <p class="mb-3"><a href="https://glitch.com/edit/#!/'+HEARDLE_GLITCH_NAME+'">Make your own Heardle by remixing this one</a></p> \n\n\n\n <p class="mb-3"></p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Songs from <a href="https://soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/'+HEARDLE_GLITCH_NAME+'">here</a>.'),
+            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Original version made by <a href="https://twitter.com/wysteriaseeds">@wysteriaseeds</a>. Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/kpopgg-heardle-round2">here</a>.'),
           M(n, "class", "text");
       },
       m(e, t) {
@@ -4054,7 +4023,7 @@ var app = (function () {
             (r = x()),
             (s = w("p")),
             (s.innerHTML =
-              '<p class="mb-3">If you have any questions or suggestions, send me <a href="https://twitter.com/derekahmedzai">a tweet or DM</a></p>'),
+              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/heardle">real Heardle devs</a> and the <a href="https://ko-fi.com/heardlekpop">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
             (i = x()),
             (o = w("div")),
             Q(a.$$.fragment),
@@ -4104,9 +4073,17 @@ var app = (function () {
       attemptInterval: 1.5e3,
       attemptIntervalAlt: [1e3, 2e3, 4e3, 7e3, 11e3, 16e3],
       maxAttempts: 6,
-      startDate: HEARDLE_START_DATE,
+      startDate: "2022-06-30",
     },
-    Jt = HEARDLE_GAME_COMMENTS;
+    Jt = [
+      "Unlucky! At least you discovered a new song!",
+      "You're a true girl group fan!",
+      "Had to think twice?",
+      "It's called the big 3 for a reason.",
+      "4th guess for the 4th generation!",
+      "Nicely done",
+      "Almost got exposed!",
+    ];
 
   function Kt(t) {
     let n, r;
@@ -4231,14 +4208,14 @@ var app = (function () {
             (f = w("div")),
             (m = w("div")),
             (k = w("div")),
-            (k.textContent = "Next "+HEARDLE_ARTIST+" song in:"),
+            (k.textContent = "Next Girl Group song in:"),
             (b = x()),
             Q(S.$$.fragment),
             (D = x()),
             (T = w("div")),
             (Y = w("div")),
-            (Y.innerHTML =
-              '<span class="text-custom-negative"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ff0000" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span> \n                <span class="px-1">'+HEARDLE_ARTIST+' Heardle?</span>'),
+            // (Y.innerHTML =
+            //   '<span class="text-custom-negative"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span> \n                <span class="px-1">K-pop GG Heardle?</span>'),
             (C = x()),
             Q(O.$$.fragment),
             M(n, "class", "text-lg text-custom-line"),
@@ -4456,7 +4433,7 @@ var app = (function () {
       s = (e[0].length * e[1].attemptInterval) / 1e3 + "";
     return {
       c() {
-        (t = _("You got today's "+HEARDLE_NAME+" within the first ")),
+        (t = _("You got today's K-Pop Girl Group Heardle within the first ")),
           (n = _(s)),
           (r = _(" seconds."));
       },
@@ -4484,7 +4461,7 @@ var app = (function () {
       a = e[1].attemptIntervalAlt[e[0].length - 1] / 1e3 > 1 ? "s" : "";
     return {
       c() {
-        (t = _("You got today's "+HEARDLE_NAME+" within ")),
+        (t = _("You got today's K-pop Girl Group Heardle within ")),
           (n = _(o)),
           (r = _("\n                second")),
           (s = _(a)),
@@ -4516,7 +4493,7 @@ var app = (function () {
     return {
       c() {
         n = _(
-          "You didn't get today's "+HEARDLE_NAME+". Better luck tomorrow!"
+          "You didn't get today's K-pop Girl Group Heardle. Better luck tomorrow!"
         );
       },
       m(e, t) {
@@ -4634,7 +4611,7 @@ var app = (function () {
   }
 
   function fn(e, t, n) {
-    console.log("welcome to " + HEARDLE_NAME + ", day #", t.currentHeardle.id + 1);
+    console.log("welcome to K-Pop Girl Group Heardle, day #", t.currentHeardle.id);
     console.log("if you have any questions, DM me on twitter at @derekahmedzai");
     let { userGuesses: r } = t,
       { currentHeardle: s } = t,
@@ -4665,7 +4642,7 @@ var app = (function () {
         c,
         () => {
           // console.log('answer', r.length)
-          let e = HEARDLE_NAME + " #" + (s.id + 1),
+          let e = "K-pop Girl Group Heardle (round 2) #" + (s.id + 1),
             t = "";
           a
             ? r.length < i.maxAttempts / 3
@@ -4682,7 +4659,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + HEARDLE_URL;
+          let o = e + "\n\n" + t + "\n\n" + "https://kpopgg-heardle-round2.glitch.me/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -4770,7 +4747,7 @@ var app = (function () {
           (t = w("div")),
             (n = w("div")),
             (n.innerHTML =
-              '<div class="mr-4 w-8 text-custom-line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="15.5" r="2.5"></circle><path d="M8 17V5l12-2v12"></path></svg></div> \n        <div><p>Listen to the intro, then find the correct '+HEARDLE_ARTIST+' song in the list.</p></div>'),
+              '<div class="mr-4 w-8 text-custom-line"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="17.5" cy="15.5" r="2.5"></circle><path d="M8 17V5l12-2v12"></path></svg></div> \n        <div><p>Listen to the intro, then find the correct K-pop Girl Group song in the list.</p></div>'),
             (r = x()),
             (s = w("div")),
             (s.innerHTML =
@@ -9388,7 +9365,7 @@ var app = (function () {
     G(e[18]),
       (l = new me({
         props: {
-          properties: [HEARDLE_GOOGLE_ANALYTICS],
+          properties: ["G-VC91QPG37E"],
         },
       }));
     let L = e[10].isActive && Nn(e);
@@ -9453,12 +9430,12 @@ var app = (function () {
           Q(Y.$$.fragment),
           (C = x()),
           H && H.c(),
-          (An.title = HEARDLE_NAME),
+          (An.title = "K-pop Girl Group Heardle"),
           M(t, "name", "description"),
           M(
             t,
             "content",
-            "Guess the "+HEARDLE_ARTIST+" song from the intro in as few tries as possible"
+            "Guess the K-pop Girl Group song from the intro in as few tries as possible"
           ),
           M(n, "rel", "apple-touch-icon"),
           M(n, "sizes", "180x180"),
@@ -9602,6 +9579,11 @@ var app = (function () {
   }
 
   function jn(e, t, n) {
+    if (x(Vt.startDate) >= songs.length) {
+      console.log('songs', songs.length)
+      console.log('day', x(Vt.startDate))
+      console.log('out of songs')
+    }
     let r, s, i, o;
     u(e, Cn, (e) => n(26, (r = e))), u(e, On, (e) => n(27, (s = e)));
     let a = x(Vt.startDate),
