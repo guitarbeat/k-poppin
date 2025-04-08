@@ -3,7 +3,7 @@ var app = (function () {
   
   
 //   EDIT THINGS HERE
-  
+
   const HEARDLE_GLITCH_NAME = "kpop-heardle-by-aaron";
   
   const HEARDLE_URL = "https://"+HEARDLE_GLITCH_NAME+".glitch.me/";
@@ -13,7 +13,6 @@ var app = (function () {
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
   
   const HEARDLE_START_DATE = "2025-04-08";
-  
   // make sure you have 7 comments here
   const HEARDLE_GAME_COMMENTS = [
       "Unlucky!", // FAILED
