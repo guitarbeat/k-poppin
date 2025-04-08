@@ -6,11 +6,11 @@ import json
 # Edit these values to customize your Heardle game
 
 # App name (used throughout the app)
-APP_NAME = "kpop-heardle"
-APP_DISPLAY_NAME = "K-Pop Girl Groups"  # How it appears to users
+APP_NAME = "girl-group-heardle"
+APP_DISPLAY_NAME = "Girl Group Heardle"  # How it appears to users
 
 # Game configuration
-GLITCH_NAME = "kpop-girlgroups-heardle"
+GLITCH_NAME = "girl-group-heardle"
 GAME_URL = f"https://{GLITCH_NAME}.glitch.me/"
 ARTIST_NAME = "K-Pop Girl Groups"
 GAME_NAME = f"{ARTIST_NAME} Heardle"
@@ -31,7 +31,7 @@ GAME_COMMENTS = [
 GOOGLE_ANALYTICS_ID = ""
 
 # Your favicon/icon URL
-NEW_FAVICON_URL = "https://cdn-icons-png.flaticon.com/512/2111/2111463.png"  # K-pop music icon
+NEW_FAVICON_URL = "https://cdn.glitch.global/70e7d90a-86fa-4c52-8f03-1310353a5651/favicon.png?v=1657371906066"
 
 # Color scheme (HEX colors)
 COLORS = {
@@ -43,7 +43,8 @@ COLORS = {
     "negative": "#FF1493",      # Incorrect answer - hot pink
     "foreground": "#FFFFFF",    # Font color and accents
     "midground": "#333333",     # Skip button, progress bar
-    "line": "#FF69B4"          # Line color for current guess box
+    "line": "#FF69B4",          # Line color for current guess box
+    "playback-bar": "#272b46"   # Playback bar color
 }
 
 # ===============================================
@@ -124,8 +125,8 @@ def update_favicon():
         file.write(content)
 
 def update_colors():
-    """Update color scheme in stylesheet.css"""
-    with open('stylesheet.css', 'r') as file:
+    """Update color scheme in bundle.css"""
+    with open('bundle.css', 'r') as file:
         content = file.read()
     
     # Update all color variables
@@ -139,12 +140,9 @@ def update_colors():
     content = re.sub(r'--color-mg:\s*#[0-9a-fA-F]{6}', f'--color-mg: {COLORS["midground"]}', content)
     content = re.sub(r'--color-bg:\s*#[0-9a-fA-F]{6}', f'--color-bg: {COLORS["background"]}', content)
     content = re.sub(r'--color-line:\s*#[0-9a-fA-F]{6}', f'--color-line: {COLORS["line"]}', content)
+    content = re.sub(r'--color-playback-bar:\s*#[0-9a-fA-F]{6}', f'--color-playback-bar: {COLORS["playback-bar"]}', content)
     
-    # Also update any direct color references
-    content = re.sub(r'color: #333333;', f'color: {COLORS["text"]};', content)
-    content = re.sub(r'background-color: #f4f4f4;', f'background-color: {COLORS["midground"]};', content)
-    
-    with open('stylesheet.css', 'w') as file:
+    with open('bundle.css', 'w') as file:
         file.write(content)
 
 def update_html_content():
@@ -182,7 +180,7 @@ def update_html_content():
 
 def ensure_css_imports():
     """Ensure the CSS has the proper font imports"""
-    with open('stylesheet.css', 'r') as file:
+    with open('bundle.css', 'r') as file:
         content = file.read()
     
     # Check if font import exists
@@ -191,7 +189,7 @@ def ensure_css_imports():
         font_import = '@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");\n\n'
         content = font_import + content
     
-    with open('stylesheet.css', 'w') as file:
+    with open('bundle.css', 'w') as file:
         file.write(content)
 
 def main():
