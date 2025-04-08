@@ -6,7 +6,7 @@ var app = (function () {
   
   const HEARDLE_GLITCH_NAME = "kpop-girlgroups-heardle";
   
-  const HEARDLE_URL = "https://kpop-girlgroups-heardle.glitch.me/"+HEARDLE_GLITCH_NAME+".glitch.me/";
+  const HEARDLE_URL = "https://HEARDLE_GLITCH_NAME+".glitch.me/";
   
   const HEARDLE_ARTIST = "K-Pop Girl Groups";
   
