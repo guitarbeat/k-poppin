@@ -41,5 +41,44 @@
     <meta name="google-site-verification" content="mHvQuygmScMHb5UQzFz7e5gWQ2qAZuze4PcEgFZj_Zg" />
     
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <div class="game-container">
+        <div class="header">
+          <h1>K-Pop Girl Groups Heardle</h1>
+          <p>Guess the song from the intro in as few tries as possible!</p>
+        </div>
+        
+        <div class="game-area">
+          <div class="player-container">
+            <div class="player">
+              <div class="waveform"></div>
+              <div class="controls">
+                <button class="play-button">▶</button>
+                <div class="progress-bar">
+                  <div class="progress"></div>
+                </div>
+                <div class="time">0:00</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="guesses">
+            <!-- Guesses will be added here by JavaScript -->
+          </div>
+          
+          <div class="input-container">
+            <input type="text" class="song-input" placeholder="Type a song name..." />
+            <button class="submit-button">Submit</button>
+            <button class="skip-button">Skip</button>
+          </div>
+        </div>
+        
+        <div class="footer">
+          <p>Made for Dilara with love! 💖</p>
+          <p>New song every day!</p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
