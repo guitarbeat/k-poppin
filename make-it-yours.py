@@ -147,6 +147,11 @@ def validate_config(config):
         if key not in config['appearance']['colors']:
             raise ValueError(f"Missing color '{key}' in colors section")
     
+    # Skip_steps section is optional
+    if 'skip_steps' in config:
+        if not isinstance(config['skip_steps'], dict):
+            raise ValueError("'skip_steps' must be an object with boolean values")
+    
     logger.info("Configuration validated successfully")
     return True
 
@@ -949,6 +954,9 @@ def main():
         config_file = args.config if args.config is not None else 'your-data.json'
         config = load_config(config_file)
         
+        # Get skip flags from config
+        skip_config = config.get('skip_steps', {})
+        
         # Check required files exist before proceeding (skip if dry run)
         if not args.dry_run:
             try:
@@ -973,47 +981,54 @@ def main():
             logger.info(f"Favicon URL: {NEW_FAVICON_URL}")
             logger.info(f"Ko-fi URL: {config['project'].get('ko_fi_url', 'Not set')}")
             logger.info(f"About text: {config['project'].get('about_text', 'Not set')[:50]}...")
+            
+            # Show skip steps from config
+            if skip_config:
+                logger.info("Steps to skip (from config):")
+                for step, skip in skip_config.items():
+                    logger.info(f"  {step}: {skip}")
+            
             return 0
         
-        # Apply updates based on flags
+        # Apply updates based on flags and config
         success = True
         
-        if not args.skip_app_name:
+        if not (args.skip_app_name or skip_config.get('app_name', False)):
             if not update_app_name():
                 logger.warning("Failed to update app name")
                 success = False
         
-        if not args.skip_ga:
+        if not (args.skip_ga or skip_config.get('ga', False)):
             if not update_google_analytics():
                 logger.warning("Failed to update Google Analytics")
                 success = False
             
-        if not args.skip_favicon:
+        if not (args.skip_favicon or skip_config.get('favicon', False)):
             if not update_favicon():
                 logger.warning("Failed to update favicon")
                 success = False
             
-        if not args.skip_colors:
+        if not (args.skip_colors or skip_config.get('colors', False)):
             if not update_colors():
                 logger.warning("Failed to update colors")
                 success = False
             
-        if not args.skip_html:
+        if not (args.skip_html or skip_config.get('html', False)):
             if not update_html_content():
                 logger.warning("Failed to update HTML content")
                 success = False
             
-        if not args.skip_css:
+        if not (args.skip_css or skip_config.get('css', False)):
             if not ensure_css_imports():
                 logger.warning("Failed to ensure CSS imports")
                 success = False
             
-        if not args.skip_ko_fi:
+        if not (args.skip_ko_fi or skip_config.get('ko_fi', False)):
             if not update_ko_fi_link(config):
                 logger.warning("Failed to update Ko-fi link")
                 success = False
             
-        if not args.skip_about:
+        if not (args.skip_about or skip_config.get('about', False)):
             if not update_about_text(config):
                 logger.warning("Failed to update about text")
                 success = False
