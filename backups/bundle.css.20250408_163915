@@ -786,12 +786,15 @@ a:active {
   text-indent: 0.25em;
 }
 :root {
-  --color-positive: #FF69B4; /* Submit button */
-  --color-negative: #FF1493; /* Incorrect answer */
-  --color-fg: #FFFFFF;       /* Font color and accents */
-  --color-mg: #333333;       /* Skip button, progress bar, line colour for inactive guesses */
-  --color-bg: #000000;       /* Page background colour */
-  --color-line: #FF69B4;     /* Line color for current guess box, top line, and song player lines */
+  --color-positive: #e173d3; /* Submit button */
+  --color-negative: #cfb8bf;
+  --color-fg: #ffffff; /* Font color and accents */
+  --color-mg: #666666; /* Skip button, progress bar */
+  --color-bg: #111111;
+  --color-line: #333333; /* Line color for current guess box, top line, and song player lines */
+  --color-shade: rgba(0, 0, 0, 0.1);
+  --color-highlight: rgba(255, 255, 255, 0.05);
+  --color-playback-bar: #272b46;
 }
 @media (min-width: 640px) {
 }

@@ -1,13 +1,16 @@
 {
     "version": "1.0.0",
     "project": {
-        "app_name": "kpop-heardle-by-aaron",
-        "app_display_name": "K-Pop Heardle by Aaron 💝 🎤",
-        "glitch_name": "kpop-heardle-by-aaron",
-        "game_url": "https://kpop-heardle-by-aaron.glitch.me/",
-        "artist_name": "K-Pop Girl Groups",
-        "game_name": "K-Pop Girl Groups Heardle 💖",
-        "start_date": "2024-03-20"
+        "app_name": "kpop-heardle",
+        "app_display_name": "K-Pop Girl Group Heardle",
+        "glitch_name": "k-poppin",
+        "game_url": "https://k-poppin.glitch.me/",
+        "artist_name": "K-Pop Girl Group",
+        "game_name": "K-Pop Girl Group Heardle",
+        "start_date": "2025-04-08",
+        "ko_fi_url": "https://ko-fi.com/aaronwoods",
+        "repository_url": "https://raw.githubusercontent.com/guitarbeat/k-poppin/main/",
+        "about_text": "<p class=\"mb-3\">A clone of <a href=\"https://www.heardle.app/\" title=\"Heardle\">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class=\"mb-3\">Original version made by <a href=\"https://twitter.com/wysteriaseeds\">@wysteriaseeds</a>. Remixed and extended by <a href=\"https://twitter.com/derekahmedzai\">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class=\"mb-3\">  </p>  \n\n\n\n <p class=\"text-xs mb-3 text-custom-line\">Prepared with <a href=\"https://developers.soundcloud.com\">Soundcloud</a>\n and powered by <a href=\"https://glitch.com/\">Glitch</a>. See the source code <a href=\"https://glitch.com/edit/#!/k-poppin\">here</a>."
     },
     "game_comments": [
         "아이고! (Aigo!) 😭",
@@ -19,7 +22,7 @@
         "괜찮아요! (Not bad!) 💓"
     ],
     "appearance": {
-        "favicon_url": "https://cdn.glitch.global/5094fda1-d3b5-4df7-9c47-8a73c6af74cf/favicon-kpop.png?v=1744145406237",
+        "favicon_url": "https://cdn.glitch.global/6b83cfd3-e8d3-4fff-a4b4-0f93a64f450a/favicon-kpop.png?v=1744146413732",
         "colors": {
             "primary": "#FF1493",
             "secondary": "#FF69B4",

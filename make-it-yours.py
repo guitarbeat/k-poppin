@@ -64,7 +64,7 @@ def validate_config(config):
     logger.info("Configuration validated successfully")
     return True
 
-def load_config(config_file='heardle_config.json'):
+def load_config(config_file='your-data.json'):
     """Load configuration from a JSON file"""
     # Check if config file exists
     if not os.path.exists(config_file):
@@ -114,54 +114,6 @@ GOOGLE_ANALYTICS_ID = ""
 NEW_FAVICON_URL = ""
 COLORS = {}
 
-def generate_template_config(output_file='heardle_config_template.json'):
-    """Generate a template configuration file"""
-    template = {
-        "version": "1.0.0",
-        "project": {
-            "app_name": "your-heardle-name",
-            "app_display_name": "Your Artist Heardle",
-            "glitch_name": "your-glitch-project-name",
-            "game_url": "https://your-glitch-project-name.glitch.me/",
-            "artist_name": "Your Artist",
-            "game_name": "Your Artist Heardle",
-            "start_date": "YYYY-MM-DD"
-        },
-        "game_comments": [
-            "Failed 😭",
-            "Perfect! 🎯",
-            "Amazing! ⭐",
-            "Great! 👍",
-            "Good! 👌",
-            "Close! 😅",
-            "Phew! 😮‍💨"
-        ],
-        "appearance": {
-            "favicon_url": "https://your-favicon-url-here.png",
-            "colors": {
-                "primary": "#4c9aff",
-                "secondary": "#0052cc",
-                "background": "#0d1424",
-                "text": "#ffffff",
-                "positive": "#36b37e",
-                "negative": "#ff5630",
-                "foreground": "#ffffff",
-                "midground": "#505f79",
-                "line": "#6554c0",
-                "playback-bar": "#344563"
-            }
-        },
-        "analytics": {
-            "google_analytics_id": ""
-        }
-    }
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(template, f, indent=4)
-    
-    logger.info(f"Template configuration file created: {output_file}")
-    return True
-
 def update_app_name():
     """Update the app name in main.js and index.html"""
     try:
@@ -185,6 +137,12 @@ def update_app_name():
             comments_pattern = r'const HEARDLE_GAME_COMMENTS = \[\s*".*?",\s*".*?",\s*".*?",\s*".*?",\s*".*?",\s*".*?",\s*".*?"\s*\];'
             comments_replacement = f'const HEARDLE_GAME_COMMENTS = [\n    "{GAME_COMMENTS[0]}",\n    "{GAME_COMMENTS[1]}",\n    "{GAME_COMMENTS[2]}",\n    "{GAME_COMMENTS[3]}",\n    "{GAME_COMMENTS[4]}",\n    "{GAME_COMMENTS[5]}",\n    "{GAME_COMMENTS[6]}"\n];'
             content = re.sub(comments_pattern, comments_replacement, content, flags=re.DOTALL)
+        
+        # Update the Vt object with startDate
+        content = re.sub(r'startDate: ".*?"', f'startDate: "{START_DATE}"', content)
+        
+        # Update any references to the old project name in the clipboard text
+        content = re.sub(r'kpopgg-heardle-round2\.glitch\.me', GLITCH_NAME + '.glitch.me', content)
         
         with open('main.js', 'w') as file:
             file.write(content)
@@ -278,11 +236,11 @@ def update_favicon():
         return False
 
 def update_colors():
-    """Update color scheme in stylesheet.css"""
+    """Update color scheme in bundle.css"""
     try:
-        create_backup('stylesheet.css')
+        create_backup('bundle.css')
         
-        with open('stylesheet.css', 'r') as file:
+        with open('bundle.css', 'r') as file:
             content = file.read()
         
         # Find and replace the :root section
@@ -299,7 +257,7 @@ def update_colors():
         
         content = re.sub(root_pattern, root_replacement, content, flags=re.DOTALL)
         
-        with open('stylesheet.css', 'w') as file:
+        with open('bundle.css', 'w') as file:
             file.write(content)
             
         logger.info("Updated color scheme")
@@ -332,9 +290,9 @@ def update_html_content():
 def ensure_css_imports():
     """Ensure the CSS has the proper font imports"""
     try:
-        create_backup('stylesheet.css')
+        create_backup('global.css')
         
-        with open('stylesheet.css', 'r') as file:
+        with open('global.css', 'r') as file:
             content = file.read()
         
         # Check if font import exists
@@ -343,7 +301,7 @@ def ensure_css_imports():
             font_import = '@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");\n\n'
             content = font_import + content
         
-        with open('stylesheet.css', 'w') as file:
+        with open('global.css', 'w') as file:
             file.write(content)
             
         logger.info("Ensured CSS imports")
@@ -354,7 +312,7 @@ def ensure_css_imports():
 
 def check_required_files():
     """Check if all required files exist before proceeding"""
-    required_files = ['main.js', 'index.html', 'stylesheet.css']
+    required_files = ['main.js', 'index.html', 'bundle.css', 'global.css']
     missing_files = []
     
     for file in required_files:
@@ -373,12 +331,19 @@ def initialize_project():
     """Initialize a new project by downloading template files"""
     logger.info("Initializing new Heardle project...")
     
-    # Base URLs for template files
-    base_url = "https://raw.githubusercontent.com/derekahmedzai/heardle/main/"
+    # Try to load config file to get repository URL
+    try:
+        config = load_config()
+        base_url = config['project'].get('repository_url', "https://raw.githubusercontent.com/guitarbeat/Wordle-but-with-songs/main/")
+    except Exception as e:
+        logger.warning(f"Could not load config file: {e}. Using default repository URL.")
+        base_url = "https://raw.githubusercontent.com/guitarbeat/Wordle-but-with-songs/main/"
+    
     files_to_download = {
         'main.js': base_url + 'main.js',
         'index.html': base_url + 'index.html',
-        'stylesheet.css': base_url + 'stylesheet.css',
+        'bundle.css': base_url + 'bundle.css',
+        'global.css': base_url + 'global.css',
         'songs.js': base_url + 'songs.js'
     }
     
@@ -392,28 +357,64 @@ def initialize_project():
             logger.error(f"Error downloading {file_name}: {e}")
             raise
     
-    # Create a sample songs.js if it doesn't exist
-    if not os.path.exists('songs.js'):
-        with open('songs.js', 'w') as f:
-            f.write('''const SONGS = [
-  {
-    "url": "https://soundcloud.com/example/song1",
-    "answer": "Artist - Song 1"
-  },
-  {
-    "url": "https://soundcloud.com/example/song2",
-    "answer": "Artist - Song 2"
-  },
-  {
-    "url": "https://soundcloud.com/example/song3",
-    "answer": "Artist - Song 3"
-  }
-];
-''')
-        logger.info("Created sample songs.js file")
-    
     logger.info("Project initialization complete. Use --dry-run to preview your changes.")
     return True
+
+def update_ko_fi_link(config):
+    """Update the Ko-fi link in main.js"""
+    try:
+        create_backup('main.js')
+        
+        with open('main.js', 'r') as file:
+            content = file.read()
+        
+        # Update the Ko-fi link
+        ko_fi_url = config['project'].get('ko_fi_url', '')
+        if ko_fi_url:
+            # Replace the Ko-fi link in the support message
+            content = re.sub(r'<a href="https://ko-fi\.com/[^"]+"', f'<a href="{ko_fi_url}"', content)
+            
+            # Update the Ko-fi text if needed
+            content = re.sub(r'Support me on Ko-Fi', 'Support me on Ko-Fi', content)
+            
+            logger.info(f"Updated Ko-fi link to: {ko_fi_url}")
+        else:
+            logger.warning("No Ko-fi URL provided in config, skipping Ko-fi link update")
+        
+        with open('main.js', 'w') as file:
+            file.write(content)
+            
+        return True
+    except Exception as e:
+        logger.error(f"Error updating Ko-fi link: {e}")
+        return False
+
+def update_about_text(config):
+    """Update the about popup text in main.js"""
+    try:
+        create_backup('main.js')
+        
+        with open('main.js', 'r') as file:
+            content = file.read()
+        
+        # Update the about text
+        about_text = config['project'].get('about_text', '')
+        if about_text:
+            # Replace the about text in the popup
+            content = re.sub(r'<p class="mb-3">A clone of <a href="https://www\.heardle\.app/" title="Heardle">Heardle</a>.*?<a href="https://glitch\.com/edit/#!/[^"]+">here</a>\.', 
+                            about_text, content, flags=re.DOTALL)
+            
+            logger.info("Updated about popup text")
+        else:
+            logger.warning("No about text provided in config, skipping about text update")
+        
+        with open('main.js', 'w') as file:
+            file.write(content)
+            
+        return True
+    except Exception as e:
+        logger.error(f"Error updating about text: {e}")
+        return False
 
 def main():
     parser = argparse.ArgumentParser(description='Customize your Heardle game')
@@ -424,7 +425,8 @@ def main():
     parser.add_argument('--skip-colors', action='store_true', help='Skip updating colors')
     parser.add_argument('--skip-html', action='store_true', help='Skip updating HTML content')
     parser.add_argument('--skip-css', action='store_true', help='Skip ensuring CSS imports')
-    parser.add_argument('--generate-template', action='store_true', help='Generate a template config file')
+    parser.add_argument('--skip-ko-fi', action='store_true', help='Skip updating Ko-fi link')
+    parser.add_argument('--skip-about', action='store_true', help='Skip updating about text')
     parser.add_argument('--verbose', '-v', action='store_true', help='Enable verbose logging')
     parser.add_argument('--dry-run', action='store_true', help='Perform a dry run without making changes')
     parser.add_argument('--init', action='store_true', help='Initialize a new Heardle project')
@@ -437,11 +439,6 @@ def main():
     if args.dry_run:
         logger.info("DRY RUN MODE - No changes will be made")
     
-    # Generate template if requested
-    if args.generate_template:
-        generate_template_config()
-        return 0
-    
     # Initialize project if requested
     if args.init:
         initialize_project()
@@ -453,7 +450,7 @@ def main():
         logger.info(f"Running in directory: {current_dir}")
         
         # Load configuration - use default if not specified
-        config_file = args.config if args.config is not None else 'heardle_config.json'
+        config_file = args.config if args.config is not None else 'your-data.json'
         config = load_config(config_file)
         
         # Check required files exist before proceeding (skip if dry run)
@@ -478,6 +475,8 @@ def main():
             logger.info(f"Start date: {START_DATE}")
             logger.info(f"GA ID: {GOOGLE_ANALYTICS_ID}")
             logger.info(f"Favicon URL: {NEW_FAVICON_URL}")
+            logger.info(f"Ko-fi URL: {config['project'].get('ko_fi_url', 'Not set')}")
+            logger.info(f"About text: {config['project'].get('about_text', 'Not set')[:50]}...")
             return 0
         
         if not args.skip_app_name:
@@ -497,6 +496,12 @@ def main():
         
         if not args.skip_css:
             ensure_css_imports()
+            
+        if not args.skip_ko_fi:
+            update_ko_fi_link(config)
+            
+        if not args.skip_about:
+            update_about_text(config)
         
         logger.info("\n✅ All customizations complete!")
         logger.info(f"Your Heardle is now available at: {GAME_URL}")
