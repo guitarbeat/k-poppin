@@ -3,17 +3,16 @@ var app = (function () {
   
   
 //   EDIT THINGS HERE
-  
-  const HEARDLE_GLITCH_NAME = "harry-styles-heardle";
+
+  const HEARDLE_GLITCH_NAME = "kpop-heardle-by-aaron";
   
   const HEARDLE_URL = "https://"+HEARDLE_GLITCH_NAME+".glitch.me/";
   
-  const HEARDLE_ARTIST = "Harry Styles";
+  const HEARDLE_ARTIST = "K-POP Girl Groups";
   
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
   
-  const HEARDLE_START_DATE = "2022-03-27";
-  
+  const HEARDLE_START_DATE = "2025-04-08";
   // make sure you have 7 comments here
   const HEARDLE_GAME_COMMENTS = [
       "Unlucky!", // FAILED
