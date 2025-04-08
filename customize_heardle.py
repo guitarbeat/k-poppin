@@ -9,6 +9,24 @@ import json
 APP_NAME = "kpop-heardle"
 APP_DISPLAY_NAME = "K-Pop Girl Groups"  # How it appears to users
 
+# Game configuration
+GLITCH_NAME = "kpop-girlgroups-heardle"
+GAME_URL = f"https://{GLITCH_NAME}.glitch.me/"
+ARTIST_NAME = "K-Pop Girl Groups"
+GAME_NAME = f"{ARTIST_NAME} Heardle"
+START_DATE = "2024-03-20"  # Today's date
+
+# Game comments (7 required)
+GAME_COMMENTS = [
+    "아이고! (Aigo!)",  # FAILED
+    "완벽해! (Perfect!)",  # First try
+    "대단해! (Amazing!)",
+    "멋있어! (Cool!)",
+    "잘했어! (Well done!)",
+    "좋아요! (Good!)",
+    "괜찮아요! (Not bad!)"  # Sixth try
+]
+
 # Google Analytics ID (leave empty if you don't want to use GA)
 GOOGLE_ANALYTICS_ID = ""
 
@@ -17,10 +35,15 @@ NEW_FAVICON_URL = "https://cdn-icons-png.flaticon.com/512/2111/2111463.png"  # K
 
 # Color scheme (HEX colors)
 COLORS = {
-    "primary": "#FF1493",       # Hot pink - classic K-pop color
-    "secondary": "#FF69B4",     # Light pink - for accents
-    "background": "#000000",    # Black background for contrast
-    "text": "#FFFFFF"           # White text for readability
+    "primary": "#FF1493",       # Hot pink - main accent color
+    "secondary": "#FF69B4",     # Light pink - secondary accent
+    "background": "#000000",    # Black background
+    "text": "#FFFFFF",          # White text
+    "positive": "#FF69B4",      # Submit button - light pink
+    "negative": "#FF1493",      # Incorrect answer - hot pink
+    "foreground": "#FFFFFF",    # Font color and accents
+    "midground": "#333333",     # Skip button, progress bar
+    "line": "#FF69B4"          # Line color for current guess box
 }
 
 # ===============================================
@@ -31,8 +54,8 @@ def update_app_name():
     with open('index.html', 'r') as file:
         content = file.read()
     
-    content = re.sub(r'<title>.*?</title>', f'<title>{APP_DISPLAY_NAME} Heardle</title>', content)
-    content = re.sub(r'content="Guess the Harry Styles song', f'content="Guess the {APP_DISPLAY_NAME} song', content)
+    content = re.sub(r'<title>.*?</title>', f'<title>{GAME_NAME}</title>', content)
+    content = re.sub(r'content="Guess the Harry Styles song', f'content="Guess the {ARTIST_NAME} song', content)
     
     with open('index.html', 'w') as file:
         file.write(content)
@@ -41,7 +64,19 @@ def update_app_name():
     with open('main.js', 'r') as file:
         content = file.read()
     
-    content = re.sub(r'HEARDLE_APP_NAME\s*=\s*".*?"', f'HEARDLE_APP_NAME = "{APP_NAME}"', content)
+    # Update all configuration values
+    content = re.sub(r'HEARDLE_GLITCH_NAME\s*=\s*".*?"', f'HEARDLE_GLITCH_NAME = "{GLITCH_NAME}"', content)
+    content = re.sub(r'HEARDLE_URL\s*=\s*".*?"', f'HEARDLE_URL = "{GAME_URL}"', content)
+    content = re.sub(r'HEARDLE_ARTIST\s*=\s*".*?"', f'HEARDLE_ARTIST = "{ARTIST_NAME}"', content)
+    content = re.sub(r'HEARDLE_NAME\s*=\s*".*?"', f'HEARDLE_NAME = "{GAME_NAME}"', content)
+    content = re.sub(r'HEARDLE_START_DATE\s*=\s*".*?"', f'HEARDLE_START_DATE = "{START_DATE}"', content)
+    
+    # Update game comments
+    comments_str = ',\n      '.join([f'"{comment}"' for comment in GAME_COMMENTS])
+    content = re.sub(r'const HEARDLE_GAME_COMMENTS = \[.*?\];', 
+                    f'const HEARDLE_GAME_COMMENTS = [\n      {comments_str}\n    ];', 
+                    content, 
+                    flags=re.DOTALL)
     
     with open('main.js', 'w') as file:
         file.write(content)
@@ -93,17 +128,16 @@ def update_colors():
     with open('stylesheet.css', 'r') as file:
         content = file.read()
     
-    # Update primary color
+    # Update all color variables
     content = re.sub(r'--color-primary:\s*#[0-9a-fA-F]{6}', f'--color-primary: {COLORS["primary"]}', content)
-    
-    # Update secondary color
     content = re.sub(r'--color-secondary:\s*#[0-9a-fA-F]{6}', f'--color-secondary: {COLORS["secondary"]}', content)
-    
-    # Update background color
     content = re.sub(r'--color-background:\s*#[0-9a-fA-F]{6}', f'--color-background: {COLORS["background"]}', content)
-    
-    # Update text color
     content = re.sub(r'--color-text:\s*#[0-9a-fA-F]{6}', f'--color-text: {COLORS["text"]}', content)
+    content = re.sub(r'--color-positive:\s*#[0-9a-fA-F]{6}', f'--color-positive: {COLORS["positive"]}', content)
+    content = re.sub(r'--color-negative:\s*#[0-9a-fA-F]{6}', f'--color-negative: {COLORS["negative"]}', content)
+    content = re.sub(r'--color-fg:\s*#[0-9a-fA-F]{6}', f'--color-fg: {COLORS["foreground"]}', content)
+    content = re.sub(r'--color-mg:\s*#[0-9a-fA-F]{6}', f'--color-mg: {COLORS["midground"]}', content)
+    content = re.sub(r'--color-line:\s*#[0-9a-fA-F]{6}', f'--color-line: {COLORS["line"]}', content)
     
     with open('stylesheet.css', 'w') as file:
         file.write(content)
