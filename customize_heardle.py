@@ -292,9 +292,10 @@ def main():
         update_html_content()
         
         print("\nCustomization completed successfully!")
-        print(f"Your K-pop Girl Groups Heardle game for Dilara is ready to play!")
-        print(f"Visit http://localhost:3000 to preview the game locally")
-        print(f"Or deploy it to Glitch at: {GAME_URL}")
+        print(f"Your K-pop Girl Groups Heardle game for Dilara is ready!")
+        print(f"To deploy your game:")
+        print(f"1. Upload these files to Glitch")
+        print(f"2. Your game will be available at: {GAME_URL}")
         
     except Exception as e:
         print(f"\nError during customization: {str(e)}")
