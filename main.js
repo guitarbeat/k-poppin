@@ -4,9 +4,9 @@ var app = (function () {
   
 //   EDIT THINGS HERE
   
-  const HEARDLE_GLITCH_NAME = "girl-group-heardle";
+  const HEARDLE_GLITCH_NAME = "kpop-girl-heardle";
   
-  const HEARDLE_URL = "https://girl-group-heardle.glitch.me/"+HEARDLE_GLITCH_NAME+".glitch.me/";
+  const HEARDLE_URL = "https://kpop-girl-heardle.glitch.me/"+HEARDLE_GLITCH_NAME+".glitch.me/";
   
   const HEARDLE_ARTIST = "K-Pop Girl Groups";
   
@@ -16,13 +16,13 @@ var app = (function () {
   
   // make sure you have 7 comments here
   const HEARDLE_GAME_COMMENTS = [
-      "아이고! (Aigo!)",
-      "완벽해! (Perfect!)",
-      "대단해! (Amazing!)",
-      "멋있어! (Cool!)",
-      "잘했어! (Well done!)",
-      "좋아요! (Good!)",
-      "괜찮아요! (Not bad!)"
+      "아이고! (Aigo!) 😭",
+      "완벽해! (Perfect!) 💫",
+      "대단해! (Amazing!) ⭐",
+      "멋있어! (Cool!) 💝",
+      "잘했어! (Well done!) 💕",
+      "좋아요! (Good!) 💗",
+      "괜찮아요! (Not bad!) 💓"
     ]; 
   
   const HEARDLE_GOOGLE_ANALYTICS = "G-GPSR1C0Q60";

@@ -6,25 +6,25 @@ import json
 # Edit these values to customize your Heardle game
 
 # App name (used throughout the app)
-APP_NAME = "girl-group-heardle"
-APP_DISPLAY_NAME = "Girl Group Heardle"  # How it appears to users
+APP_NAME = "kpop-girl-heardle"
+APP_DISPLAY_NAME = "K-Pop Girl Heardle 💝 🎤"  # How it appears to users
 
 # Game configuration
-GLITCH_NAME = "girl-group-heardle"
+GLITCH_NAME = "kpop-girl-heardle"
 GAME_URL = f"https://{GLITCH_NAME}.glitch.me/"
 ARTIST_NAME = "K-Pop Girl Groups"
-GAME_NAME = f"{ARTIST_NAME} Heardle"
+GAME_NAME = f"{ARTIST_NAME} Heardle 💖"
 START_DATE = "2024-03-20"  # Today's date
 
 # Game comments (7 required)
 GAME_COMMENTS = [
-    "아이고! (Aigo!)",  # FAILED
-    "완벽해! (Perfect!)",  # First try
-    "대단해! (Amazing!)",
-    "멋있어! (Cool!)",
-    "잘했어! (Well done!)",
-    "좋아요! (Good!)",
-    "괜찮아요! (Not bad!)"  # Sixth try
+    "아이고! (Aigo!) 😭",  # FAILED
+    "완벽해! (Perfect!) 💫",  # First try
+    "대단해! (Amazing!) ⭐",
+    "멋있어! (Cool!) 💝",
+    "잘했어! (Well done!) 💕",
+    "좋아요! (Good!) 💗",
+    "괜찮아요! (Not bad!) 💓"  # Sixth try
 ]
 
 # Google Analytics ID (leave empty if you don't want to use GA)
@@ -125,8 +125,8 @@ def update_favicon():
         file.write(content)
 
 def update_colors():
-    """Update color scheme in bundle.css"""
-    with open('bundle.css', 'r') as file:
+    """Update color scheme in stylesheet.css"""
+    with open('stylesheet.css', 'r') as file:
         content = file.read()
     
     # Update all color variables
@@ -142,7 +142,7 @@ def update_colors():
     content = re.sub(r'--color-line:\s*#[0-9a-fA-F]{6}', f'--color-line: {COLORS["line"]}', content)
     content = re.sub(r'--color-playback-bar:\s*#[0-9a-fA-F]{6}', f'--color-playback-bar: {COLORS["playback-bar"]}', content)
     
-    with open('bundle.css', 'w') as file:
+    with open('stylesheet.css', 'w') as file:
         file.write(content)
 
 def update_html_content():
@@ -150,37 +150,113 @@ def update_html_content():
     with open('index.html', 'r') as file:
         content = file.read()
     
+    # Update CSS references to use stylesheet.css
+    content = re.sub(r'<link rel="stylesheet" href="global\.css">\s*<link rel="stylesheet" href="bundle\.css">', 
+                    '<link rel="stylesheet" href="stylesheet.css">', 
+                    content)
+    content = re.sub(r'<link rel="stylesheet" href="bundle\.css">', 
+                    '<link rel="stylesheet" href="stylesheet.css">', 
+                    content)
+    
     # Update meta tags and content
-    content = re.sub(r'<meta itemprop="name" content=".*?"', f'<meta itemprop="name" content="{GAME_NAME}"', content)
-    content = re.sub(r'<meta itemprop="description" content=".*?"', f'<meta itemprop="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible. Made for Dilara with love! 💖"', content)
-    content = re.sub(r'<meta property="og:title" content=".*?"', f'<meta property="og:title" content="{GAME_NAME}"', content)
-    content = re.sub(r'<meta property="og:description" content=".*?"', f'<meta property="og:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible. Made for Dilara with love! 💖"', content)
-    content = re.sub(r'<meta name="twitter:title" content=".*?"', f'<meta name="twitter:title" content="{GAME_NAME}"', content)
-    content = re.sub(r'<meta name="twitter:description" content=".*?"', f'<meta name="twitter:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible. Made for Dilara with love! 💖"', content)
+    content = re.sub(r'<title>.*?</title>', f'<title>{APP_DISPLAY_NAME}</title>', content)
     
-    # Update the page title
-    content = re.sub(r'<title>.*?</title>', f'<title>{GAME_NAME}</title>', content)
+    # Update all Harry Styles references
+    content = re.sub(r'Harry Styles', ARTIST_NAME, content, flags=re.IGNORECASE)
     
-    # Update favicon links
+    # Update meta descriptions
+    meta_description = f'Guess the {ARTIST_NAME} song from the intro in as few tries as possible.'
+    content = re.sub(r'<meta name="description" content=".*?"', 
+                    f'<meta name="description" content="{meta_description}"', content)
+    content = re.sub(r'<meta itemprop="description" content=".*?"', 
+                    f'<meta itemprop="description" content="{meta_description}"', content)
+    content = re.sub(r'<meta property="og:description" content=".*?"', 
+                    f'<meta property="og:description" content="{meta_description}"', content)
+    content = re.sub(r'<meta name="twitter:description" content=".*?"', 
+                    f'<meta name="twitter:description" content="{meta_description}"', content)
+    
+    # Update titles
+    content = re.sub(r'<meta itemprop="name" content=".*?"', 
+                    f'<meta itemprop="name" content="{GAME_NAME}"', content)
+    content = re.sub(r'<meta property="og:title" content=".*?"', 
+                    f'<meta property="og:title" content="{GAME_NAME}"', content)
+    content = re.sub(r'<meta name="twitter:title" content=".*?"', 
+                    f'<meta name="twitter:title" content="{GAME_NAME}"', content)
+    
+    # Update images
     if NEW_FAVICON_URL:
-        content = re.sub(r'<link rel="icon".*?href=".*?"', f'<link rel="icon" type="image/png" href="{NEW_FAVICON_URL}"', content)
-        content = re.sub(r'<link rel="icon".*?sizes="32x32".*?href=".*?"', f'<link rel="icon" type="image/png" sizes="32x32" href="{NEW_FAVICON_URL}"', content)
-        content = re.sub(r'<link rel="icon".*?sizes="16x16".*?href=".*?"', f'<link rel="icon" type="image/png" sizes="16x16" href="{NEW_FAVICON_URL}"', content)
-        content = re.sub(r'<link rel="apple-touch-icon".*?href=".*?"', f'<link rel="apple-touch-icon" sizes="180x180" href="{NEW_FAVICON_URL}"', content)
-        content = re.sub(r'<link rel="shortcut icon".*?href=".*?"', f'<link rel="shortcut icon" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<meta itemprop="image" content=".*?"', 
+                        f'<meta itemprop="image" content="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<meta property="og:image" content=".*?"', 
+                        f'<meta property="og:image" content="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<meta name="twitter:image" content=".*?"', 
+                        f'<meta name="twitter:image" content="{NEW_FAVICON_URL}"', content)
+        
+        # Update favicon links
+        content = re.sub(r'<link rel="icon".*?href=".*?"', 
+                        f'<link rel="icon" type="image/png" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="icon".*?sizes="32x32".*?href=".*?"', 
+                        f'<link rel="icon" type="image/png" sizes="32x32" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="icon".*?sizes="16x16".*?href=".*?"', 
+                        f'<link rel="icon" type="image/png" sizes="16x16" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="apple-touch-icon".*?href=".*?"', 
+                        f'<link rel="apple-touch-icon" sizes="180x180" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="shortcut icon".*?href=".*?"', 
+                        f'<link rel="shortcut icon" href="{NEW_FAVICON_URL}"', content)
     
-    # Ensure Dilara is mentioned in the footer
-    if '<div class="footer">' in content:
-        content = re.sub(r'<div class="footer">.*?</div>', 
-                       '<div class="footer">\n    <p>Made for Dilara with love! 💖</p>\n    <p>New song every day!</p>\n  </div>', 
-                       content, flags=re.DOTALL)
+    # Ensure body content is present and correct
+    body_content = '''  <body>
+    <div id="app">
+      <div class="game-container">
+        <div class="header">
+          <h1>Girl Group Heardle</h1>
+          <p>Guess the K-pop girl group song in as few seconds as possible!</p>
+        </div>
+        
+        <div class="game-area">
+          <div class="player-container">
+            <div class="player">
+              <div class="waveform"></div>
+              <div class="controls">
+                <button class="play-button">▶</button>
+                <div class="progress-bar">
+                  <div class="progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="input-container">
+            <input type="text" class="song-input" placeholder="Type a song name..." />
+            <button class="submit-button">Submit</button>
+            <button class="skip-button">Skip</button>
+          </div>
+          
+          <div class="guesses">
+            <!-- Guesses will be added here by JavaScript -->
+          </div>
+        </div>
+        
+        <div class="footer">
+          <p>Made for Dilara with love! 💖</p>
+          <p>New song every day!</p>
+        </div>
+      </div>
+    </div>
+  </body>'''
+    
+    # Replace empty body or update existing body content
+    if '<body></body>' in content:
+        content = content.replace('<body></body>', body_content)
+    else:
+        content = re.sub(r'<body>.*?</body>', body_content, content, flags=re.DOTALL)
     
     with open('index.html', 'w') as file:
         file.write(content)
 
 def ensure_css_imports():
     """Ensure the CSS has the proper font imports"""
-    with open('bundle.css', 'r') as file:
+    with open('stylesheet.css', 'r') as file:
         content = file.read()
     
     # Check if font import exists
@@ -189,7 +265,7 @@ def ensure_css_imports():
         font_import = '@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");\n\n'
         content = font_import + content
     
-    with open('bundle.css', 'w') as file:
+    with open('stylesheet.css', 'w') as file:
         file.write(content)
 
 def main():
