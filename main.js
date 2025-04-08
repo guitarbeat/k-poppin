@@ -6,22 +6,22 @@ var app = (function () {
 
   const HEARDLE_GLITCH_NAME = "kpop-heardle-by-aaron";
   
-  const HEARDLE_URL = "https://"+HEARDLE_GLITCH_NAME+".glitch.me/";
+  const HEARDLE_URL = "https://kpop-heardle-by-aaron.glitch.me/"+HEARDLE_GLITCH_NAME+".glitch.me/";
   
-  const HEARDLE_ARTIST = "K-POP Girl Groups";
+  const HEARDLE_ARTIST = "K-Pop Girl Groups";
   
   const HEARDLE_NAME = HEARDLE_ARTIST + " Heardle";
   
-  const HEARDLE_START_DATE = "2025-04-08";
+  const HEARDLE_START_DATE = "2024-04-15";
   // make sure you have 7 comments here
   const HEARDLE_GAME_COMMENTS = [
-      "Unlucky!", // FAILED
-      "A virtuoso performance!", // First try
-      "An act of genius!",
-      "You're a star!",
-      "What a pro!",
-      "You're a winner!",
-      "Good result!" // Sixth try
+      "Failed 😭",
+      "Perfect! 🎯",
+      "Amazing! ⭐",
+      "Great! 👍",
+      "Well done! 👏",
+      "Good! 👌",
+      "Not bad! 🙂"
     ]; 
   
   const HEARDLE_GOOGLE_ANALYTICS = "G-GPSR1C0Q60";

@@ -5,12 +5,12 @@
 /* EDIT THINGS HERE */
 
 :root {
-  --color-positive: #1d7e05; /* Submit button */
-  --color-negative: #ff0000; /* Incorrect answer */
+  --color-positive: #4caf50; /* Submit button */
+  --color-negative: #f44336; /* Incorrect answer */
   --color-fg: #ffffff;       /* Font color and accents */
-  --color-mg: #444444;       /* Skip button, progress bar, line colour for inactive guesses */
+  --color-mg: #2a2139;       /* Skip button, progress bar, line colour for inactive guesses */
   --color-bg: #121212;       /* Page background colour */
-  --color-line: #888888;     /* Line color for current guess box, top line, and song player lines */
+  --color-line: #4a4352;     /* Line color for current guess box, top line, and song player lines */
 }
 
 /* STOP EDITING HERE */

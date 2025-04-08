@@ -1,6 +1,6 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M2CHKFQ)
 
-# Harry Styles Heardle
+# K-Pop Girl Groups Heardle
 
 Over 5000 people play this every day!
 
@@ -9,6 +9,44 @@ If you have any questions DM me on Twitter at [@derekahmedzai](https://twitter.c
 [See all my Heardle clones](https://glitch.com/@derekahmedzai/heardle-clones)
 
 If you have a dead Heardle let me know and I can help you resurrect it.
+
+## Configuration
+
+Edit these values to customize your Heardle game:
+
+- App Name: `kpop-heardle-by-aaron`
+- App Display Name: `K-Pop Girl Groups Heardle 💝`
+- Glitch Project Name: `kpop-heardle-by-aaron`
+- Artist Name: `K-Pop Girl Groups`
+- Start Date: `2024-04-15`
+- Google Analytics ID: `G-9J2HGENGFC`
+- Favicon URL: `https://cdn.glitch.global/example/kpop-icon.png`
+
+### Game Comments
+```
+Failed 😭
+Perfect! 🎯
+Amazing! ⭐
+Great! 👍
+Well done! 👏
+Good! 👌
+Not bad! 🙂
+```
+
+### Colors
+```
+primary: #2a2139
+secondary: #4a4352
+background: #121212
+text: #ffffff
+positive: #4caf50
+negative: #f44336
+foreground: #ffffff
+midground: #2a2139
+line: #4a4352
+playback-bar: #272b46
+```
+
 
 ## New faster version!
 
