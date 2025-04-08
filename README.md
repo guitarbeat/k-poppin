@@ -24,26 +24,26 @@ Edit these values to customize your Heardle game:
 
 ### Game Comments
 ```
-Failed 😭
-Perfect! 🎯
-Amazing! ⭐
-Great! 👍
-Well done! 👏
-Good! 👌
-Not bad! 🙂
+아이고! (Aigo!) 😭
+완벽해! (Perfect!) 💫
+대단해! (Amazing!) ⭐
+멋있어! (Cool!) 💝
+잘했어! (Well done!) 💕
+좋아요! (Good!) 💗
+괜찮아요! (Not bad!) 💓
 ```
 
 ### Colors
 ```
-primary: #2a2139
-secondary: #4a4352
-background: #121212
-text: #ffffff
-positive: #4caf50
-negative: #f44336
-foreground: #ffffff
-midground: #2a2139
-line: #4a4352
+primary: #FF1493
+secondary: #FF69B4
+background: #000000
+text: #FFFFFF
+positive: #FF69B4
+negative: #FF1493
+foreground: #FFFFFF
+midground: #333333
+line: #FF69B4
 playback-bar: #272b46
 ```
 
