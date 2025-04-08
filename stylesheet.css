@@ -1,22 +1,209 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");
 
-
-
 /* EDIT THINGS HERE */
 
 :root {
-  --color-positive: #FF69B4; /* Submit button */
-  --color-negative: #FF1493; /* Incorrect answer */
-  --color-fg: #FFFFFF;       /* Font color and accents */
-  --color-mg: #333333;       /* Skip button, progress bar, line colour for inactive guesses */
-  --color-bg: #121212;       /* Page background colour */
-  --color-line: #FF69B4;     /* Line color for current guess box, top line, and song player lines */
+  --color-primary: #FF1493;   /* Main accent color */
+  --color-secondary: #FF69B4; /* Secondary accent color */
+  --color-background: #000000; /* Background color */
+  --color-text: #FFFFFF;      /* Text color */
+  --color-positive: #FF69B4;  /* Submit button */
+  --color-negative: #FF1493;  /* Incorrect answer */
+  --color-fg: #FFFFFF;        /* Font color and accents */
+  --color-mg: #333333;        /* Skip button, progress bar */
+  --color-bg: #000000;        /* Page background */
+  --color-line: #FF69B4;      /* Line color for current guess box */
 }
 
 /* STOP EDITING HERE */
 
+/* Base styles */
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
 
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
 
+.game-container {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Noto Serif Display', serif;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: var(--color-text);
+  margin-bottom: 30px;
+}
+
+.game-area {
+  background-color: var(--color-bg);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.player-container {
+  margin-bottom: 20px;
+}
+
+.player {
+  background-color: var(--color-mg);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.waveform {
+  height: 100px;
+  background-color: var(--color-bg);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.play-button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-button:hover {
+  background-color: var(--color-secondary);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background-color: var(--color-mg);
+  border-radius: 2px;
+  position: relative;
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: var(--color-line);
+  border-radius: 2px;
+}
+
+.time {
+  color: var(--color-text);
+  font-size: 14px;
+  min-width: 40px;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.song-input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid var(--color-line);
+  border-radius: 4px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.submit-button {
+  background-color: var(--color-positive);
+  color: var(--color-text);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.skip-button {
+  background-color: var(--color-mg);
+  color: var(--color-text);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover,
+.skip-button:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  color: var(--color-text);
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+/* Guesses styling */
+.guesses {
+  margin: 20px 0;
+}
+
+.guess-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--color-mg);
+}
+
+.guess-row.correct {
+  background-color: var(--color-positive);
+}
+
+.guess-row.incorrect {
+  background-color: var(--color-negative);
+}
+
+.guess-text {
+  flex: 1;
+  text-align: left;
+  color: var(--color-text);
+}
 
 /* global.css */
 
@@ -92,9 +279,6 @@ button:not(:disabled):active {
 .svelte-1r54uzk:active .text-custom-fg {
   border-color: #333333;
 }
-
-
-
 
 /* bundle.css */
 :root {
