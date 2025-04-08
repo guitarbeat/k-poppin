@@ -1116,3 +1116,26 @@ a.svelte-1d3p4dy.svelte-1d3p4dy {
     transform: rotate(0) scale(1);
   }
 }
+/* K-pop specific styling */
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #FF1493, #FF69B4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 20, 147, 0.3);
+}
+
+.header .subtitle {
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+.submit-button:hover, .skip-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}

@@ -398,6 +398,52 @@ def update_html_content(config):
             content = re.sub(r'<link rel="shortcut icon".*?href=".*?"', 
                             f'<link rel="shortcut icon" href="{config["favicon_url"]}"', content)
         
+        # Add custom K-pop themed body content if the body is empty or very simple
+        if '<body></body>' in content or re.search(r'<body>\s*<div id="app">\s*</div>\s*</body>', content, re.DOTALL):
+            kpop_body_content = '''  <body>
+    <div id="app">
+      <div class="game-container">
+        <div class="header">
+          <h1>K-Pop Girl Groups Heardle 💝</h1>
+          <p>Guess the K-pop girl group song in as few seconds as possible!</p>
+          <p class="subtitle">안녕하세요! (Hello!) Test your K-pop knowledge!</p>
+        </div>
+        
+        <div class="game-area">
+          <div class="player-container">
+            <div class="player">
+              <div class="waveform"></div>
+              <div class="controls">
+                <button class="play-button">▶</button>
+                <div class="progress-bar">
+                  <div class="progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="input-container">
+            <input type="text" class="song-input" placeholder="Type a song name..." />
+            <button class="submit-button">Submit</button>
+            <button class="skip-button">Skip</button>
+          </div>
+          
+          <div class="guesses">
+            <!-- Guesses will be added here by JavaScript -->
+          </div>
+        </div>
+        
+        <div class="footer">
+          <p>New K-pop song every day! 매일 새로운 노래! 🎵</p>
+          <p>Groups include: BLACKPINK, TWICE, Red Velvet, aespa, ITZY, NewJeans, IVE, MAMAMOO, & more!</p>
+        </div>
+      </div>
+    </div>
+  </body>'''
+            
+            # Replace empty body or update existing body content
+            content = re.sub(r'<body>.*?</body>', kpop_body_content, content, flags=re.DOTALL)
+        
         with open('index.html', 'w') as file:
             file.write(content)
     except FileNotFoundError:
@@ -452,8 +498,39 @@ h1, h2, h3 {
         # Check if font import exists
         if '@import url("https://fonts.googleapis.com/css2' not in content:
             # Add font import at the top of the file
-            font_import = '@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");\n\n'
+            font_import = '@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");\n'
+            font_import += '@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");\n\n'
             content = font_import + content
+        
+        # Add some K-pop specific CSS if not already present
+        if '.header h1 {' not in content:
+            kpop_styles = '''
+/* K-pop specific styling */
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #FF1493, #FF69B4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 20, 147, 0.3);
+}
+
+.header .subtitle {
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+.submit-button:hover, .skip-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+'''
+            # Add the styles to the end of the content
+            content += kpop_styles
         
         # Make sure CSS references are updated in index.html
         try:
