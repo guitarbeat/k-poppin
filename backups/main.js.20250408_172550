@@ -3798,7 +3798,7 @@ var app = (function () {
       c() {
         (n = w("div")),
           (n.innerHTML =
-            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Original version made by <a href="https://twitter.com/wysteriaseeds">@wysteriaseeds</a>. Remixed and extended by Aaron Woods because Dilara wants me to procrastinate on my Ph.D. work. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/kpopgg-heardle-round2">here</a>.'),
+            '<p class="mb-3">A clone of <a href="https://www.heardle.app/" title="Heardle">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class="mb-3">Original version made by <a href="https://twitter.com/wysteriaseeds">@wysteriaseeds</a>. Remixed and extended by <a href="https://twitter.com/derekahmedzai">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class="mb-3">  </p>  \n\n\n\n <p class="text-xs mb-3 text-custom-line">Prepared with <a href="https://developers.soundcloud.com">Soundcloud</a>\n and powered by <a href="https://glitch.com/">Glitch</a>. See the source code <a href="https://glitch.com/edit/#!/kpopgg-heardle-round2">here</a>.'),
           M(n, "class", "text");
       },
       m(e, t) {
@@ -3831,7 +3831,7 @@ var app = (function () {
             "class",
             "kofi-button py-2 px-3 rounded-lg items-center flex  svelte-1d3p4dy"
           ),
-          M(r, "href", "https://ko-fi.com/aaronwoods"),
+          "href", "https://ko-fi.com/aaronwoods",
           M(r, "title", "Support me on Ko-Fi"),
           M(
             n,
@@ -4023,7 +4023,7 @@ var app = (function () {
             (r = x()),
             (s = w("p")),
             (s.innerHTML =
-              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/heardle">real Heardle devs</a> and the <a href="https://ko-fi.com/heardlekpop">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
+              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/aaronwoods">real Heardle devs</a> and the <a href="https://ko-fi.com/aaronwoods">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
             (i = x()),
             (o = w("div")),
             Q(a.$$.fragment),
@@ -4076,13 +4076,13 @@ var app = (function () {
       startDate: "2025-04-08",
     },
     Jt = [
-      "아이고! At least you discovered a new song! 😭",
-      "완벽해! You're a true K-pop fan! 💫",
-      "대단해! Had to think twice? ⭐",
-      "멋있어! It's called the big 3 for a reason. 💝",
-      "잘했어! 4th guess for the 4th generation! 💕",
-      "좋아요! Nicely done! 💗",
-      "괜찮아요! Almost got exposed! 💓"
+      "Unlucky! At least you discovered a new song!",
+      "You're a true girl group fan!",
+      "Had to think twice?",
+      "It's called the big 3 for a reason.",
+      "4th guess for the 4th generation!",
+      "Nicely done",
+      "Almost got exposed!",
     ];
 
   function Kt(t) {

@@ -8,7 +8,69 @@ The code for this project is remixed from the [ZAYN Heardle](https://zayn-heardl
 
 If you have any questions, you can contact me at [alw.lol](https://alw.lol). This project was updated at the request of Dilara.
 
-### How to create your own custom Heardle
+## Using the make-it-yours.py Script
+
+This project includes a Python script called `make-it-yours.py` that automates the customization process. This script makes it much easier to create your own custom Heardle without manually editing multiple files.
+
+### Prerequisites
+
+- Python 3.6 or higher
+- Basic knowledge of JSON (for editing the configuration file)
+
+### How to Use the Script
+
+1. Edit the `your-data.json` file with your custom settings:
+   - Update the project details (app name, artist name, etc.)
+   - Customize game comments
+   - Set your color scheme
+   - Add your Google Analytics ID (optional)
+
+2. Run the script:
+   ```
+   python make-it-yours.py
+   ```
+
+3. The script will automatically:
+   - Update all necessary files with your customizations
+   - Create backups of files before modifying them
+   - Apply your color scheme
+   - Update Google Analytics
+   - Set your favicon
+   - And more!
+
+### Script Options
+
+The script supports several command-line options:
+
+- `--config` or `-c`: Specify a custom configuration file (default: your-data.json)
+- `--init`: Initialize a new Heardle project by downloading template files
+- `--dry-run`: Preview changes without actually modifying files
+- `--verbose` or `-v`: Enable verbose logging
+- `--skip-app-name`: Skip updating app name
+- `--skip-ga`: Skip updating Google Analytics
+- `--skip-favicon`: Skip updating favicon
+- `--skip-colors`: Skip updating colors
+- `--skip-html`: Skip updating HTML content
+- `--skip-css`: Skip ensuring CSS imports
+- `--skip-ko-fi`: Skip updating Ko-fi link
+- `--skip-about`: Skip updating about text
+
+### Example Usage
+
+```
+# Initialize a new project
+python make-it-yours.py --init
+
+# Preview changes without modifying files
+python make-it-yours.py --dry-run
+
+# Apply all customizations
+python make-it-yours.py
+```
+
+### Manual Customization (Alternative Method)
+
+If you prefer to customize manually, follow these steps:
 
 1. Create a Glitch account.
 2. Remix this project (or another existing custom Heardle project on Glitch) and rename the project to what you want the game link to be (e.g. artist-heardle).
@@ -25,3 +87,53 @@ Now you're done with all the necessary changes. Congrats! Read on for optional e
 1. In the `bundle.css` file, go to line 788. Here you can change the different accent colors for your game. Simply replace the HEX color codes with ones you want.
 2. You are currently reading the `README.md` file. Once you no longer need this, you can delete all this text and write whatever information you want to include about this project.
 3. Lastly, share your custom Heardle!
+
+## Configuration
+
+The script uses a JSON configuration file (`your-data.json`) to customize your Heardle game. Here's what you can configure:
+
+### Project Information
+- `app_name`: The name of your app (used in URLs and file paths)
+- `app_display_name`: The display name of your app (shown to users)
+- `glitch_name`: Your Glitch username
+- `artist_name`: The name of the artist or group
+- `game_name`: The name of your game
+- `start_date`: The start date of your game
+- `google_analytics_id`: Your Google Analytics ID
+- `favicon_url`: URL to your custom favicon
+- `ko_fi_url`: URL to your Ko-fi page (optional)
+- `about_text`: HTML content for the about popup (optional)
+
+### Example Configuration
+
+```json
+{
+  "project": {
+    "app_name": "my-heardle",
+    "app_display_name": "My Heardle",
+    "glitch_name": "myusername",
+    "artist_name": "Artist Name",
+    "game_name": "Artist Heardle",
+    "start_date": "2023-01-01",
+    "google_analytics_id": "G-XXXXXXXXXX",
+    "favicon_url": "https://example.com/favicon.ico",
+    "ko_fi_url": "https://ko-fi.com/myusername",
+    "about_text": "<p>Custom about text for your game</p>"
+  }
+}
+```
+
+## Script Options
+
+- `--config`, `-c`: Path to config JSON file (default: your-data.json)
+- `--skip-app-name`: Skip updating app name
+- `--skip-ga`: Skip updating Google Analytics
+- `--skip-favicon`: Skip updating favicon
+- `--skip-colors`: Skip updating colors
+- `--skip-html`: Skip updating HTML content
+- `--skip-css`: Skip ensuring CSS imports
+- `--skip-ko-fi`: Skip updating Ko-fi link
+- `--skip-about`: Skip updating about text
+- `--verbose`, `-v`: Enable verbose logging
+- `--dry-run`: Perform a dry run without making changes
+- `--init`: Initialize a new Heardle project
