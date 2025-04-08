@@ -35,6 +35,59 @@ def create_backup(file_path):
     
     return backup_path
 
+def check_js_syntax(js_content):
+    """
+    Basic check to see if JavaScript syntax is balanced
+    Returns True if the syntax seems valid, False otherwise
+    """
+    # Check for balanced brackets and quotes
+    brackets = {'(': ')', '[': ']', '{': '}'}
+    stack = []
+    in_string = None  # None, ', or "
+    escaped = False
+    
+    for i, char in enumerate(js_content):
+        # Handle string literals
+        if in_string:
+            if escaped:
+                escaped = False
+                continue
+            if char == '\\':
+                escaped = True
+                continue
+            if char == in_string:
+                in_string = None
+            continue
+        
+        if char in ["'", '"']:
+            in_string = char
+            continue
+        
+        # Handle brackets
+        if char in brackets:
+            stack.append(char)
+        elif char in brackets.values():
+            if not stack:
+                logger.warning(f"Syntax error: unexpected closing bracket '{char}' at position {i}")
+                return False
+            
+            last_open = stack.pop()
+            if char != brackets.get(last_open):
+                logger.warning(f"Syntax error: mismatched brackets '{last_open}' and '{char}' at position {i}")
+                return False
+    
+    # Check if all brackets are closed
+    if stack:
+        logger.warning(f"Syntax error: unclosed brackets: {''.join(stack)}")
+        return False
+    
+    # Check if all strings are closed
+    if in_string:
+        logger.warning(f"Syntax error: unclosed string")
+        return False
+    
+    return True
+
 def safe_update_file(file_path, new_content):
     """Update a file only if content has changed, creating a backup if needed"""
     if not os.path.exists(file_path):
@@ -49,6 +102,12 @@ def safe_update_file(file_path, new_content):
     if original_content == new_content:
         logger.info(f"No changes needed for {file_path}")
         return False
+    
+    # For JavaScript files, validate syntax before saving
+    if file_path.endswith('.js'):
+        if not check_js_syntax(new_content):
+            logger.error(f"Cannot update {file_path}: The generated JavaScript has syntax errors")
+            return False
     
     # Create backup since we're making changes
     create_backup(file_path)
@@ -387,123 +446,469 @@ def initialize_project():
 def update_ko_fi_link(config):
     """Update the Ko-fi link in main.js"""
     try:
-        with open('main.js', 'r') as file:
-            content = file.read()
-        
         # Update the Ko-fi link
         ko_fi_url = config['project'].get('ko_fi_url', '')
-        new_content = content
         
-        if ko_fi_url:
-            # Replace the Ko-fi link in the support message (HTML format)
-            new_content = re.sub(r'<a href="https://ko-fi\.com/[^"]+"', f'<a href="{ko_fi_url}"', new_content)
-            
-            # Replace direct URL string format (e.g., "https://ko-fi.com/itsderek")
-            new_content = re.sub(r'"https://ko-fi\.com/[^"]+"', f'"{ko_fi_url}"', new_content)
-            
-            # Update the Ko-fi text if needed
-            new_content = re.sub(r'Support me on Ko-Fi', 'Support me on Ko-Fi', new_content)
-            
-            logger.info(f"Prepared Ko-fi link update to: {ko_fi_url}")
-        else:
+        if not ko_fi_url:
             logger.warning("No Ko-fi URL provided in config, skipping Ko-fi link update")
             return True
         
-        # Update main.js file
-        safe_update_file('main.js', new_content)
+        with open('main.js', 'r') as file:
+            content = file.read()
+        
+        # First approach: Find the specific ko-fi link section 
+        kofi_markers = [
+            'Support me on Ko-Fi',
+            'kofi-button',
+            'ko-fi.com'
+        ]
+        
+        # Go through each marker and look for href attributes nearby
+        for marker in kofi_markers:
+            marker_pos = content.find(marker)
+            if marker_pos > 0:
+                # Search before and after the marker for href
+                start_search = max(0, marker_pos - 200)
+                end_search = min(len(content), marker_pos + 200)
+                search_area = content[start_search:end_search]
+                
+                # Look for the specific ko-fi URL pattern
+                href_match = re.search(r'href=(["\'])(https://ko-fi\.com/[^"\']+)\1', search_area)
+                if href_match:
+                    old_url = href_match.group(2)
+                    logger.info(f"Found ko-fi URL: {old_url}")
+                    
+                    # Create precise string replacement
+                    old_pattern = f'href={href_match.group(1)}{old_url}{href_match.group(1)}'
+                    new_pattern = f'href={href_match.group(1)}{ko_fi_url}{href_match.group(1)}'
+                    
+                    # Replace the URL
+                    new_content = content.replace(old_pattern, new_pattern)
+                    
+                    if new_content != content:
+                        logger.info(f"Successfully replaced ko-fi link from {old_url} to {ko_fi_url}")
+                        safe_update_file('main.js', new_content)
+                        return True
+        
+        # Second approach: Look for M(r, "href", "ko-fi.com") pattern
+        href_matches = re.findall(r'M\([^,]+,\s*"href",\s*(["\'])(https://ko-fi\.com/[^"\']+)\1\)', content)
+        if href_matches:
+            new_content = content
+            updated = False
             
-        return True
-    except Exception as e:
-        logger.error(f"Error updating Ko-fi link: {e}")
+            for quote_char, old_url in href_matches:
+                old_pattern = f'M(r, "href", {quote_char}{old_url}{quote_char})'
+                new_pattern = f'M(r, "href", {quote_char}{ko_fi_url}{quote_char})'
+                
+                if old_pattern in new_content:
+                    new_content = new_content.replace(old_pattern, new_pattern)
+                    updated = True
+                    logger.info(f"Replaced ko-fi link in M() call from {old_url} to {ko_fi_url}")
+            
+            if updated:
+                safe_update_file('main.js', new_content)
+                return True
+        
+        # Third approach: Try harder with context-aware patterns
+        kofi_functions = []
+        
+        # Find functions that likely contain ko-fi references
+        function_matches = re.finditer(r'function ([A-Za-z0-9_]+)\(t\)\s*\{', content)
+        for match in function_matches:
+            func_name = match.group(1)
+            # Find the end of this function
+            func_start = match.start()
+            open_braces = 0
+            func_end = -1
+            
+            for i in range(func_start, len(content)):
+                if content[i] == '{':
+                    open_braces += 1
+                elif content[i] == '}':
+                    open_braces -= 1
+                    if open_braces == 0:
+                        func_end = i + 1
+                        break
+            
+            if func_end > 0:
+                func_body = content[func_start:func_end]
+                # Check if this function contains ko-fi references
+                if 'ko-fi.com' in func_body or 'Ko-Fi' in func_body:
+                    kofi_functions.append((func_name, func_start, func_end))
+        
+        # If we found kofi functions, try to update them specifically
+        if kofi_functions:
+            new_content = content
+            updated = False
+            
+            for func_name, start, end in kofi_functions:
+                func_body = content[start:end]
+                updated_func = func_body
+                
+                # Try to replace ko-fi URL in this function
+                kofi_urls = re.findall(r'(https://ko-fi\.com/[^"\')\s]+)', func_body)
+                for old_url in kofi_urls:
+                    updated_func = updated_func.replace(old_url, ko_fi_url)
+                
+                if updated_func != func_body:
+                    new_content = new_content[:start] + updated_func + new_content[end:]
+                    updated = True
+                    logger.info(f"Updated ko-fi URL in function {func_name}")
+            
+            if updated:
+                # Validate JS before saving
+                if check_js_syntax(new_content):
+                    safe_update_file('main.js', new_content)
+                    return True
+                else:
+                    logger.warning("Updated content has syntax errors, reverting changes")
+                    return False
+        
+        # Last resort: Try to find and replace any ko-fi.com URLs directly
+        direct_kofi_urls = re.findall(r'(https://ko-fi\.com/[^"\')\s]+)', content)
+        if direct_kofi_urls:
+            new_content = content
+            updated = False
+            
+            for old_url in direct_kofi_urls:
+                # Don't replace blindly as it might be part of a larger string
+                # Use safer replacement with context
+                for context in [f'href="{old_url}"', f"href='{old_url}'", f'"{old_url}"', f"'{old_url}'"]:
+                    if context in new_content:
+                        new_context = context.replace(old_url, ko_fi_url)
+                        new_content = new_content.replace(context, new_context)
+                        updated = True
+                        logger.info(f"Replaced ko-fi URL {old_url} with {ko_fi_url} in context: {context}")
+            
+            if updated:
+                safe_update_file('main.js', new_content)
+                return True
+            
+        logger.warning("Ko-fi link pattern not found with any method")
         return False
+        
+    except Exception as e:
+        logger.error(f"Error updating Ko-fi link: {e}", exc_info=True)
+        return False
+
+def escape_js_string(content):
+    """
+    Properly escape content for inclusion in JavaScript strings
+    """
+    # Escape backslashes, single quotes and newlines
+    escaped = content.replace('\\', '\\\\')
+    escaped = escaped.replace("'", "\\'")
+    escaped = escaped.replace('\n', '\\n')
+    escaped = escaped.replace('\r', '\\r')
+    return escaped
 
 def update_about_text(config):
     """Update the about popup text in main.js"""
     try:
-        with open('main.js', 'r') as file:
-            content = file.read()
-        
         # Update the about text
         about_text = config['project'].get('about_text', '')
-        new_content = content
         
-        if about_text:
-            # First, find where the about text is defined in the JavaScript file
-            # Use a more targeted approach with a safer regex pattern
-            about_pattern = r'<div class="content">\s*<div class="mb-3">\s*<p class="mb-3">A clone of <a href="https://www\.heardle\.app/" title="Heardle">Heardle</a>.*?<a href="https://glitch\.com/edit/#!/[^"]+">here</a>\.'
-            
-            # Count matches to validate we're finding the right section
-            matches = re.findall(about_pattern, new_content, flags=re.DOTALL)
-            if not matches:
-                logger.warning("Could not find the about text section in main.js. The pattern may need updating.")
-                return False
-                
-            if len(matches) > 1:
-                logger.warning(f"Found multiple matches ({len(matches)}) for about text. Will replace the first occurrence only.")
-            
-            # Prepare about text for JavaScript - escape quotes and handle newlines
-            escaped_about_text = about_text.replace('\\', '\\\\').replace('"', '\\"').replace("'", "\\'")
-            escaped_about_text = escaped_about_text.replace('\n', '\\n')
-            
-            # Replace the content in a more controlled manner
-            if '<div class="content">' in new_content:
-                # First find the modal content div
-                modal_content_parts = new_content.split('<div class="content">')
-                if len(modal_content_parts) > 1:
-                    # Get everything before the modal content
-                    before_modal = modal_content_parts[0]
-                    # Get everything after including the div opening tag
-                    after_modal_start = '<div class="content">' + modal_content_parts[1]
-                    
-                    # Now find the first paragraph inside the modal
-                    if '<p class="mb-3">' in after_modal_start:
-                        paragraph_parts = after_modal_start.split('<p class="mb-3">', 1)
-                        if len(paragraph_parts) > 1:
-                            # Get start of modal until first paragraph
-                            modal_until_p = paragraph_parts[0]
-                            
-                            # Skip until the end of the about text section
-                            # Find where the about section ends
-                            remaining_content = paragraph_parts[1]
-                            about_end_marker = '</div>'  # End of the div containing about text
-                            
-                            if about_end_marker in remaining_content:
-                                # Find the first div closing after the about section
-                                post_about_parts = remaining_content.split(about_end_marker, 1)
-                                if len(post_about_parts) > 1:
-                                    # Reconstruct with the new about text
-                                    new_content = before_modal + modal_until_p + about_text + about_end_marker + post_about_parts[1]
-                                    logger.info("Successfully prepared about text replacement")
-                                else:
-                                    logger.warning("Could not find the end of about section")
-                                    return False
-                            else:
-                                logger.warning("Could not find the closing div for about section")
-                                return False
-                        else:
-                            logger.warning("Could not locate paragraph in about modal")
-                            return False
-                    else:
-                        logger.warning("Could not locate paragraph in about modal")
-                        return False
-                else:
-                    logger.warning("Failed to process about section after finding content div")
-                    return False
-            else:
-                logger.warning("Could not find content div in main.js")
-                return False
-            
-            logger.info("Prepared about popup text update")
-        else:
+        if not about_text:
             logger.warning("No about text provided in config, skipping about text update")
             return True
-        
-        # Update main.js file
-        safe_update_file('main.js', new_content)
             
+        # Prepare the about text - escape for JavaScript
+        about_text = escape_js_string(about_text)
+            
+        with open('main.js', 'r') as file:
+            content = file.read()
+            
+        # First, try to find the exact Nt function by looking for fragments of known about text
+        about_fragments = [
+            '<p class="mb-3">A clone of <a href="https://www.heardle.app/"',
+            'Original version made by',
+            'All copyright goes to the respective artists'
+        ]
+        
+        # Find the innerHTML assignment that contains these fragments
+        about_section = None
+        for fragment in about_fragments:
+            start_pattern = f'n.innerHTML ='
+            if start_pattern in content:
+                # Find the position of the innerHTML assignment
+                start_pos = content.find(start_pattern)
+                if start_pos > 0:
+                    # Find the closing quote/apostrophe
+                    quote_char = None
+                    for char in ["'", '"']:
+                        if content[start_pos + len(start_pattern):].strip().startswith(char):
+                            quote_char = char
+                            break
+                    
+                    if quote_char:
+                        # Find the end of the HTML string
+                        inner_start = content.find(quote_char, start_pos + len(start_pattern))
+                        if inner_start > 0:
+                            inner_end = content.find(quote_char, inner_start + 1)
+                            if inner_end > 0 and fragment in content[inner_start:inner_end]:
+                                # Found the HTML content we need to replace
+                                about_section = (inner_start+1, inner_end)  # +1 to exclude the quote
+                                logger.info(f"Found about section from position {inner_start} to {inner_end}")
+                                break
+        
+        if about_section:
+            # Create the new content by preserving everything except the innerHTML
+            new_content = content[:about_section[0]] + about_text + content[about_section[1]:]
+                
+            logger.info(f"Successfully prepared about text replacement")
+            safe_update_file('main.js', new_content)
+            return True
+        else:
+            # Second approach - look for the opening section of about text
+            for fragment in about_fragments:
+                fragment_start = content.find(fragment)
+                if fragment_start > 0:
+                    # Look backwards to find the opening quote
+                    quote_char = None
+                    quote_start = -1
+                    for i in range(fragment_start - 1, max(0, fragment_start - 200), -1):
+                        if content[i] in ['"', "'"]:
+                            quote_char = content[i]
+                            quote_start = i
+                            break
+                            
+                    if quote_start == -1:
+                        continue
+                            
+                    # Look forward to find the closing quote
+                    quote_end = -1
+                    for i in range(fragment_start + len(fragment), min(len(content), fragment_start + 2000)):
+                        if content[i] == quote_char and content[i-1] != '\\':  # Check if not escaped
+                            quote_end = i
+                            break
+                            
+                    if quote_end == -1:
+                        continue
+                            
+                    logger.info(f"Found about text using fragment search from {quote_start} to {quote_end}")
+                    new_content = content[:quote_start+1] + about_text + content[quote_end:]
+                    
+                    # Verify we haven't broken any strings
+                    test_section = new_content[max(0, quote_start-100):min(len(new_content), quote_end+100)]
+                    if test_section.count(quote_char) % 2 != 0:
+                        logger.warning("String replacement would create unbalanced quotes, trying alternative approach")
+                        continue
+                        
+                    safe_update_file('main.js', new_content)
+                    return True
+            
+            # Special fallback for specific known patterns
+            special_patterns = [
+                # Very specific pattern for the about text function
+                (r'n\.innerHTML\s*=\s*([\'"]).*?<p class="mb-3">A clone of.*?\\n.*?<\/a>\.\1', 
+                 lambda m: f'n.innerHTML = {m.group(1)}{about_text}{m.group(1)}'),
+                 
+                # Alternative pattern
+                (r'n\.innerHTML\s*=\s*([\'"]).*?Heardle.*?K-pop.*?copyright.*?\1', 
+                 lambda m: f'n.innerHTML = {m.group(1)}{about_text}{m.group(1)}')
+            ]
+            
+            for pattern, replacement_func in special_patterns:
+                matches = re.search(pattern, content, re.DOTALL)
+                if matches:
+                    new_content = re.sub(pattern, replacement_func, content, flags=re.DOTALL)
+                    if new_content != content:
+                        logger.info(f"Successfully updated about text using special pattern")
+                        safe_update_file('main.js', new_content)
+                        return True
+                
+            logger.warning("About text fragments not found in the file with any method")
+            return False
+    except Exception as e:
+        logger.error(f"Error updating about text: {e}", exc_info=True)
+        return False
+
+def update_js_function(file_path, function_name, update_pattern, replacement, flags=re.DOTALL):
+    """
+    Update a specific JavaScript function in a file
+    
+    Args:
+        file_path: Path to the JavaScript file
+        function_name: Name of the function to update (e.g., 'Nt', 'It')
+        update_pattern: Regex pattern to find within the function
+        replacement: Replacement string or pattern
+        flags: Regex flags
+    
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+        
+        # Find the target function
+        function_pattern = rf'(function {function_name}\(t\) \{{.*?\}}\s*\}};\s*\}})'
+        function_match = re.search(function_pattern, content, flags=flags)
+        
+        if not function_match:
+            logger.warning(f"Could not find function {function_name} in {file_path}")
+            return False
+        
+        original_function = function_match.group(0)
+        updated_function = re.sub(update_pattern, replacement, original_function, flags=flags)
+        
+        if original_function == updated_function:
+            logger.info(f"No changes needed for function {function_name}")
+            return True
+        
+        # Replace the function in the file content
+        new_content = content.replace(original_function, updated_function)
+        
+        # Update the file
+        safe_update_file(file_path, new_content)
+        logger.info(f"Successfully updated function {function_name} in {file_path}")
         return True
     except Exception as e:
-        logger.error(f"Error updating about text: {e}")
+        logger.error(f"Error updating function {function_name}: {e}")
+        return False
+
+def find_function_name_by_usage(file_path, usage_pattern, flags=re.DOTALL):
+    """
+    Find a function name in minified JavaScript by looking for how it's used
+    
+    Args:
+        file_path: Path to the JavaScript file
+        usage_pattern: A regex pattern that identifies how the function is used
+        flags: Regex flags
+    
+    Returns:
+        The function name if found, None otherwise
+    """
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+        
+        # Look for function declarations and check for the usage pattern
+        functions = re.findall(r'function ([A-Za-z0-9_]+)\([^)]*\)\s*\{', content)
+        
+        for func_name in functions:
+            # Find this function's body
+            func_pattern = rf'function {func_name}\([^)]*\)\s*\{{.*?\}}\s*\}};\s*\}}'
+            func_match = re.search(func_pattern, content, flags=flags)
+            
+            if func_match and re.search(usage_pattern, func_match.group(0), flags=flags):
+                logger.info(f"Found function '{func_name}' matching usage pattern")
+                return func_name
+                
+        logger.warning(f"Could not find any function matching usage pattern")
+        return None
+    except Exception as e:
+        logger.error(f"Error finding function by usage: {e}")
+        return None
+
+def locate_about_function(file_path):
+    """Find the function that contains the about text"""
+    # The about text typically contains this content
+    about_usage = r'<p class="mb-3">A clone of <a href="[^"]+" title="Heardle">Heardle</a>'
+    return find_function_name_by_usage(file_path, about_usage)
+
+def locate_kofi_function(file_path):
+    """Find the function that contains the Ko-fi link"""
+    # Ko-fi links typically contain this structure
+    kofi_usage = r'ko-fi\.com/[^"]+'
+    return find_function_name_by_usage(file_path, kofi_usage)
+
+def safe_string_replace(content, old_str, new_str, context_length=50):
+    """
+    Performs a safer string replacement with context validation
+    
+    Args:
+        content: The string content to modify
+        old_str: The string to replace
+        new_str: The replacement string
+        context_length: Number of characters of context to validate before/after
+        
+    Returns:
+        The updated content if replacement was successful, or original content if unsafe
+    """
+    # Find all occurrences of the old string
+    start_pos = 0
+    positions = []
+    
+    while True:
+        pos = content.find(old_str, start_pos)
+        if pos == -1:
+            break
+        positions.append(pos)
+        start_pos = pos + len(old_str)
+    
+    if not positions:
+        return content  # No matches found
+    
+    # Process replacements from end to beginning (to preserve positions)
+    positions.reverse()
+    new_content = content
+    
+    for pos in positions:
+        # Check the context around this match
+        context_start = max(0, pos - context_length)
+        context_end = min(len(content), pos + len(old_str) + context_length)
+        
+        before = content[context_start:pos]
+        after = content[pos + len(old_str):context_end]
+        
+        # Perform the replacement
+        test_content = new_content[:pos] + new_str + new_content[pos + len(old_str):]
+        
+        # Verify the replacement preserves syntax
+        if check_js_syntax(test_content):
+            new_content = test_content
+            logger.info(f"Successfully replaced '{old_str}' at position {pos}")
+        else:
+            logger.warning(f"Skipped unsafe replacement at position {pos}")
+    
+    return new_content
+
+def apply_updates(config):
+    """Apply all updates to files based on configuration"""
+    success = True
+    
+    if not APP_NAME:
+        logger.error("Configuration not loaded correctly. Cannot proceed.")
+        return False
+    
+    try:
+        # Group updates in logical order
+        if not update_app_name():
+            logger.warning("Failed to update app name")
+            success = False
+        
+        if not update_google_analytics():
+            logger.warning("Failed to update Google Analytics")
+            success = False
+            
+        if not update_favicon():
+            logger.warning("Failed to update favicon")
+            success = False
+            
+        if not update_colors():
+            logger.warning("Failed to update colors")
+            success = False
+            
+        if not update_html_content():
+            logger.warning("Failed to update HTML content")
+            success = False
+            
+        if not ensure_css_imports():
+            logger.warning("Failed to ensure CSS imports")
+            success = False
+            
+        if not update_ko_fi_link(config):
+            logger.warning("Failed to update Ko-fi link")
+            success = False
+            
+        if not update_about_text(config):
+            logger.warning("Failed to update about text")
+            success = False
+        
+        return success
+    except Exception as e:
+        logger.error(f"Error applying updates: {e}", exc_info=True)
         return False
 
 def main():
@@ -520,6 +925,7 @@ def main():
     parser.add_argument('--verbose', '-v', action='store_true', help='Enable verbose logging')
     parser.add_argument('--dry-run', action='store_true', help='Perform a dry run without making changes')
     parser.add_argument('--init', action='store_true', help='Initialize a new Heardle project')
+    parser.add_argument('--safe-mode', action='store_true', help='Run in safe mode (more conservative updates)')
     args = parser.parse_args()
     
     # Set verbose logging if requested
@@ -569,34 +975,57 @@ def main():
             logger.info(f"About text: {config['project'].get('about_text', 'Not set')[:50]}...")
             return 0
         
+        # Apply updates based on flags
+        success = True
+        
         if not args.skip_app_name:
-            update_app_name()
+            if not update_app_name():
+                logger.warning("Failed to update app name")
+                success = False
         
         if not args.skip_ga:
-            update_google_analytics()
-        
+            if not update_google_analytics():
+                logger.warning("Failed to update Google Analytics")
+                success = False
+            
         if not args.skip_favicon:
-            update_favicon()
-        
+            if not update_favicon():
+                logger.warning("Failed to update favicon")
+                success = False
+            
         if not args.skip_colors:
-            update_colors()
-        
+            if not update_colors():
+                logger.warning("Failed to update colors")
+                success = False
+            
         if not args.skip_html:
-            update_html_content()
-        
+            if not update_html_content():
+                logger.warning("Failed to update HTML content")
+                success = False
+            
         if not args.skip_css:
-            ensure_css_imports()
+            if not ensure_css_imports():
+                logger.warning("Failed to ensure CSS imports")
+                success = False
             
         if not args.skip_ko_fi:
-            update_ko_fi_link(config)
+            if not update_ko_fi_link(config):
+                logger.warning("Failed to update Ko-fi link")
+                success = False
             
         if not args.skip_about:
-            update_about_text(config)
+            if not update_about_text(config):
+                logger.warning("Failed to update about text")
+                success = False
         
-        logger.info("\n✅ All customizations complete!")
-        logger.info(f"Your Heardle is now available at: {GAME_URL}")
+        if success:
+            logger.info("\n✅ All customizations complete!")
+            logger.info(f"Your Heardle is now available at: {GAME_URL}")
+        else:
+            logger.warning("\n⚠️ Some customizations were not applied. Check the logs for details.")
+            logger.info(f"Your Heardle may still be available at: {GAME_URL}")
         
-        return 0
+        return 0 if success else 1
     except Exception as e:
         logger.error(f"Error during customization: {e}")
         return 1

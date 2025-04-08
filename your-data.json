@@ -10,7 +10,7 @@
         "start_date": "2025-04-08",
         "ko_fi_url": "https://ko-fi.com/aaronwoods",
         "repository_url": "https://raw.githubusercontent.com/guitarbeat/k-poppin/main/",
-        "about_text": "<p class=\"mb-3\">A clone of <a href=\"https://www.heardle.app/\" title=\"Heardle\">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class=\"mb-3\">Original version made by <a href=\"https://twitter.com/wysteriaseeds\">@wysteriaseeds</a>. Remixed and extended by <a href=\"https://twitter.com/derekahmedzai\">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class=\"mb-3\">  </p>  \n\n\n\n <p class=\"text-xs mb-3 text-custom-line\">Prepared with <a href=\"https://developers.soundcloud.com\">Soundcloud</a>\n and powered by <a href=\"https://glitch.com/\">Glitch</a>. See the source code <a href=\"https://glitch.com/edit/#!/k-poppin\">here</a>."
+        "about_text": "<p class=\"mb-3\">A clone of <a href=\"https://www.heardle.app/\" title=\"Heardle\">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class=\"mb-3\">Original version made by <a href=\"https://twitter.com/wysteriaseeds\">@wysteriaseeds</a>. Remixed and extended by Aaron Woods because Dilara wants me to procrastinate on my Ph.D. work. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class=\"mb-3\">  </p>  \n\n\n\n <p class=\"text-xs mb-3 text-custom-line\">Prepared with <a href=\"https://developers.soundcloud.com\">Soundcloud</a>\n and powered by <a href=\"https://glitch.com/\">Glitch</a>. See the source code <a href=\"https://glitch.com/edit/#!/k-poppin\">here</a>.</p>"
     },
     "game_comments": [
         "아이고! At least you discovered a new song! 😭",
@@ -22,7 +22,7 @@
         "괜찮아요! Almost got exposed! 💓"
     ],
     "appearance": {
-        "favicon_url": "https://cdn.glitch.global/6b83cfd3-e8d3-4fff-a4b4-0f93a64f450a/favicon-kpop.png?v=1744146413732",
+        "favicon_url": "https://cdn.glitch.global/6b83cfd3-e8d3-4fff-a4b4-0f93a64f450a/favicon.png?v=1744151122060",
         "colors": {
             "primary": "#FF1493",
             "secondary": "#FF69B4",
