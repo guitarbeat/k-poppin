@@ -538,10 +538,10 @@ let songs = [
     "url": "https://soundcloud.com/le-sserafim/chasing-lightning?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "LE SSERAFIM - Chasing Lightning"
   },
-  {
-    "url": "https://soundcloud.com/le-sserafim/crazier?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "LE SSERAFIM - Crazier"
-  },
+  // {
+  //   "url": "https://soundcloud.com/le-sserafim/crazier?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
+  //   "answer": "LE SSERAFIM - Crazier"
+  // },
   {
     "url": "https://soundcloud.com/aespaofficial/armageddon?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "aespa - Armageddon"
