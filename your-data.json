@@ -13,13 +13,13 @@
         "about_text": "<p class=\"mb-3\">A clone of <a href=\"https://www.heardle.app/\" title=\"Heardle\">Heardle</a> but for K-pop Girl Group (And Girl Solo Artist) songs. Each song is randomly chosen from a selection of girl group title tracks.</p> \n\n<p class=\"mb-3\">Original version made by <a href=\"https://twitter.com/wysteriaseeds\">@wysteriaseeds</a>. Remixed and extended by <a href=\"https://twitter.com/derekahmedzai\">@derekahmedzai</a>. All copyright goes to the respective artists, companies, and other relevant parties.</p> \n\n\n\n <p class=\"mb-3\">  </p>  \n\n\n\n <p class=\"text-xs mb-3 text-custom-line\">Prepared with <a href=\"https://developers.soundcloud.com\">Soundcloud</a>\n and powered by <a href=\"https://glitch.com/\">Glitch</a>. See the source code <a href=\"https://glitch.com/edit/#!/k-poppin\">here</a>."
     },
     "game_comments": [
-        "아이고! (Aigo!) 😭",
-        "완벽해! (Perfect!) 💫",
-        "대단해! (Amazing!) ⭐",
-        "멋있어! (Cool!) 💝",
-        "잘했어! (Well done!) 💕",
-        "좋아요! (Good!) 💗",
-        "괜찮아요! (Not bad!) 💓"
+        "아이고! At least you discovered a new song! 😭",
+        "완벽해! You're a true K-pop fan! 💫",
+        "대단해! Had to think twice? ⭐",
+        "멋있어! It's called the big 3 for a reason. 💝",
+        "잘했어! 4th guess for the 4th generation! 💕",
+        "좋아요! Nicely done! 💗",
+        "괜찮아요! Almost got exposed! 💓"
     ],
     "appearance": {
         "favicon_url": "https://cdn.glitch.global/6b83cfd3-e8d3-4fff-a4b4-0f93a64f450a/favicon-kpop.png?v=1744146413732",

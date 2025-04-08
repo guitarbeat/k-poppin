@@ -32,6 +32,33 @@ def create_backup(file_path):
     
     shutil.copy2(file_path, backup_path)
     logger.info(f"Created backup: {backup_path}")
+    
+    return backup_path
+
+def safe_update_file(file_path, new_content):
+    """Update a file only if content has changed, creating a backup if needed"""
+    if not os.path.exists(file_path):
+        logger.warning(f"File does not exist: {file_path}")
+        return False
+        
+    # Read original content
+    with open(file_path, 'r') as file:
+        original_content = file.read()
+    
+    # Check if content would change
+    if original_content == new_content:
+        logger.info(f"No changes needed for {file_path}")
+        return False
+    
+    # Create backup since we're making changes
+    create_backup(file_path)
+    
+    # Write new content
+    with open(file_path, 'w') as file:
+        file.write(new_content)
+    
+    logger.info(f"Updated {file_path}")
+    return True
 
 def validate_config(config):
     """Validate the configuration file"""
@@ -117,52 +144,55 @@ COLORS = {}
 def update_app_name():
     """Update the app name in main.js and index.html"""
     try:
-        # First, create a backup
-        create_backup('main.js')
-        create_backup('index.html')
-        
         # Update main.js
         with open('main.js', 'r') as file:
             content = file.read()
         
         # Replace the Heardle variables
-        content = re.sub(r'const HEARDLE_GLITCH_NAME = ".*?";', f'const HEARDLE_GLITCH_NAME = "{GLITCH_NAME}";', content)
-        content = re.sub(r'const HEARDLE_URL = ".*?";', f'const HEARDLE_URL = "{GAME_URL}";', content)
-        content = re.sub(r'const HEARDLE_ARTIST = ".*?";', f'const HEARDLE_ARTIST = "{ARTIST_NAME}";', content)
-        content = re.sub(r'const HEARDLE_NAME = .*?;', f'const HEARDLE_NAME = "{GAME_NAME}";', content)
-        content = re.sub(r'const HEARDLE_START_DATE = ".*?";', f'const HEARDLE_START_DATE = "{START_DATE}";', content)
+        new_content = content
+        new_content = re.sub(r'const HEARDLE_GLITCH_NAME = ".*?";', f'const HEARDLE_GLITCH_NAME = "{GLITCH_NAME}";', new_content)
+        new_content = re.sub(r'const HEARDLE_URL = ".*?";', f'const HEARDLE_URL = "{GAME_URL}";', new_content)
+        new_content = re.sub(r'const HEARDLE_ARTIST = ".*?";', f'const HEARDLE_ARTIST = "{ARTIST_NAME}";', new_content)
+        new_content = re.sub(r'const HEARDLE_NAME = .*?;', f'const HEARDLE_NAME = "{GAME_NAME}";', new_content)
+        new_content = re.sub(r'const HEARDLE_START_DATE = ".*?";', f'const HEARDLE_START_DATE = "{START_DATE}";', new_content)
         
-        # Replace game comments
+        # Replace game comments (standard pattern)
         if len(GAME_COMMENTS) >= 7:
             comments_pattern = r'const HEARDLE_GAME_COMMENTS = \[\s*".*?",\s*".*?",\s*".*?",\s*".*?",\s*".*?",\s*".*?",\s*".*?"\s*\];'
             comments_replacement = f'const HEARDLE_GAME_COMMENTS = [\n    "{GAME_COMMENTS[0]}",\n    "{GAME_COMMENTS[1]}",\n    "{GAME_COMMENTS[2]}",\n    "{GAME_COMMENTS[3]}",\n    "{GAME_COMMENTS[4]}",\n    "{GAME_COMMENTS[5]}",\n    "{GAME_COMMENTS[6]}"\n];'
-            content = re.sub(comments_pattern, comments_replacement, content, flags=re.DOTALL)
+            new_content = re.sub(comments_pattern, comments_replacement, new_content, flags=re.DOTALL)
+            
+            # Replace Jt array which is also used for game comments
+            jt_comments_pattern = r'Jt\s*=\s*\[\s*"[^"]*",\s*"[^"]*",\s*"[^"]*",\s*"[^"]*",\s*"[^"]*",\s*"[^"]*",\s*"[^"]*"\s*\];'
+            jt_comments_replacement = f'Jt = [\n      "{GAME_COMMENTS[0]}",\n      "{GAME_COMMENTS[1]}",\n      "{GAME_COMMENTS[2]}",\n      "{GAME_COMMENTS[3]}",\n      "{GAME_COMMENTS[4]}",\n      "{GAME_COMMENTS[5]}",\n      "{GAME_COMMENTS[6]}"\n    ];'
+            new_content = re.sub(jt_comments_pattern, jt_comments_replacement, new_content, flags=re.DOTALL)
         
         # Update the Vt object with startDate
-        content = re.sub(r'startDate: ".*?"', f'startDate: "{START_DATE}"', content)
+        new_content = re.sub(r'startDate: ".*?"', f'startDate: "{START_DATE}"', new_content)
         
         # Update any references to the old project name in the clipboard text
-        content = re.sub(r'kpopgg-heardle-round2\.glitch\.me', GLITCH_NAME + '.glitch.me', content)
+        new_content = re.sub(r'kpopgg-heardle-round2\.glitch\.me', GLITCH_NAME + '.glitch.me', new_content)
         
-        with open('main.js', 'w') as file:
-            file.write(content)
+        # Update main.js file
+        safe_update_file('main.js', new_content)
             
         # Update index.html
         with open('index.html', 'r') as file:
             content = file.read()
             
         # Update title and description
-        content = re.sub(r'<title>.*?</title>', f'<title>{GAME_NAME}</title>', content)
-        content = re.sub(r'<meta name="description" content=".*?"', f'<meta name="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', content)
-        content = re.sub(r'<meta itemprop="name" content=".*?"', f'<meta itemprop="name" content="{GAME_NAME}"', content)
-        content = re.sub(r'<meta itemprop="description" content=".*?"', f'<meta itemprop="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', content)
-        content = re.sub(r'<meta property="og:title" content=".*?"', f'<meta property="og:title" content="{GAME_NAME}"', content)
-        content = re.sub(r'<meta property="og:description" content=".*?"', f'<meta property="og:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', content)
-        content = re.sub(r'<meta name="twitter:title" content=".*?"', f'<meta name="twitter:title" content="{GAME_NAME}"', content)
-        content = re.sub(r'<meta name="twitter:description" content=".*?"', f'<meta name="twitter:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', content)
+        new_content = content
+        new_content = re.sub(r'<title>.*?</title>', f'<title>{GAME_NAME}</title>', new_content)
+        new_content = re.sub(r'<meta name="description" content=".*?"', f'<meta name="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', new_content)
+        new_content = re.sub(r'<meta itemprop="name" content=".*?"', f'<meta itemprop="name" content="{GAME_NAME}"', new_content)
+        new_content = re.sub(r'<meta itemprop="description" content=".*?"', f'<meta itemprop="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', new_content)
+        new_content = re.sub(r'<meta property="og:title" content=".*?"', f'<meta property="og:title" content="{GAME_NAME}"', new_content)
+        new_content = re.sub(r'<meta property="og:description" content=".*?"', f'<meta property="og:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', new_content)
+        new_content = re.sub(r'<meta name="twitter:title" content=".*?"', f'<meta name="twitter:title" content="{GAME_NAME}"', new_content)
+        new_content = re.sub(r'<meta name="twitter:description" content=".*?"', f'<meta name="twitter:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible."', new_content)
         
-        with open('index.html', 'w') as file:
-            file.write(content)
+        # Update index.html file
+        safe_update_file('index.html', new_content)
             
         logger.info("Updated app name in main.js and index.html")
         return True
@@ -173,10 +203,10 @@ def update_app_name():
 def update_google_analytics():
     """Update or remove Google Analytics based on configuration"""
     try:
-        create_backup('index.html')
-        
         with open('index.html', 'r') as file:
             content = file.read()
+        
+        new_content = content
         
         if GOOGLE_ANALYTICS_ID:
             # Add Google Analytics if ID is provided
@@ -191,16 +221,16 @@ def update_google_analytics():
         </script>'''
             # Insert GA script before </head>
             if '<!-- Google Analytics -->' not in content:
-                content = content.replace('</head>', f'{ga_script}\n    </head>')
+                new_content = content.replace('</head>', f'{ga_script}\n    </head>')
             else:
                 # Replace existing GA script
-                content = re.sub(r'<!-- Google Analytics -->.*?</script>\s*?</head>', f'{ga_script}\n    </head>', content, flags=re.DOTALL)
+                new_content = re.sub(r'<!-- Google Analytics -->.*?</script>\s*?</head>', f'{ga_script}\n    </head>', content, flags=re.DOTALL)
         else:
             # Remove existing GA script if any
-            content = re.sub(r'<!-- Google Analytics -->.*?</script>\s*', '', content, flags=re.DOTALL)
+            new_content = re.sub(r'<!-- Google Analytics -->.*?</script>\s*', '', content, flags=re.DOTALL)
         
-        with open('index.html', 'w') as file:
-            file.write(content)
+        # Update index.html file
+        safe_update_file('index.html', new_content)
             
         logger.info("Updated Google Analytics configuration")
         return True
@@ -211,23 +241,22 @@ def update_google_analytics():
 def update_favicon():
     """Update favicon URLs in index.html"""
     try:
-        create_backup('index.html')
-        
         with open('index.html', 'r') as file:
             content = file.read()
         
         # Find all favicon URLs in the content
         favicon_urls = re.findall(r'https://cdn\.glitch\.global/[^"]+?/favicon\.[^"]+', content)
         
+        new_content = content
         if favicon_urls:
             for url in set(favicon_urls):
-                content = content.replace(url, NEW_FAVICON_URL)
+                new_content = new_content.replace(url, NEW_FAVICON_URL)
         else:
             # Replace default favicon link
-            content = re.sub(r'<link rel="icon" type="image/png" href="[^"]+"', f'<link rel="icon" type="image/png" href="{NEW_FAVICON_URL}"', content)
+            new_content = re.sub(r'<link rel="icon" type="image/png" href="[^"]+"', f'<link rel="icon" type="image/png" href="{NEW_FAVICON_URL}"', new_content)
         
-        with open('index.html', 'w') as file:
-            file.write(content)
+        # Update index.html file
+        safe_update_file('index.html', new_content)
             
         logger.info("Updated favicon URL")
         return True
@@ -238,8 +267,6 @@ def update_favicon():
 def update_colors():
     """Update color scheme in bundle.css"""
     try:
-        create_backup('bundle.css')
-        
         with open('bundle.css', 'r') as file:
             content = file.read()
         
@@ -255,10 +282,10 @@ def update_colors():
   --color-line: {COLORS["line"]};     /* Line color for current guess box, top line, and song player lines */
 }}'''
         
-        content = re.sub(root_pattern, root_replacement, content, flags=re.DOTALL)
+        new_content = re.sub(root_pattern, root_replacement, content, flags=re.DOTALL)
         
-        with open('bundle.css', 'w') as file:
-            file.write(content)
+        # Update bundle.css file
+        safe_update_file('bundle.css', new_content)
             
         logger.info("Updated color scheme")
         return True
@@ -269,17 +296,15 @@ def update_colors():
 def update_html_content():
     """Update various HTML content in index.html"""
     try:
-        create_backup('index.html')
-        
         with open('index.html', 'r') as file:
             content = file.read()
         
         # Update meta tags and URLs
-        content = re.sub(r'content="https://[^"]+?"', f'content="{GAME_URL}"', content)
-        content = re.sub(r'property="og:url" content="[^"]+"', f'property="og:url" content="{GAME_URL}"', content)
+        new_content = re.sub(r'content="https://[^"]+?"', f'content="{GAME_URL}"', content)
+        new_content = re.sub(r'property="og:url" content="[^"]+"', f'property="og:url" content="{GAME_URL}"', new_content)
         
-        with open('index.html', 'w') as file:
-            file.write(content)
+        # Update index.html file
+        safe_update_file('index.html', new_content)
             
         logger.info("Updated HTML content")
         return True
@@ -290,19 +315,18 @@ def update_html_content():
 def ensure_css_imports():
     """Ensure the CSS has the proper font imports"""
     try:
-        create_backup('global.css')
-        
         with open('global.css', 'r') as file:
             content = file.read()
         
         # Check if font import exists
+        new_content = content
         if '@import url("https://fonts.googleapis.com/css2' not in content:
             # Add font import at the top of the file
             font_import = '@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");\n\n'
-            content = font_import + content
+            new_content = font_import + content
         
-        with open('global.css', 'w') as file:
-            file.write(content)
+        # Update global.css file
+        safe_update_file('global.css', new_content)
             
         logger.info("Ensured CSS imports")
         return True
@@ -363,26 +387,30 @@ def initialize_project():
 def update_ko_fi_link(config):
     """Update the Ko-fi link in main.js"""
     try:
-        create_backup('main.js')
-        
         with open('main.js', 'r') as file:
             content = file.read()
         
         # Update the Ko-fi link
         ko_fi_url = config['project'].get('ko_fi_url', '')
+        new_content = content
+        
         if ko_fi_url:
-            # Replace the Ko-fi link in the support message
-            content = re.sub(r'<a href="https://ko-fi\.com/[^"]+"', f'<a href="{ko_fi_url}"', content)
+            # Replace the Ko-fi link in the support message (HTML format)
+            new_content = re.sub(r'<a href="https://ko-fi\.com/[^"]+"', f'<a href="{ko_fi_url}"', new_content)
+            
+            # Replace direct URL string format (e.g., "https://ko-fi.com/itsderek")
+            new_content = re.sub(r'"https://ko-fi\.com/[^"]+"', f'"{ko_fi_url}"', new_content)
             
             # Update the Ko-fi text if needed
-            content = re.sub(r'Support me on Ko-Fi', 'Support me on Ko-Fi', content)
+            new_content = re.sub(r'Support me on Ko-Fi', 'Support me on Ko-Fi', new_content)
             
-            logger.info(f"Updated Ko-fi link to: {ko_fi_url}")
+            logger.info(f"Prepared Ko-fi link update to: {ko_fi_url}")
         else:
             logger.warning("No Ko-fi URL provided in config, skipping Ko-fi link update")
+            return True
         
-        with open('main.js', 'w') as file:
-            file.write(content)
+        # Update main.js file
+        safe_update_file('main.js', new_content)
             
         return True
     except Exception as e:
@@ -392,24 +420,86 @@ def update_ko_fi_link(config):
 def update_about_text(config):
     """Update the about popup text in main.js"""
     try:
-        create_backup('main.js')
-        
         with open('main.js', 'r') as file:
             content = file.read()
         
         # Update the about text
         about_text = config['project'].get('about_text', '')
+        new_content = content
+        
         if about_text:
-            # Replace the about text in the popup
-            content = re.sub(r'<p class="mb-3">A clone of <a href="https://www\.heardle\.app/" title="Heardle">Heardle</a>.*?<a href="https://glitch\.com/edit/#!/[^"]+">here</a>\.', 
-                            about_text, content, flags=re.DOTALL)
+            # First, find where the about text is defined in the JavaScript file
+            # Use a more targeted approach with a safer regex pattern
+            about_pattern = r'<div class="content">\s*<div class="mb-3">\s*<p class="mb-3">A clone of <a href="https://www\.heardle\.app/" title="Heardle">Heardle</a>.*?<a href="https://glitch\.com/edit/#!/[^"]+">here</a>\.'
             
-            logger.info("Updated about popup text")
+            # Count matches to validate we're finding the right section
+            matches = re.findall(about_pattern, new_content, flags=re.DOTALL)
+            if not matches:
+                logger.warning("Could not find the about text section in main.js. The pattern may need updating.")
+                return False
+                
+            if len(matches) > 1:
+                logger.warning(f"Found multiple matches ({len(matches)}) for about text. Will replace the first occurrence only.")
+            
+            # Prepare about text for JavaScript - escape quotes and handle newlines
+            escaped_about_text = about_text.replace('\\', '\\\\').replace('"', '\\"').replace("'", "\\'")
+            escaped_about_text = escaped_about_text.replace('\n', '\\n')
+            
+            # Replace the content in a more controlled manner
+            if '<div class="content">' in new_content:
+                # First find the modal content div
+                modal_content_parts = new_content.split('<div class="content">')
+                if len(modal_content_parts) > 1:
+                    # Get everything before the modal content
+                    before_modal = modal_content_parts[0]
+                    # Get everything after including the div opening tag
+                    after_modal_start = '<div class="content">' + modal_content_parts[1]
+                    
+                    # Now find the first paragraph inside the modal
+                    if '<p class="mb-3">' in after_modal_start:
+                        paragraph_parts = after_modal_start.split('<p class="mb-3">', 1)
+                        if len(paragraph_parts) > 1:
+                            # Get start of modal until first paragraph
+                            modal_until_p = paragraph_parts[0]
+                            
+                            # Skip until the end of the about text section
+                            # Find where the about section ends
+                            remaining_content = paragraph_parts[1]
+                            about_end_marker = '</div>'  # End of the div containing about text
+                            
+                            if about_end_marker in remaining_content:
+                                # Find the first div closing after the about section
+                                post_about_parts = remaining_content.split(about_end_marker, 1)
+                                if len(post_about_parts) > 1:
+                                    # Reconstruct with the new about text
+                                    new_content = before_modal + modal_until_p + about_text + about_end_marker + post_about_parts[1]
+                                    logger.info("Successfully prepared about text replacement")
+                                else:
+                                    logger.warning("Could not find the end of about section")
+                                    return False
+                            else:
+                                logger.warning("Could not find the closing div for about section")
+                                return False
+                        else:
+                            logger.warning("Could not locate paragraph in about modal")
+                            return False
+                    else:
+                        logger.warning("Could not locate paragraph in about modal")
+                        return False
+                else:
+                    logger.warning("Failed to process about section after finding content div")
+                    return False
+            else:
+                logger.warning("Could not find content div in main.js")
+                return False
+            
+            logger.info("Prepared about popup text update")
         else:
             logger.warning("No about text provided in config, skipping about text update")
+            return True
         
-        with open('main.js', 'w') as file:
-            file.write(content)
+        # Update main.js file
+        safe_update_file('main.js', new_content)
             
         return True
     except Exception as e:
