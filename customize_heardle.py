@@ -142,6 +142,30 @@ def update_colors():
     with open('stylesheet.css', 'w') as file:
         file.write(content)
 
+def update_html_content():
+    """Update HTML content with K-pop theme and Dilara's name"""
+    with open('index.html', 'r') as file:
+        content = file.read()
+    
+    # Update meta tags and content
+    content = re.sub(r'<meta itemprop="name" content=".*?"', f'<meta itemprop="name" content="{GAME_NAME}"', content)
+    content = re.sub(r'<meta itemprop="description" content=".*?"', f'<meta itemprop="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible. Made for Dilara with love! 💖"', content)
+    content = re.sub(r'<meta property="og:title" content=".*?"', f'<meta property="og:title" content="{GAME_NAME}"', content)
+    content = re.sub(r'<meta property="og:description" content=".*?"', f'<meta property="og:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible. Made for Dilara with love! 💖"', content)
+    content = re.sub(r'<meta name="twitter:title" content=".*?"', f'<meta name="twitter:title" content="{GAME_NAME}"', content)
+    content = re.sub(r'<meta name="twitter:description" content=".*?"', f'<meta name="twitter:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible. Made for Dilara with love! 💖"', content)
+    
+    # Update favicon links
+    if NEW_FAVICON_URL:
+        content = re.sub(r'<link rel="icon".*?href=".*?"', f'<link rel="icon" type="image/png" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="icon".*?sizes="32x32".*?href=".*?"', f'<link rel="icon" type="image/png" sizes="32x32" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="icon".*?sizes="16x16".*?href=".*?"', f'<link rel="icon" type="image/png" sizes="16x16" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="apple-touch-icon".*?href=".*?"', f'<link rel="apple-touch-icon" sizes="180x180" href="{NEW_FAVICON_URL}"', content)
+        content = re.sub(r'<link rel="shortcut icon".*?href=".*?"', f'<link rel="shortcut icon" href="{NEW_FAVICON_URL}"', content)
+    
+    with open('index.html', 'w') as file:
+        file.write(content)
+
 def main():
     """Main function to run all customizations"""
     print("Starting Heardle customization...")
@@ -158,6 +182,9 @@ def main():
         
         print("Updating color scheme...")
         update_colors()
+        
+        print("Updating HTML content...")
+        update_html_content()
         
         print("\nCustomization completed successfully!")
         
