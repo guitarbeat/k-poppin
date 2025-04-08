@@ -3831,7 +3831,7 @@ var app = (function () {
             "class",
             "kofi-button py-2 px-3 rounded-lg items-center flex  svelte-1d3p4dy"
           ),
-          "href", "https://ko-fi.com/aaronwoods",
+          M(r, "href", "https://ko-fi.com/itsderek"),
           M(r, "title", "Support me on Ko-Fi"),
           M(
             n,
@@ -4023,7 +4023,7 @@ var app = (function () {
             (r = x()),
             (s = w("p")),
             (s.innerHTML =
-              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/aaronwoods">real Heardle devs</a> and the <a href="https://ko-fi.com/aaronwoods">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
+              '<p class="mb-3">If you\'ve enjoyed playing this, then please consider supporting the <a href="https://ko-fi.com/heardle">real Heardle devs</a> and the <a href="https://ko-fi.com/heardlekpop">K-Pop Heardle devs</a> as this project is based on their work.</p>'),
             (i = x()),
             (o = w("div")),
             Q(a.$$.fragment),
@@ -4073,7 +4073,7 @@ var app = (function () {
       attemptInterval: 1.5e3,
       attemptIntervalAlt: [1e3, 2e3, 4e3, 7e3, 11e3, 16e3],
       maxAttempts: 6,
-      startDate: "2025-04-08",
+      startDate: "2022-06-30",
     },
     Jt = [
       "Unlucky! At least you discovered a new song!",
@@ -4659,7 +4659,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + "https://k-poppin.glitch.me/";
+          let o = e + "\n\n" + t + "\n\n" + "https://kpopgg-heardle-round2.glitch.me/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
