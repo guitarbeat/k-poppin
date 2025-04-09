@@ -202,10 +202,7 @@ let songs = [
     "url": "https://soundcloud.com/4minute/crazy?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "4Minute - Crazy"
   },
-  {
-    "url": "https://soundcloud.com/user-172622675-31152631/2ne1-i-am-the-best-speed-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "yokodaa - 2ne1- i am the best (speed up)"
-  },
+ 
   {
     "url": "https://soundcloud.com/user-652664872/bboom-bboom-momoland?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "shrooms - Bboom Bboom ~ Momoland"
@@ -274,10 +271,7 @@ let songs = [
     "url": "https://soundcloud.com/user-565240779/cheeky-icy-thang-stayc?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "asya 🎵 - cheeky icy thang - STAYC"
   },
-  {
-    "url": "https://soundcloud.com/ritswu/stayc-asap-nightcore?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "grey - stayc asap * sped up"
-  },
+  
   {
     "url": "https://soundcloud.com/chaeist/1-thing-stayc?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "✿ - 1 Thing - STAYC (스테이씨)"
@@ -354,10 +348,7 @@ let songs = [
     "url": "https://soundcloud.com/newjeans-music/cookie?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "NewJeans - Cookie"
   },
-  {
-    "url": "https://soundcloud.com/keith-chikito/wonder-girls-o-tell-me?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "Araa - Wonder Girls • Tell me [SpedUp] ^_^!!"
-  },
+ 
   {
     "url": "https://soundcloud.com/newjeans-music/ditto?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "NewJeans - Ditto"
@@ -442,18 +433,7 @@ let songs = [
     "url": "https://soundcloud.com/sunmi-sc/24-hours?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "SUNMI - 24 Hours"
   },
-  {
-    "url": "https://soundcloud.com/french-kuroo-272608071/russian-roulette-sped-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "s u n w o o p - Russian Roulette | sped up ♡"
-  },
-  {
-    "url": "https://soundcloud.com/user-424273875/day-1-redvelvet-sped-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "nao<3 - day 1 - redvelvet (sped up)"
-  },
-  {
-    "url": "https://soundcloud.com/luyvvn/eleven-ive-sepd-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "©nana - eleven - ive sped up"
-  },
+ 
   {
     "url": "https://soundcloud.com/niziu-music/heartris?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "NiziU - HEARTRIS"
@@ -474,10 +454,7 @@ let songs = [
     "url": "https://soundcloud.com/le-sserafim/impurities?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "LE SSERAFIM - Impurities"
   },
-  {
-    "url": "https://soundcloud.com/ludaa-moon/i-cant-stop-me-twice-speed-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "𝐲𝐮𝐨.` - [𝐈 𝐜𝐚𝐧'𝐭 𝐬𝐭𝐨𝐩 𝐦𝐞 - 𝐓𝐖𝐈𝐂𝐄] (𝐬𝐩𝐞𝐝 𝐮𝐩 / 𝐍𝐢𝐠𝐡𝐭𝐜𝐨𝐫𝐞 + 𝐫𝐞𝐯𝐞𝐫𝐛)"
-  },
+ 
   {
     "url": "https://soundcloud.com/aespaofficial/illusion?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "aespa - Illusion"
@@ -630,10 +607,7 @@ let songs = [
     "url": "https://soundcloud.com/l2share55/t-ara-whats-my-name?in=user-255046189/sets/2nd-generation-kpop-gg",
     "answer": "티아라 (T-ARA) - 티아라 (T-ARA) - 내 이름은 (What's My Name?)"
   },
-  {
-    "url": "https://soundcloud.com/kpopupdate2/02-im-really-hurt?in=user-255046189/sets/2nd-generation-kpop-gg",
-    "answer": "ExoK - 02 I'm Really Hurt"
-  },
+ 
   {
     "url": "https://soundcloud.com/lukas-moskalis-293120113/stellar-sting?in=user-255046189/sets/2nd-generation-kpop-gg",
     "answer": "스텔라 - 찔려 Stellar Sting"
@@ -1042,10 +1016,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -1377,10 +1348,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+ 
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -1413,10 +1381,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -1549,10 +1514,7 @@ let songs = [
     url: "https://soundcloud.com/twice-57013/alcohol-free",
     answer: "Twice - Alcohol Free",
   },
-  {
-    url: "https://soundcloud.com/seasaltfishes/power-up",
-    answer: "Red Velvet - Power Up",
-  },
+  
   {
     url: "https://soundcloud.com/l2share59/exid-lady",
     answer: "EXID - Lady",
@@ -1719,10 +1681,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -1755,10 +1714,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -1891,10 +1847,7 @@ let songs = [
     url: "https://soundcloud.com/twice-57013/alcohol-free",
     answer: "Twice - Alcohol Free",
   },
-  {
-    url: "https://soundcloud.com/seasaltfishes/power-up",
-    answer: "Red Velvet - Power Up",
-  },
+
   {
     url: "https://soundcloud.com/l2share59/exid-lady",
     answer: "EXID - Lady",
@@ -2054,10 +2007,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -2090,10 +2040,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -2226,10 +2173,7 @@ let songs = [
     url: "https://soundcloud.com/twice-57013/alcohol-free",
     answer: "Twice - Alcohol Free",
   },
-  {
-    url: "https://soundcloud.com/seasaltfishes/power-up",
-    answer: "Red Velvet - Power Up",
-  },
+
   {
     url: "https://soundcloud.com/l2share59/exid-lady",
     answer: "EXID - Lady",
@@ -2389,10 +2333,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -2425,10 +2366,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -4961,6 +4899,8 @@ let songs = [
   {
     url: "https://soundcloud.com/user-782826028/billlie-flippng-a-coin",
     answer: "Billlie - Flipping A Coin",
-  } // ~1049
-
-];
+  },
+  {
+    url: "https://soundcloud.com/le-sserafim/hot",
+    answer: "LE SSERAFIM - HOT",
+  } //
