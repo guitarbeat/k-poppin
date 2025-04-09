@@ -274,10 +274,7 @@ let songs = [
     "url": "https://soundcloud.com/user-565240779/cheeky-icy-thang-stayc?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "asya 🎵 - cheeky icy thang - STAYC"
   },
-  {
-    "url": "https://soundcloud.com/ritswu/stayc-asap-nightcore?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "grey - stayc asap * sped up"
-  },
+  
   {
     "url": "https://soundcloud.com/chaeist/1-thing-stayc?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "✿ - 1 Thing - STAYC (스테이씨)"
