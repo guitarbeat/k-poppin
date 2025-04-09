@@ -202,10 +202,7 @@ let songs = [
     "url": "https://soundcloud.com/4minute/crazy?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "4Minute - Crazy"
   },
-  {
-    "url": "https://soundcloud.com/user-172622675-31152631/2ne1-i-am-the-best-speed-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "yokodaa - 2ne1- i am the best (speed up)"
-  },
+ 
   {
     "url": "https://soundcloud.com/user-652664872/bboom-bboom-momoland?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "shrooms - Bboom Bboom ~ Momoland"
@@ -610,10 +607,7 @@ let songs = [
     "url": "https://soundcloud.com/l2share55/t-ara-whats-my-name?in=user-255046189/sets/2nd-generation-kpop-gg",
     "answer": "티아라 (T-ARA) - 티아라 (T-ARA) - 내 이름은 (What's My Name?)"
   },
-  {
-    "url": "https://soundcloud.com/kpopupdate2/02-im-really-hurt?in=user-255046189/sets/2nd-generation-kpop-gg",
-    "answer": "ExoK - 02 I'm Really Hurt"
-  },
+ 
   {
     "url": "https://soundcloud.com/lukas-moskalis-293120113/stellar-sting?in=user-255046189/sets/2nd-generation-kpop-gg",
     "answer": "스텔라 - 찔려 Stellar Sting"
@@ -1022,10 +1016,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -1357,10 +1348,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+ 
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -1393,10 +1381,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -1529,10 +1514,7 @@ let songs = [
     url: "https://soundcloud.com/twice-57013/alcohol-free",
     answer: "Twice - Alcohol Free",
   },
-  {
-    url: "https://soundcloud.com/seasaltfishes/power-up",
-    answer: "Red Velvet - Power Up",
-  },
+  
   {
     url: "https://soundcloud.com/l2share59/exid-lady",
     answer: "EXID - Lady",
@@ -1699,10 +1681,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -1735,10 +1714,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -1871,10 +1847,7 @@ let songs = [
     url: "https://soundcloud.com/twice-57013/alcohol-free",
     answer: "Twice - Alcohol Free",
   },
-  {
-    url: "https://soundcloud.com/seasaltfishes/power-up",
-    answer: "Red Velvet - Power Up",
-  },
+
   {
     url: "https://soundcloud.com/l2share59/exid-lady",
     answer: "EXID - Lady",
@@ -2034,10 +2007,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -2070,10 +2040,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
@@ -2206,10 +2173,7 @@ let songs = [
     url: "https://soundcloud.com/twice-57013/alcohol-free",
     answer: "Twice - Alcohol Free",
   },
-  {
-    url: "https://soundcloud.com/seasaltfishes/power-up",
-    answer: "Red Velvet - Power Up",
-  },
+
   {
     url: "https://soundcloud.com/l2share59/exid-lady",
     answer: "EXID - Lady",
@@ -2369,10 +2333,7 @@ let songs = [
     url: "https://soundcloud.com/xiz-thic/ioi-whatta-man-good-man",
     answer: "I.O.I - Whatta Man",
   },
-  {
-    url: "https://soundcloud.com/josedestroy/exid-updown",
-    answer: "EXID - Up & Down",
-  },
+  
   {
     url: "https://soundcloud.com/rororomeo/fx-nu-nu-abo",
     answer: "F(X) - Nu Abo",
@@ -2405,10 +2366,7 @@ let songs = [
     url: "https://soundcloud.com/itsvee/short-hair-aoa",
     answer: "AOA - Short Hair",
   },
-  {
-    url: "https://soundcloud.com/twice-57013/cheer-up",
-    answer: "Twice - Cheer Up",
-  },
+ 
   {
     url: "https://soundcloud.com/blackpinkofficial/how-you-like-that",
     answer: "Blackpink - How You Like That",
