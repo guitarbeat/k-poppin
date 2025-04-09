@@ -351,10 +351,7 @@ let songs = [
     "url": "https://soundcloud.com/newjeans-music/cookie?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "NewJeans - Cookie"
   },
-  {
-    "url": "https://soundcloud.com/keith-chikito/wonder-girls-o-tell-me?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "Araa - Wonder Girls • Tell me [SpedUp] ^_^!!"
-  },
+ 
   {
     "url": "https://soundcloud.com/newjeans-music/ditto?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "NewJeans - Ditto"
@@ -439,18 +436,7 @@ let songs = [
     "url": "https://soundcloud.com/sunmi-sc/24-hours?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "SUNMI - 24 Hours"
   },
-  {
-    "url": "https://soundcloud.com/french-kuroo-272608071/russian-roulette-sped-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "s u n w o o p - Russian Roulette | sped up ♡"
-  },
-  {
-    "url": "https://soundcloud.com/user-424273875/day-1-redvelvet-sped-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "nao<3 - day 1 - redvelvet (sped up)"
-  },
-  {
-    "url": "https://soundcloud.com/luyvvn/eleven-ive-sepd-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "©nana - eleven - ive sped up"
-  },
+ 
   {
     "url": "https://soundcloud.com/niziu-music/heartris?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "NiziU - HEARTRIS"
