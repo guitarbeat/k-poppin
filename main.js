@@ -4642,7 +4642,7 @@ var app = (function () {
         c,
         () => {
           // console.log('answer', r.length)
-          let e = "K-pop Girl Group Heardle (Aaron Edition) #" + (s.id + 1),
+          let e = "K-pop GG Heardle #" + (s.id + 1),
             t = "";
           a
             ? r.length < i.maxAttempts / 3
