@@ -4612,7 +4612,7 @@ var app = (function () {
 
   function fn(e, t, n) {
     console.log("welcome to K-Pop Girl Group Heardle, day #", t.currentHeardle.id);
-    console.log("if you have any questions, DM me on twitter at @derekahmedzai");
+    console.log("if you have any questions, DM me on twitter at @WoodsResearch");
     let { userGuesses: r } = t,
       { currentHeardle: s } = t,
       { config: i } = t,
@@ -4642,7 +4642,7 @@ var app = (function () {
         c,
         () => {
           // console.log('answer', r.length)
-          let e = "K-pop Girl Group Heardle (round 2) #" + (s.id + 1),
+          let e = "K-pop Girl Group Heardle (Aaron Edition) #" + (s.id + 1),
             t = "";
           a
             ? r.length < i.maxAttempts / 3
