@@ -457,10 +457,7 @@ let songs = [
     "url": "https://soundcloud.com/le-sserafim/impurities?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "LE SSERAFIM - Impurities"
   },
-  {
-    "url": "https://soundcloud.com/ludaa-moon/i-cant-stop-me-twice-speed-up?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    "answer": "𝐲𝐮𝐨.` - [𝐈 𝐜𝐚𝐧'𝐭 𝐬𝐭𝐨𝐩 𝐦𝐞 - 𝐓𝐖𝐈𝐂𝐄] (𝐬𝐩𝐞𝐝 𝐮𝐩 / 𝐍𝐢𝐠𝐡𝐭𝐜𝐨𝐫𝐞 + 𝐫𝐞𝐯𝐞𝐫𝐛)"
-  },
+ 
   {
     "url": "https://soundcloud.com/aespaofficial/illusion?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     "answer": "aespa - Illusion"
