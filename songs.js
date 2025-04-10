@@ -1462,5 +1462,9 @@ let songs = [
   {
     url: "https://soundcloud.com/blackpinkofficial/ddu-du-ddu-du?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "BLACKPINK - DDU-DU DDU-DU"
+  },
+  {
+    url: "https://soundcloud.com/le-sserafim/so-cynical-badum",
+    answer: "LE SSERAFIM - So Cynical (Badum)"
   }
 ];
