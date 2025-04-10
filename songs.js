@@ -562,5 +562,13 @@ let songs = [
   {
     url: "https://soundcloud.com/twice-57013/more-more",
     answer: "Twice - More and More"
-  }
+  },
+  {
+    url: "https://soundcloud.com/le-sserafim/come-over",
+    answer: "LE SSERAFIM - Come Over"
+  },
+  {
+    url: "https://soundcloud.com/le-sserafim/ash",
+    answer: "LE SSERAFIM - Ash" 
+  },
 ];
