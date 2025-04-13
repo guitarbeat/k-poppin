@@ -19,14 +19,7 @@ let songs = [
     url: "https://soundcloud.com/girlsday-sc/something?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     answer: "Girl's Day - Something"
   },
-  {
-    url: "https://soundcloud.com/l2share138/kep1er-wa-da-da",
-    answer: "Kep1er - Wa Da Da"
-  },
-  {
-    url: "https://soundcloud.com/l2share49/red-velvet-zimzalabim",
-    answer: "Red Velvet - Zimzalabim"
-  },
+  
   {
     url: "https://soundcloud.com/kusumahusnina/f-x-hot-summer",
     answer: "F(X) - Hot Summer"
