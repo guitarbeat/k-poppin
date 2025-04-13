@@ -3,9 +3,70 @@ import re
 import random
 import os
 import argparse
+import shutil
 from collections import Counter, defaultdict
+from urllib.parse import urlparse, unquote
+from difflib import SequenceMatcher
+import unicodedata
 
-def shuffle_songs(input_file, output_file, remove_duplicates=True, use_seed=None, backup=False, show_duplicates=False):
+def normalize_string(s):
+    """Normalize a string by removing accents, converting to lowercase, and removing extra whitespace."""
+    # Remove accents and convert to ASCII
+    s = unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore').decode('ASCII')
+    # Convert to lowercase and remove extra whitespace
+    return ' '.join(s.lower().split())
+
+def normalize_url(url):
+    """Normalize a URL by removing protocol, www, trailing slashes, and query parameters."""
+    try:
+        # Parse the URL
+        parsed = urlparse(url)
+        # Get the path and remove trailing slashes
+        path = parsed.path.rstrip('/')
+        # Remove query parameters and fragments
+        return path
+    except:
+        return url
+
+def are_similar_answers(ans1, ans2, threshold=0.85):
+    """Check if two answers are similar using string similarity ratio."""
+    return SequenceMatcher(None, normalize_string(ans1), normalize_string(ans2)).ratio() >= threshold
+
+def find_duplicate_groups(songs, similarity_threshold=0.85):
+    """Find groups of similar songs based on URL and answer similarity."""
+    groups = []
+    processed = set()
+    
+    for i, song1 in enumerate(songs):
+        if i in processed:
+            continue
+            
+        current_group = [song1]
+        processed.add(i)
+        
+        for j, song2 in enumerate(songs[i+1:], start=i+1):
+            if j in processed:
+                continue
+                
+            # Check URL similarity
+            url1 = normalize_url(song1["url"])
+            url2 = normalize_url(song2["url"])
+            
+            # Check answer similarity
+            answer1 = song1["answer"]
+            answer2 = song2["answer"]
+            
+            if (url1 == url2 or 
+                are_similar_answers(answer1, answer2, similarity_threshold)):
+                current_group.append(song2)
+                processed.add(j)
+        
+        if len(current_group) > 1:
+            groups.append(current_group)
+    
+    return groups
+
+def shuffle_songs(input_file, output_file, remove_duplicates=True, use_seed=None, backup=False, show_duplicates=False, similarity_threshold=0.85):
     """
     Shuffle the songs array in the JavaScript file while preserving the structure
     and avoiding commented-out songs.
@@ -15,15 +76,22 @@ def shuffle_songs(input_file, output_file, remove_duplicates=True, use_seed=None
         random.seed(use_seed)
         print(f"Using random seed: {use_seed}")
     
-    # Create backup if requested
+    # Create backup of the original file as previous_songs.js
+    try:
+        previous_file = "previous_songs.js"
+        shutil.copy2(input_file, previous_file)
+        print(f"Saved original file as {previous_file}")
+    except Exception as e:
+        print(f"Warning: Failed to create backup as {previous_file}: {e}")
+    
+    # Create additional backup if requested
     if backup:
         backup_file = f"{input_file}.bak"
         try:
-            with open(input_file, 'r', encoding='utf-8') as src, open(backup_file, 'w', encoding='utf-8') as dst:
-                dst.write(src.read())
-            print(f"Created backup at {backup_file}")
+            shutil.copy2(input_file, backup_file)
+            print(f"Created additional backup at {backup_file}")
         except Exception as e:
-            print(f"Warning: Failed to create backup: {e}")
+            print(f"Warning: Failed to create additional backup: {e}")
     
     # Read the input file
     with open(input_file, 'r', encoding='utf-8') as f:
@@ -97,56 +165,29 @@ def shuffle_songs(input_file, output_file, remove_duplicates=True, use_seed=None
     
     print(f"Found {len(songs)} songs in the file.")
     
-    # Analyze duplicates
-    pair_counter = Counter()
-    pair_locations = defaultdict(list)
-    
-    for song in songs:
-        pair = (song["url"], song["answer"])
-        pair_counter[pair] += 1
-        pair_locations[pair].append(song["line_number"])
+    # Find duplicate groups using enhanced detection
+    duplicate_groups = find_duplicate_groups(songs, similarity_threshold)
     
     # Count unique and duplicate songs
-    unique_pairs = [pair for pair, count in pair_counter.items() if count == 1]
-    duplicate_pairs = [pair for pair, count in pair_counter.items() if count > 1]
+    unique_songs = set()
+    for group in duplicate_groups:
+        for song in group:
+            unique_songs.add((song["url"], song["answer"]))
     
-    print(f"Unique songs: {len(unique_pairs)}")
-    print(f"Duplicate songs: {len(duplicate_pairs)} (appearing multiple times)")
+    print(f"Unique songs: {len(unique_songs)}")
+    print(f"Duplicate groups: {len(duplicate_groups)}")
     
-    total_duplicates = sum(count - 1 for pair, count in pair_counter.items() if count > 1)
+    total_duplicates = sum(len(group) - 1 for group in duplicate_groups)
     print(f"Total duplicate entries: {total_duplicates}")
     
-    # Show some of the most duplicated songs
-    if duplicate_pairs:
-        print("\nTop 5 most duplicated songs:")
-        most_common = pair_counter.most_common(5)
-        for (url, answer), count in most_common:
-            if count > 1:  # Only show duplicates
-                print(f"  - \"{answer}\" appears {count} times")
-                
-                # Show line numbers if requested
-                if show_duplicates:
-                    lines_info = sorted(pair_locations[(url, answer)])
-                    if len(lines_info) > 10:
-                        # Show first 5 and last 5 if there are many
-                        line_display = ', '.join(map(str, lines_info[:5])) + ', ... , ' + ', '.join(map(str, lines_info[-5:]))
-                    else:
-                        line_display = ', '.join(map(str, lines_info))
-                    print(f"    Line numbers: {line_display}")
-    
-    # Show all duplicates if requested
-    if show_duplicates and duplicate_pairs:
-        print("\nAll duplicate songs and their locations:")
-        # Sort by number of occurrences (descending)
-        for (url, answer), count in sorted(pair_counter.items(), key=lambda x: x[1], reverse=True):
-            if count > 1:  # Only show duplicates
-                lines_info = sorted(pair_locations[(url, answer)])
-                if len(lines_info) > 10:
-                    # Show first 5 and last 5 if there are many
-                    line_display = ', '.join(map(str, lines_info[:5])) + ', ... , ' + ', '.join(map(str, lines_info[-5:]))
-                else:
-                    line_display = ', '.join(map(str, lines_info))
-                print(f"  - \"{answer}\" appears {count} times at lines: {line_display}")
+    # Show duplicate groups if requested
+    if show_duplicates and duplicate_groups:
+        print("\nDuplicate groups found:")
+        for i, group in enumerate(duplicate_groups, 1):
+            print(f"\nGroup {i} ({len(group)} entries):")
+            for song in group:
+                print(f"  - Line {song['line_number']}: \"{song['answer']}\"")
+                print(f"    URL: {song['url']}")
     
     # Process songs based on user options
     songs_to_shuffle = songs
@@ -154,14 +195,24 @@ def shuffle_songs(input_file, output_file, remove_duplicates=True, use_seed=None
     # Remove duplicates if requested
     if remove_duplicates:
         unique_songs = []
-        seen_pairs = set()  # Store (url, answer) pairs
+        seen_urls = set()
+        seen_answers = set()
         
         for song in songs:
-            # Create a tuple of (url, answer) as the unique identifier
-            song_pair = (song["url"], song["answer"])
+            normalized_url = normalize_url(song["url"])
+            normalized_answer = normalize_string(song["answer"])
             
-            if song_pair not in seen_pairs:
-                seen_pairs.add(song_pair)
+            # Check if this song is similar to any we've seen
+            is_duplicate = False
+            for seen_url, seen_answer in zip(seen_urls, seen_answers):
+                if (normalized_url == seen_url or 
+                    are_similar_answers(normalized_answer, seen_answer, similarity_threshold)):
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                seen_urls.add(normalized_url)
+                seen_answers.add(normalized_answer)
                 unique_songs.append(song)
         
         songs_to_shuffle = unique_songs
@@ -190,30 +241,36 @@ def shuffle_songs(input_file, output_file, remove_duplicates=True, use_seed=None
     js_songs += "];"
     
     # Write the output file
-    with open(output_file, 'w', encoding='utf-8') as f:
+    with open(input_file, 'w', encoding='utf-8') as f:
         f.write(header)
         f.write(js_songs)
     
-    print(f"Successfully shuffled {len(songs_to_shuffle)} songs and saved to {output_file}")
+    print(f"Successfully shuffled {len(songs_to_shuffle)} songs and updated {input_file}")
 
 def main():
     parser = argparse.ArgumentParser(description='Shuffle songs in the songs.js file')
     parser.add_argument('--input', '-i', default='songs.js', help='Input JavaScript file containing songs array')
-    parser.add_argument('--output', '-o', default='songs_shuffled.js', help='Output file path for shuffled songs')
+    parser.add_argument('--output', '-o', help='Output file path for shuffled songs (default: overwrites input file)')
     parser.add_argument('--keep-duplicates', '-k', action='store_true', help='Keep duplicate songs (default: remove duplicates)')
     parser.add_argument('--seed', '-s', type=int, help='Random seed for reproducible shuffling')
-    parser.add_argument('--backup', '-b', action='store_true', help='Create a backup of the input file before processing')
+    parser.add_argument('--backup', '-b', action='store_true', help='Create an additional .bak backup file')
     parser.add_argument('--show-duplicates', '-d', action='store_true', help='Show all duplicate songs and their line numbers')
+    parser.add_argument('--similarity-threshold', '-t', type=float, default=0.85,
+                      help='Similarity threshold for detecting duplicate answers (0.0 to 1.0, default: 0.85)')
     
     args = parser.parse_args()
     
+    # If no output file is specified, use the input file
+    output_file = args.output if args.output else args.input
+    
     shuffle_songs(
         input_file=args.input,
-        output_file=args.output,
+        output_file=output_file,
         remove_duplicates=not args.keep_duplicates,
         use_seed=args.seed,
         backup=args.backup,
-        show_duplicates=args.show_duplicates
+        show_duplicates=args.show_duplicates,
+        similarity_threshold=args.similarity_threshold
     )
 
 if __name__ == "__main__":
