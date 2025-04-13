@@ -4659,7 +4659,7 @@ var app = (function () {
                 ? (t += "⬛️")
                 : (t += "🟥")
               : (t += "⬜️");
-          let o = e + "\n\n" + t + "\n\n" + "https://k-pop.alw.lol/";
+          let o = e + "\n\n" + t + "\n\n" + "https://kpop.alw.lol/";
           if (
             !navigator.share ||
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
