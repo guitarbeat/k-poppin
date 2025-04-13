@@ -26,7 +26,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/seasaltfishes/psycho-red-velvet?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "bae - Psycho - Red Velvet"
+    answer: "Psycho - Red Velvet"
   },
   {
     url: "https://soundcloud.com/roya-jafarli/iu-winter-sleep?in=niuro/sets/best-of-kpop-girl-groups",
@@ -273,10 +273,6 @@ let songs = [
     answer: "Sistar - Touch My Body"
   },
   {
-    url: "https://soundcloud.com/l2share95/red-velvet-psycho",
-    answer: "Red Velvet - Psycho"
-  },
-  {
     url: "https://soundcloud.com/le-sserafim/fearless?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "LE SSERAFIM - FEARLESS"
   },
@@ -362,15 +358,15 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/iew-v-828617851/red-velvet-russian-roulette?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "Kpop - Red Velvet (레드벨벳) 러시안 룰렛(Russian Roulette)"
+    answer: "Red Velvet (레드벨벳) 러시안 룰렛(Russian Roulette)"
   },
   {
     url: "https://soundcloud.com/soffi-58611342/xg-left-right?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "S_owu - XG Left Right"
+    answer: "XG - Left Right"
   },
   {
     url: "https://soundcloud.com/tuy-t-nhung-346654452/red-velvet-bad-boy?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "Tuyết Nhung - Red Velvet - Bad Boy"
+    answer: "Red Velvet - Bad Boy"
   },
   {
     url: "https://soundcloud.com/le-sserafim/unforgiven-feat-nile-rodgers?in=niuro/sets/best-of-kpop-girl-groups",
@@ -414,7 +410,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/blink-demon/stayc-beautiful-monster?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "仁俊 - STAYC - BEAUTIFUL MONSTER"
+    answer: "STAYC - BEAUTIFUL MONSTER"
   },
   {
     url: "https://soundcloud.com/aespaofficial/illusion?in=niuro/sets/best-of-kpop-girl-groups",
@@ -422,7 +418,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/stanaespa/viviz-bop-bop?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "cherry rush - viviz - bop bop!"
+    answer: "viviz - bop bop!"
   },
   {
     url: "https://soundcloud.com/chic-el/wonder-girls-nobody-english-version",
@@ -458,7 +454,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/l2share106/red-velvet-irene-seulgi-monster?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "red-velvet-irene-seulgi-monster - Red Velvet - IRENE & SEULGI - Monster"
+    answer: "Red Velvet - IRENE & SEULGI - Monster"
   },
   {
     url: "https://soundcloud.com/redvelvet-music/chill-kill?in=niuro/sets/best-of-kpop-girl-groups",
@@ -470,7 +466,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/sundays_ss/aespa-savage?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "ssundays - AESPA - Savage"
+    answer: "aespa - Savage"
   },
   {
     url: "https://soundcloud.com/tm-950004586/orange-caramel-catallena",
@@ -573,10 +569,6 @@ let songs = [
     answer: "LE SSERAFIM - Perfect Night"
   },
   {
-    url: "https://soundcloud.com/fromis_9/glass-shoes-from-fromis_9-pre?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    answer: "fromis_9 - Glass Shoes (From fromis_9 Pre-Debut)"
-  },
-  {
     url: "https://soundcloud.com/chungha_official/bicycle?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "CHUNG HA - Bicycle"
   },
@@ -590,7 +582,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/l2share42/playing-with-fire?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "BLACKPINK - BLACKPINK - PLAYING WITH FIRE"
+    answer: "BLACKPINK - PLAYING WITH FIRE"
   },
   {
     url: "https://soundcloud.com/user-151356257/gfriend-mago?in=niuro/sets/best-of-kpop-girl-groups",
@@ -637,10 +629,6 @@ let songs = [
     answer: "BLACKPINK - Pink Venom"
   },
   {
-    url: "https://soundcloud.com/aespaofficial/drama",
-    answer: "Aespa - Drama"
-  },
-  {
     url: "https://soundcloud.com/twice-57013/more-more?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "TWICE - MORE & MORE"
   },
@@ -674,7 +662,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/seasaltfishes/red-velvet-rbb-really-bad?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "Red Velvet - Red Velvet - RBB (Really Bad Boy)"
+    answer: "Red Velvet - RBB (Really Bad Boy)"
   },
   {
     url: "https://soundcloud.com/itzy-music/mr-vampire?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
@@ -735,14 +723,6 @@ let songs = [
   {
     url: "https://soundcloud.com/fromis_9/dm?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "fromis_9 - DM"
-  },
-  {
-    url: "https://soundcloud.com/user-55808555/blackpink?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    answer: "BLACKPINK - 마지막처럼 - BLACKPINK"
-  },
-  {
-    url: "https://soundcloud.com/blackpinkofficial/shut-down",
-    answer: "Blackpink - Shut Down"
   },
   {
     url: "https://soundcloud.com/le-sserafim/the-hydra?in=niuro/sets/best-of-kpop-girl-groups",
@@ -841,10 +821,6 @@ let songs = [
     answer: "JayTheShadow - MAMAMOO - ILLELLA"
   },
   {
-    url: "https://soundcloud.com/aespaofficial/better-things?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "aespa - Better Things"
-  },
-  {
     url: "https://soundcloud.com/kep1er-music/giddy?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
     answer: "Kep1er - Giddy"
   },
@@ -875,10 +851,6 @@ let songs = [
   {
     url: "https://soundcloud.com/twice-57013/like-ooh-ahh?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "TWICE - Like OOH-AHH"
-  },
-  {
-    url: "https://soundcloud.com/shxhrol-amy/playingwithfire?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    answer: "BLACKPINK - 불장난 - BLΛƆKPIИK (블랙핑크)"
   },
   {
     url: "https://soundcloud.com/l2share106/sunmi-pporappippam",
@@ -922,11 +894,11 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/sundays_ss/red-velvet-feel-my-rhythm?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "ssundays - RED VELVET - Feel My Rhythm"
+    answer: "Red Velvet - Feel My Rhythm"
   },
   {
     url: "https://soundcloud.com/vcreamy/kara-mr?in=user-255046189/sets/2nd-generation-kpop-gg",
-    answer: "lmDaawn - KARA - Mr."
+    answer: "KARA - Mr."
   },
   {
     url: "https://soundcloud.com/twice-57013/scientist?in=niuro/sets/best-of-kpop-girl-groups",
@@ -965,10 +937,6 @@ let songs = [
     answer: "BIBI - BIBI-I AM SHAMPOO"
   },
   {
-    url: "https://soundcloud.com/itzy-music/wannabe?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "ITZY - WANNABE"
-  },
-  {
     url: "https://soundcloud.com/itzy-music/swipe?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "ITZY - SWIPE"
   },
@@ -994,7 +962,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/stanaespa/wjsn-unnatural?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "cherry rush - wjsn - unnatural"
+    answer: "WJSN - Unnatural"
   },
   {
     url: "https://soundcloud.com/newjeans-music/hype-boy?in=niuro/sets/best-of-kpop-girl-groups",
@@ -1014,7 +982,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/rvred-velvet/bye-bye?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "fredo - red velvet bye bye"
+    answer: "red velvet - bye bye"
   },
   {
     url: "https://soundcloud.com/le-sserafim/ash",
@@ -1042,7 +1010,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/l2share49/red-velvet-zimzalabim?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "L2Share♫49 - Red Velvet - Zimzalabim"
+    answer: "Red Velvet - Zimzalabim"
   },
   {
     url: "https://soundcloud.com/chungha_official/chung-ha-roller-coaster?in=niuro/sets/best-of-kpop-girl-groups",
@@ -1082,7 +1050,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/reveluv-stuff/red-velvet-peek-a-boo?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "reveluv stuff - Red Velvet - Peek-A-Boo"
+    answer: "Red Velvet - Peek-A-Boo"
   },
   {
     url: "https://soundcloud.com/dani-martins-neves/girls-generation-i-got-a-boy",
@@ -1105,10 +1073,6 @@ let songs = [
     answer: "NMIXX - Roller Coaster"
   },
   {
-    url: "https://soundcloud.com/2ne1official/i-am-the-best?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "2NE1 - I Am The Best"
-  },
-  {
     url: "https://soundcloud.com/jisoo-scmusic/flower?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "JISOO - FLOWER"
   },
@@ -1119,10 +1083,6 @@ let songs = [
   {
     url: "https://soundcloud.com/twice-57013/cry-for-me?in=niuro/sets/best-of-kpop-girl-groups",
     answer: "TWICE - CRY FOR ME"
-  },
-  {
-    url: "https://soundcloud.com/seasaltfishes/red-velvet-rbb-really-bad",
-    answer: "Red Velvet - Really Bad Boy"
   },
   {
     url: "https://soundcloud.com/l2share44/fromis_9-love-bomb",
@@ -1245,20 +1205,12 @@ let songs = [
     answer: "Pristin V - Get It"
   },
   {
-    url: "https://soundcloud.com/lisalady-yedek/red-velvet-queendom-1?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "kpop songs - Red Velvet - Queendom"
-  },
-  {
-    url: "https://soundcloud.com/aespaofficial/illusion?in=sarah-vue-960537035/sets/my-gg-kpop-playlist",
-    answer: "aespa - Illusion"
-  },
-  {
     url: "https://soundcloud.com/twice-57013/cheer-up",
     answer: "Twice - Cheer Up"
   },
   {
     url: "https://soundcloud.com/reveluv-stuff/red-velvet-red-flavor?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "reveluv stuff - Red Velvet - Red Flavor"
+    answer: "Red Velvet - Red Flavor"
   },
   {
     url: "https://soundcloud.com/jisoo-scmusic/all-eyes-on-me?in=niuro/sets/best-of-kpop-girl-groups",
@@ -1266,11 +1218,11 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/l2kpop12/maria_hwasa?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "L2♫KPOP♫12 - Maria-Hwasa"
+    answer: "Hwasa - Maria"
   },
   {
     url: "https://soundcloud.com/moon-dust-156576908/hyo-deep?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "★! - HYO - Deep"
+    answer: "HYO - Deep"
   },
   {
     url: "https://soundcloud.com/quan-mai-anh/lovelyz-obliviate",
@@ -1334,7 +1286,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/seasaltfishes/power-up?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "Red Velvet - Red Velvet - Power Up"
+    answer: "Red Velvet - Power Up"
   },
   {
     url: "https://soundcloud.com/jamie48593/pity-party?in=niuro/sets/best-of-kpop-girl-groups",
@@ -1382,7 +1334,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/l2share131/aespa-next-level-1",
-    answer: "Aespa - Next Level"
+    answer: "aespa - Next Level"
   },
   {
     url: "https://soundcloud.com/lukas-moskalis-293120113/stellar-sting?in=user-255046189/sets/2nd-generation-kpop-gg",
@@ -1459,5 +1411,50 @@ let songs = [
   {
     url: "https://soundcloud.com/le-sserafim/so-cynical-badum",
     answer: "LE SSERAFIM - So Cynical (Badum)"
+  },
+  {
+    url: "https://soundcloud.com/kep1er-music/shooting-star",
+    answer: "Kep1er - Shooting Star"
+  },
+  {
+    url: "https://soundcloud.com/kep1er-music/tipi-tap",
+    answer: "Kep1er - TIPI-TAP"
+  },
+  {
+    url: "https://soundcloud.com/kep1er-music/up",
+    answer: "Kep1er - Up!"
+  },
+  {
+    url: "https://soundcloud.com/fromis_9/supersonic",
+    answer: "fromis_9 - Supersonic"
+  },
+  {
+    url: "https://soundcloud.com/fromis_9/menow",
+    answer: "fromis_9 - #menow"
+  },
+  {
+    url: "https://soundcloud.com/illit-music/cherish-my-love",
+    answer: "ILLIT - Cherish (My Love)"
+  },
+  {
+    url: "https://soundcloud.com/illit-music/lucky-girl-syndrome",
+    answer: "ILLIT - Lucky Girl Syndrome"
+  },
+  {
+    url: "https://soundcloud.com/illit-music/tick-tack",
+    answer: "ILLIT - Tick-Tack"
+  },
+  {
+    url: "https://soundcloud.com/illit-music/magnetic",
+    answer: "ILLIT - Magnetic"
+  },
+  {
+    url: "https://soundcloud.com/illit-music/midnight-fiction",
+    answer: "ILLIT - Midnight Fiction"
+  },
+  {
+    url: "https://soundcloud.com/illit-music/midnight-fiction",
+    answer: "ILLIT-Midnight Fiction"
   }
+
 ];
