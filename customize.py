@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import re, json, argparse, os, sys, shutil, datetime, logging
+import re, json, os, sys, shutil, datetime, logging
 from urllib.request import urlretrieve
 from functools import wraps
 
@@ -7,8 +7,35 @@ from functools import wraps
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 logger = logging.getLogger('customize_heardle')
 
-# Embedded configuration data (from your-data.json)
-DEFAULT_CONFIG = {}  # You'd keep your original DEFAULT_CONFIG here
+# Embedded configuration data - Edit these values directly
+DEFAULT_CONFIG = {
+    'project': {
+        'app_name': 'k-poppin',  # Your app name (no spaces, for technical identification)
+        'app_display_name': 'K-Poppin',  # Display name (can have spaces)
+        'glitch_name': 'k-poppin',  # Glitch project name if using Glitch
+        'game_url': 'https://k-poppin.github.io',  # Your public URL
+        'artist_name': 'K-Pop',  # Artist/genre name
+        'game_name': 'K-Pop Heardle',  # Game title
+        'start_date': '2023-01-01',  # Format: YYYY-MM-DD
+        'ko_fi_url': 'https://ko-fi.com/yourname',  # Optional Ko-fi link
+        'about_text': '<p class="mb-3">A clone of <a href="https://www.heardle.app" title="Heardle">Heardle</a> for K-Pop songs.</p>'
+    },
+    'game_comments': [
+        "Lucky guess!",
+        "Got it!",
+        "Great job!",
+        "Nicely done!",
+        "You're good at this!",
+        "You know your stuff!",
+        "Cutting it close!"
+    ],
+    'appearance': {
+        'favicon_url': './favicon.png'  # URL to your favicon
+    },
+    'analytics': {
+        'google_analytics_id': ''  # Your Google Analytics ID (leave empty if not using)
+    }
+}
 
 # Global variables
 APP_NAME = APP_DISPLAY_NAME = GLITCH_NAME = GAME_URL = ARTIST_NAME = GAME_NAME = ""
@@ -99,32 +126,9 @@ def update_file_with_patterns(file_path, patterns):
     return safe_update_file(file_path, new_content)
 
 def load_config(config_file=None):
-    if config_file is None or config_file == 'default':
-        logger.info("Using embedded default configuration")
-        config = DEFAULT_CONFIG
-    else:
-        try:
-            with open(config_file, 'r', encoding='utf-8') as f:
-                config = json.load(f)
-        except Exception as e:
-            raise Exception(f"Error loading config file: {e}")
-    
-    # Validate configuration
-    required_sections = ['project', 'game_comments', 'appearance', 'analytics']
-    for section in required_sections:
-        if section not in config:
-            raise ValueError(f"Missing required section '{section}' in config file")
-    
-    project_keys = ['app_name', 'app_display_name', 'glitch_name', 'game_url', 'artist_name', 'game_name', 'start_date']
-    for key in project_keys:
-        if key not in config['project']:
-            raise ValueError(f"Missing required key '{key}' in project section")
-    
-    if len(config['game_comments']) < 7:
-        raise ValueError(f"Need at least 7 game comments, found {len(config['game_comments'])}")
-    
-    if 'favicon_url' not in config['appearance']:
-        raise ValueError("Missing required 'favicon_url' key in appearance section")
+    # Always use the embedded default configuration
+    logger.info("Using embedded default configuration")
+    config = DEFAULT_CONFIG
     
     # Map to global variables
     global APP_NAME, APP_DISPLAY_NAME, GLITCH_NAME, GAME_URL, ARTIST_NAME, GAME_NAME, START_DATE, GAME_COMMENTS, GOOGLE_ANALYTICS_ID, NEW_FAVICON_URL
@@ -306,32 +310,6 @@ def initialize_project():
     
     try:
         base_url = DEFAULT_CONFIG['project'].get('repository_url', 'https://raw.githubusercontent.com/guitarbeat/k-poppin/main/')
-    found = re.search(pattern, content)
-    
-    if found:
-        old_text = found.group(1)
-        new_content = content.replace(old_text, about_text)
-        return safe_update_file('main.js', new_content)
-    
-    return False
-
-def check_required_files():
-    required_files = ['main.js', 'index.html', 'style/bundle.css', 'style/global.css']
-    missing_files = [file for file in required_files if not os.path.exists(file)]
-    
-    if missing_files:
-        logger.error(f"Missing required files: {', '.join(missing_files)}")
-        return False
-    
-    logger.info("All required files found")
-    return True
-
-@error_handler
-def initialize_project():
-    logger.info("Initializing new Heardle project...")
-    
-    try:
-        base_url = DEFAULT_CONFIG['project'].get('repository_url', 'https://raw.githubusercontent.com/guitarbeat/k-poppin/main/')
         if not base_url.endswith('/'): base_url += '/'
     except Exception:
         base_url = 'https://raw.githubusercontent.com/guitarbeat/k-poppin/main/'
@@ -339,8 +317,6 @@ def initialize_project():
     files_to_download = {
         'main.js': base_url + 'main.js',
         'index.html': base_url + 'index.html',
-        'style/bundle.css': base_url + 'style/bundle.css',
-        'style/global.css': base_url + 'style/global.css',
         'music-stuff/songs.js': base_url + 'music-stuff/songs.js'
     }
     
@@ -356,53 +332,28 @@ def initialize_project():
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description='Customize your Heardle game')
-    parser.add_argument('--config', '-c', type=str, help='Path to config JSON file')
-    parser.add_argument('--skip-app-name', action='store_true')
-    parser.add_argument('--skip-ga', action='store_true')
-    parser.add_argument('--skip-favicon', action='store_true')
-    parser.add_argument('--skip-colors', action='store_true')
-    parser.add_argument('--skip-html', action='store_true')
-    parser.add_argument('--skip-css', action='store_true')
-    parser.add_argument('--skip-ko-fi', action='store_true')
-    parser.add_argument('--skip-about', action='store_true')
-    parser.add_argument('--verbose', '-v', action='store_true')
-    parser.add_argument('--dry-run', action='store_true')
-    parser.add_argument('--init', action='store_true')
-    args = parser.parse_args()
-    
-    if args.verbose: logger.setLevel(logging.DEBUG)
-    if args.dry_run: logger.info("DRY RUN MODE - No changes will be made")
-    if args.init: return 0 if initialize_project() else 1
-    
     try:
-        config = load_config(args.config if args.config else 'default')
-        skip_config = config.get('skip_steps', {})
+        # Load the default embedded configuration
+        config = load_config('default')
         
-        if not args.dry_run and not check_required_files():
+        if not check_required_files():
             return 1
         
         logger.info(f"Customizing Heardle for: {APP_DISPLAY_NAME}")
         
-        if args.dry_run:
-            logger.info(f"DRY RUN - Would customize with: App={APP_NAME}, Artist={ARTIST_NAME}, URL={GAME_URL}")
-            return 0
-        
-        # Define and execute update tasks
+        # Execute all update tasks
         update_tasks = [
-            (update_app_name, 'app_name', args.skip_app_name),
-            (update_google_analytics, 'ga', args.skip_ga),
-            (update_favicon, 'favicon', args.skip_favicon),
-            (update_colors, 'colors', args.skip_colors),
-            (update_html_content, 'html', args.skip_html),
-            (ensure_css_imports, 'css', args.skip_css),
-            (lambda: update_ko_fi_link(config), 'ko_fi', args.skip_ko_fi),
-            (lambda: update_about_text(config), 'about', args.skip_about)
+            update_app_name,
+            update_google_analytics,
+            update_favicon,
+            update_html_content,
+            lambda: update_ko_fi_link(config),
+            lambda: update_about_text(config)
         ]
         
         failed_tasks = []
-        for task_func, config_key, arg_skip in update_tasks:
-            if not (arg_skip or skip_config.get(config_key, False)) and not task_func():
+        for task_func in update_tasks:
+            if not task_func():
                 failed_tasks.append(task_func.__name__)
         
         if not failed_tasks:
