@@ -137,3 +137,7 @@ The script uses a JSON configuration file (`your-data.json`) to customize your H
 - `--verbose`, `-v`: Enable verbose logging
 - `--dry-run`: Perform a dry run without making changes
 - `--init`: Initialize a new Heardle project
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
