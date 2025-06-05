@@ -21,11 +21,11 @@ jobs:
           
       - name: Run shuffle_songs.py
         run: |
-          python shuffle_songs.py
+          python music-stuff/shuffle_songs.py
           
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add songs.js
+          git add music-stuff/songs.js
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-shuffle songs" && git push) 
