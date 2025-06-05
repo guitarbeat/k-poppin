@@ -1,0 +1,22 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Backup directory and files
+backups/
+*.bak
+
+# Virtual environments
+.env
+.venv/
+venv/
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# MacOS files
+.DS_Store
+
+# Backup songs list
+music-stuff/previous_songs.js
