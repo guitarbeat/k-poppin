@@ -1,7 +1,8 @@
+import './types/global.d.ts';
 import './app.css';
-import Game from './components/Game.svelte';
+import App from './App.svelte';
 
-const app = new Game({
+const app = new App({
 	target: document.body
 });
 
