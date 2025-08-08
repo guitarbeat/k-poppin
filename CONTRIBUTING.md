@@ -3,7 +3,7 @@
 Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for non‑developers and friends collaborating on the song list.
 
 ## The one thing that powers the game
-- The game reads its daily songs from `music-stuff/songs.js`.
+- The game reads its daily songs from `data/songs.js`.
 - Each entry looks like this:
   ```js
   {
@@ -14,7 +14,7 @@ Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for n
 - Tip: If the answer starts with a number, add a leading space to work around an autocomplete quirk, e.g. `" 2NE1 - I Am the Best"`.
 
 ## Easiest way to add songs
-1. Open `music-stuff/songs.js`.
+1. Open `data/songs.js`.
 2. Scroll to the bottom and add a new object with both `url` and `answer`.
 3. Keep the exact casing/spacing of the artist/title as you want it shown in results.
 4. Save.
@@ -23,7 +23,7 @@ Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for n
 ## Optional: Run checks locally
 If you have Python 3 installed:
 ```bash
-python music-stuff/tools/validate_songs.py
+python scripts/validate_songs.py
 ```
 This checks for:
 - Duplicate URLs or answers
@@ -43,7 +43,7 @@ This checks for:
 - Do not reformat `main.js` or other compiled assets.
 
 ## What NOT to change
-- Do not rename or move `index.html`, `main.js`, or `music-stuff/songs.js` (the site depends on these paths).
+- Do not rename or move `index.html`, `main.js`, or `data/songs.js` (the site depends on these paths).
 - Do not remove Google Analytics without discussing (you can disable locally).
 
 Thank you! 💜

@@ -317,7 +317,7 @@ def initialize_project():
     files_to_download = {
         'main.js': base_url + 'main.js',
         'index.html': base_url + 'index.html',
-        'music-stuff/songs.js': base_url + 'music-stuff/songs.js'
+        'data/songs.js': base_url + 'data/songs.js'
     }
     
     for file_name, url in files_to_download.items():
