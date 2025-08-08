@@ -2,6 +2,14 @@
 
 Remixed and extended from the original K-Pop GG Heardle (which ran out of songs).
 
+## How to add a song (for collaborators)
+- Edit `data/songs.js` and append a new entry like:
+  ```js
+  { url: "https://soundcloud.com/artist/track", answer: "ARTIST - Track Title" }
+  ```
+- If the answer starts with a number, add a leading space in `answer`.
+- Optional: run `python scripts/validate_songs.py` to check for duplicates/format issues.
+
 This is a spin-off of the original [Heardle](https://www.heardle.app/) but for K-Pop Girl Group songs. Each song is randomly chosen from soundclud. I do not own any rights to the songs used in this game. All copyright goes to the relevant parties.
 
 The code for this project is remixed from the [ZAYN Heardle](https://zayn-heardle.glitch.me/) (by [@eggtartemily](https://twitter.com/eggtartemily)) and [Taylor Swift Heardle](https://taylor-swift-heardle.glitch.me/) projects.
@@ -92,7 +100,6 @@ All customization values live in the `DEFAULT_CONFIG` block inside `customize.py
   }
 }
 ```
-
 
 ## License
 
