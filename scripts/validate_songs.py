@@ -23,7 +23,8 @@ def parse_songs_js(path):
                 url = mu.group(1).strip()
             ma = ANSWER_RE.search(line)
             if ma:
-                answer = ma.group(1).strip()
+                # Preserve leading spaces in answers (used to work around autocomplete)
+                answer = ma.group(1)
             if url and answer:
                 entries.append({'url': url, 'answer': answer})
                 url, answer = None, None
@@ -41,7 +42,7 @@ def validate(entries):
             errors.append(f'Entry {idx+1}: missing url')
         if not a:
             errors.append(f'Entry {idx+1}: missing answer')
-        if a and a[0].isdigit():
+        if a and a.lstrip() and a.lstrip()[0].isdigit() and not a.startswith(' '):
             errors.append(f"Entry {idx+1}: answer starts with a digit; add a leading space -> '{a}'")
         if u in seen_url:
             errors.append(f'Duplicate URL at entries {seen_url[u]} and {idx+1}: {u}')
