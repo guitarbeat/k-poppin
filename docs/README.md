@@ -24,7 +24,7 @@ Guidelines:
 
 Run local checks (optional):
 ```bash
-python tools/validate_songs.py
+python scripts/validate_songs.py
 ```
 
 ## Moving songs to the archive
