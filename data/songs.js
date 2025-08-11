@@ -73,7 +73,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/crystal7t/crazy-4minute",
-    answer: "4Minute - Crazy"
+    answer: " 4Minute - Crazy"
   },
   {
     url: "https://soundcloud.com/user-913229388/f-x-4-walls",
@@ -133,7 +133,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/skyflay5/i-do-2-mp3?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "5C357 - (G)I-DLE - I DO"
+    answer: " 5C357 - (G)I-DLE - I DO"
   },
   {
     url: "https://soundcloud.com/somi_official/birthday-2",
@@ -225,7 +225,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/2nexx1/lonely?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "2NE1 - Lonely"
+    answer: " 2NE1 - Lonely"
   },
   {
     url: "https://soundcloud.com/etsuko-hime/kara-lupin?in=user-255046189/sets/2nd-generation-kpop-gg",
@@ -337,7 +337,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/62442magic/dholic-chewy?in=user-255046189/sets/2nd-generation-kpop-gg",
-    answer: "45CM - D.Holic - Chewy"
+    answer: " 45CM - D.Holic - Chewy"
   },
   {
     url: "https://soundcloud.com/everglow-sc/la-di-da?in=niuro/sets/best-of-kpop-girl-groups",
@@ -437,7 +437,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/stanlakpoplol/hwasa-twit?in=niuro/sets/best-of-kpop-girl-groups",
-    answer: "1theK () - Hwasa - TWIT"
+    answer: " 1theK () - Hwasa - TWIT"
   },
   {
     url: "https://soundcloud.com/dreamaboutthvk95/stayc-so-bad?in=niuro/sets/best-of-kpop-girl-groups",
@@ -1109,7 +1109,7 @@ let songs = [
   },
   {
     url: "https://soundcloud.com/4minute/hot-issue",
-    answer: "4Minute - Hot Issue"
+    answer: " 4Minute - Hot Issue"
   },
   {
     url: "https://soundcloud.com/rosemusic65184/on-the-ground?in=niuro/sets/best-of-kpop-girl-groups",
