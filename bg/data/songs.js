@@ -14,7 +14,7 @@ let songs = [
   },
   {
     "url": "https://soundcloud.com/kim-xiautaro/seventeen-hot-face-the-sun?in=ap4zljw02nzh/sets/k-pop",
-    "answer": "Adinda Ayu Cahyani - SEVENTEEN (세븐틴) - HOT \"
+    "answer": "Adinda Ayu Cahyani - SEVENTEEN (세븐틴) - HOT"
   },
   {
     "url": "https://soundcloud.com/yeshi-pelden-4156496/mv-pentagon-shine-mp3?in=ap4zljw02nzh/sets/k-pop",
