@@ -786,12 +786,12 @@ a:active {
   text-indent: 0.25em;
 }
 :root {
-  --color-positive: #FF69B4; /* Submit button */
-  --color-negative: #FF1493; /* Incorrect answer */
+  --color-positive: #87CEEB; /* Submit button */
+  --color-negative: #4682B4; /* Incorrect answer */
   --color-fg: #FFFFFF;       /* Font color and accents */
   --color-mg: #333333;       /* Skip button, progress bar, line colour for inactive guesses */
   --color-bg: #000000;       /* Page background colour */
-  --color-line: #FF69B4;     /* Line color for current guess box, top line, and song player lines */
+  --color-line: #87CEEB;     /* Line color for current guess box, top line, and song player lines */
   --color-highlight: #4A90E2; /* Blue highlight for boy group version */
 }
 @media (min-width: 640px) {
