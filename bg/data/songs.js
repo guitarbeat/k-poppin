@@ -9,10 +9,6 @@ let songs = [
     "answer": "SONGABTME - REALLY REALLY - WINNER"
   },
   {
-    "url": "https://soundcloud.com/schwd/really-really-winner?in=ap4zljw02nzh/sets/k-pop",
-    "answer": "SONGABTME - REALLY REALLY - WINNER"
-  },
-  {
     "url": "https://soundcloud.com/officialbts/bts-dimple-illegal-2?in=ap4zljw02nzh/sets/k-pop",
     "answer": "BTS ARMY - BTS - Dimple/ Illegal (보조개)"
   },
