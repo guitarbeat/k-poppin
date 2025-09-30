@@ -9609,13 +9609,33 @@ var app = (function () {
         ((c = "webkitHidden"), (d = "webkitvisibilitychange")),
       void 0 === document.addEventListener ||
         void 0 === c ||
-        document.addEventListener(
-          d,
-          function () {
-            document[c] || a === x(Vt.startDate) || location.reload(!0);
-          },
-          !1
-        );
+        (function () {
+          var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+          var lastReloadTs = 0;
+          function maybeReloadOnVisible() {
+            try {
+              var now = Date.now();
+              if (now - lastReloadTs < 1500) return; // throttle
+              if (!document[c] && a !== x(Vt.startDate)) {
+                // Avoid aggressive reloads on iOS Safari which can fire repeatedly
+                if (isIOS) return;
+                lastReloadTs = now;
+                location.reload(!0);
+              }
+            } catch (e) {}
+          }
+          document.addEventListener(d, maybeReloadOnVisible, !1);
+          // Also handle bfcache restores safely
+          window.addEventListener(
+            "pageshow",
+            function (evt) {
+              if (evt && evt.persisted) {
+                maybeReloadOnVisible();
+              }
+            },
+            !1
+          );
+        })();
     let h,
       f,
       m = 0;
