@@ -3993,7 +3993,7 @@ var app = (function () {
       P(async function () {
         (async function () {
           const e = await fetch(
-            "https://wjsn-heardle.glitch.me/supporters.json"
+            "supporters.json"
           );
           return await e.json();
         })().then((e) => {
