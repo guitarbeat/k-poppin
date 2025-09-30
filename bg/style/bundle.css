@@ -792,6 +792,7 @@ a:active {
   --color-mg: #333333;       /* Skip button, progress bar, line colour for inactive guesses */
   --color-bg: #000000;       /* Page background colour */
   --color-line: #FF69B4;     /* Line color for current guess box, top line, and song player lines */
+  --color-highlight: #4A90E2; /* Blue highlight for boy group version */
 }
 @media (min-width: 640px) {
 }
