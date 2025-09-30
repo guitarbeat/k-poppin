@@ -9579,22 +9579,26 @@ var app = (function () {
   }
 
   function jn(e, t, n) {
-    if (x(Vt.startDate) >= songs.length) {
-      console.log('songs', songs.length)
-      console.log('day', x(Vt.startDate))
-      console.log('out of songs')
-    }
     let r, s, i, o;
     u(e, Cn, (e) => n(26, (r = e))), u(e, On, (e) => n(27, (s = e)));
-    let a = x(Vt.startDate),
-      l = {
-        url: s[a].url,
-        correctAnswer: s[a].answer,
-        id: a,
-        guessList: [],
-        hasFinished: !1,
-        hasStarted: !1,
-      };
+    let a = x(Vt.startDate);
+    
+    // Handle case where day number exceeds available songs by using modulo
+    if (a >= songs.length) {
+      console.log('songs', songs.length)
+      console.log('day', a)
+      console.log('wrapping around to song', a % songs.length)
+      a = a % songs.length;
+    }
+    
+    let l = {
+      url: s[a].url,
+      correctAnswer: s[a].answer,
+      id: a,
+      guessList: [],
+      hasFinished: !1,
+      hasStarted: !1,
+    };
     // console.log("a", l);
     var c, d;
     void 0 !== document.hidden
