@@ -805,6 +805,180 @@ a:active {
 }
 @media (min-width: 468px) {
 }
+
+/* Version Switcher Styles */
+.version-switcher {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.version-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  min-height: 44px; /* Touch-friendly minimum height */
+}
+
+.version-button:hover {
+  background: rgba(0, 0, 0, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.version-button.boy-group {
+  color: #87CEEB;
+}
+
+.version-button.girl-group {
+  color: #FF69B4;
+}
+
+.version-button .emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.version-button .text {
+  white-space: nowrap;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .version-switcher {
+    top: 8px;
+    right: 8px;
+  }
+  
+  .version-button {
+    padding: 10px 14px;
+    font-size: 15px;
+    min-height: 48px; /* Larger touch target for mobile */
+    gap: 8px;
+  }
+  
+  .version-button .emoji {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .version-switcher {
+    top: 6px;
+    right: 6px;
+  }
+  
+  .version-button {
+    padding: 12px 16px;
+    font-size: 16px;
+    min-height: 52px; /* Even larger for small screens */
+    gap: 10px;
+  }
+  
+  .version-button .emoji {
+    font-size: 20px;
+  }
+}
+
+/* Very small screens - stack vertically if needed */
+@media (max-width: 360px) {
+  .version-button .text {
+    font-size: 14px;
+  }
+}
+
+/* Enhanced mobile accessibility and visibility */
+@media (max-width: 768px) {
+  .version-button {
+    /* Enhanced visibility on mobile */
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  .version-button:active {
+    transform: scale(0.98);
+    background: rgba(0, 0, 0, 0.95);
+  }
+  
+  /* Ensure button is always visible and accessible */
+  .version-switcher {
+    /* Prevent button from being cut off on small screens */
+    max-width: calc(100vw - 16px);
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .version-switcher {
+    top: 4px;
+    right: 4px;
+  }
+  
+  .version-button {
+    padding: 8px 12px;
+    min-height: 44px;
+    font-size: 14px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .version-button {
+    border-width: 0.5px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .version-button {
+    /* Remove hover effects on touch devices */
+    transition: transform 0.1s ease, background-color 0.1s ease;
+  }
+  
+  .version-button:hover {
+    transform: none;
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .version-button:active {
+    transform: scale(0.95);
+    background: rgba(0, 0, 0, 0.95);
+  }
+}
+
+/* Focus states for keyboard navigation */
+.version-button:focus {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+.version-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Prevent text selection on mobile */
+.version-button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
 .autoComplete_wrapper > ul {
   top: auto !important;
   bottom: 100% !important;
