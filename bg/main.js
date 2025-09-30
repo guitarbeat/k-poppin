@@ -4073,7 +4073,7 @@ var app = (function () {
       attemptInterval: 1.5e3,
       attemptIntervalAlt: [1e3, 2e3, 4e3, 7e3, 11e3, 16e3],
       maxAttempts: 6,
-      startDate: "2025-04-08",
+      startDate: "2025-09-29",
     },
     Jt = [
       "아이고! At least you discovered a new song! 😭",
@@ -9579,22 +9579,26 @@ var app = (function () {
   }
 
   function jn(e, t, n) {
-    if (x(Vt.startDate) >= songs.length) {
-      console.log('songs', songs.length)
-      console.log('day', x(Vt.startDate))
-      console.log('out of songs')
-    }
     let r, s, i, o;
     u(e, Cn, (e) => n(26, (r = e))), u(e, On, (e) => n(27, (s = e)));
-    let a = x(Vt.startDate),
-      l = {
-        url: s[a].url,
-        correctAnswer: s[a].answer,
-        id: a,
-        guessList: [],
-        hasFinished: !1,
-        hasStarted: !1,
-      };
+    let a = x(Vt.startDate);
+    
+    // Handle case where day number exceeds available songs by using modulo
+    if (a >= songs.length) {
+      console.log('songs', songs.length)
+      console.log('day', a)
+      console.log('wrapping around to song', a % songs.length)
+      a = a % songs.length;
+    }
+    
+    let l = {
+      url: s[a].url,
+      correctAnswer: s[a].answer,
+      id: a,
+      guessList: [],
+      hasFinished: !1,
+      hasStarted: !1,
+    };
     // console.log("a", l);
     var c, d;
     void 0 !== document.hidden
