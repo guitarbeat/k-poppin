@@ -1,3 +1,5 @@
+// NOTE: This file is a build artifact (Svelte bundle), but source files are missing from this repository.
+// Direct edits are made here to improve accessibility (aria-labels) as no other option exists.
 var app = (function () {
   "use strict";
 
@@ -379,6 +381,7 @@ var app = (function () {
             "class",
             "px-2 py-2 uppercase tracking-widest bg-custom-mg border-none flex items-center font-semibold text-sm svelte-1r54uzk"
           ),
+          e[5] && M(t, "aria-label", e[5]),
           Y(t, "bg-custom-positive", e[0]),
           Y(t, "bg-custom-mg", e[1]);
       },
@@ -393,6 +396,7 @@ var app = (function () {
           o.p &&
           (!n || 4 & r) &&
           f(o, i, e, e[2], n ? h(i, e[2], r, null) : m(e[2]), null),
+          32 & r && e[5] && M(t, "aria-label", e[5]),
           1 & r && Y(t, "bg-custom-positive", e[0]),
           2 & r && Y(t, "bg-custom-mg", e[1]);
       },
@@ -411,11 +415,13 @@ var app = (function () {
   function oe(e, t, n) {
     let { $$slots: r = {}, $$scope: s } = t,
       { primary: i = !1 } = t,
-      { secondary: o = !1 } = t;
+      { secondary: o = !1 } = t,
+      { ariaLabel: al = null } = t;
     return (
       (e.$$set = (e) => {
         "primary" in e && n(0, (i = e.primary)),
           "secondary" in e && n(1, (o = e.secondary)),
+          "ariaLabel" in e && n(5, (al = e.ariaLabel)),
           "$$scope" in e && n(2, (s = e.$$scope));
       }),
       [
@@ -426,6 +432,7 @@ var app = (function () {
         function (t) {
           L.call(this, e, t);
         },
+        al,
       ]
     );
   }
@@ -435,6 +442,7 @@ var app = (function () {
         re(this, e, oe, ie, i, {
           primary: 0,
           secondary: 1,
+          ariaLabel: 5,
         });
     }
   }
@@ -720,6 +728,7 @@ var app = (function () {
     return (
       (i = new ae({
         props: {
+          ariaLabel: "About",
           $$slots: {
             default: [ge],
           },
@@ -731,6 +740,7 @@ var app = (function () {
       i.$on("click", e[1]),
       (a = new ae({
         props: {
+          ariaLabel: "Support",
           $$slots: {
             default: [ye],
           },
@@ -742,6 +752,7 @@ var app = (function () {
       a.$on("click", e[2]),
       (h = new ae({
         props: {
+          ariaLabel: "Stats",
           $$slots: {
             default: [ve],
           },
@@ -753,6 +764,7 @@ var app = (function () {
       h.$on("click", e[3]),
       (m = new ae({
         props: {
+          ariaLabel: "Help",
           $$slots: {
             default: [we],
           },
@@ -1565,6 +1577,7 @@ var app = (function () {
     return (
       (s = new ae({
         props: {
+          ariaLabel: "Reload player",
           $$slots: {
             default: [qe],
           },
@@ -3302,6 +3315,7 @@ var app = (function () {
       (v = new ae({
         props: {
           secondary: !0,
+          ariaLabel: "Skip current attempt",
           $$slots: {
             default: [Mt],
           },
@@ -3314,6 +3328,7 @@ var app = (function () {
       (b = new ae({
         props: {
           primary: !0,
+          ariaLabel: "Submit guess",
           $$slots: {
             default: [$t],
           },
