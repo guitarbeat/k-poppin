@@ -3629,6 +3629,7 @@ var app = (function () {
           (n = x()),
           a && a.c(),
           (t.autofocus = !0),
+          M(t, "aria-label", "Close modal"),
           M(t, "class", "border-none text-custom-mg absolute right-3 top-3");
       },
       m(o, l) {

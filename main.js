@@ -3578,6 +3578,7 @@ var app = (function () {
           ),
           M(r, "class", "flex-1 pl-7"),
           (l.autofocus = !0),
+          M(l, "aria-label", "Close modal"),
           M(l, "class", "border-none text-custom-mg"),
           M(a, "class", "justify-self-end flex"),
           M(n, "class", "flex items-center justify-center mb-6"),
@@ -3629,6 +3630,7 @@ var app = (function () {
           (n = x()),
           a && a.c(),
           (t.autofocus = !0),
+          M(t, "aria-label", "Close modal"),
           M(t, "class", "border-none text-custom-mg absolute right-3 top-3");
       },
       m(o, l) {
