@@ -379,6 +379,7 @@ var app = (function () {
             "class",
             "px-2 py-2 uppercase tracking-widest bg-custom-mg border-none flex items-center font-semibold text-sm svelte-1r54uzk"
           ),
+          e[5] && M(t, "aria-label", e[5]),
           Y(t, "bg-custom-positive", e[0]),
           Y(t, "bg-custom-mg", e[1]);
       },
@@ -393,6 +394,7 @@ var app = (function () {
           o.p &&
           (!n || 4 & r) &&
           f(o, i, e, e[2], n ? h(i, e[2], r, null) : m(e[2]), null),
+          32 & r && M(t, "aria-label", e[5]),
           1 & r && Y(t, "bg-custom-positive", e[0]),
           2 & r && Y(t, "bg-custom-mg", e[1]);
       },
@@ -411,11 +413,13 @@ var app = (function () {
   function oe(e, t, n) {
     let { $$slots: r = {}, $$scope: s } = t,
       { primary: i = !1 } = t,
-      { secondary: o = !1 } = t;
+      { secondary: o = !1 } = t,
+      { label: l = "" } = t;
     return (
       (e.$$set = (e) => {
         "primary" in e && n(0, (i = e.primary)),
           "secondary" in e && n(1, (o = e.secondary)),
+          "label" in e && n(5, (l = e.label)),
           "$$scope" in e && n(2, (s = e.$$scope));
       }),
       [
@@ -426,6 +430,7 @@ var app = (function () {
         function (t) {
           L.call(this, e, t);
         },
+        l,
       ]
     );
   }
@@ -435,6 +440,7 @@ var app = (function () {
         re(this, e, oe, ie, i, {
           primary: 0,
           secondary: 1,
+          label: 5,
         });
     }
   }
@@ -720,6 +726,7 @@ var app = (function () {
     return (
       (i = new ae({
         props: {
+          label: "About",
           $$slots: {
             default: [ge],
           },
@@ -731,6 +738,7 @@ var app = (function () {
       i.$on("click", e[1]),
       (a = new ae({
         props: {
+          label: "Support",
           $$slots: {
             default: [ye],
           },
@@ -742,6 +750,7 @@ var app = (function () {
       a.$on("click", e[2]),
       (h = new ae({
         props: {
+          label: "Stats",
           $$slots: {
             default: [ve],
           },
@@ -753,6 +762,7 @@ var app = (function () {
       h.$on("click", e[3]),
       (m = new ae({
         props: {
+          label: "Help",
           $$slots: {
             default: [we],
           },
@@ -1565,6 +1575,7 @@ var app = (function () {
     return (
       (s = new ae({
         props: {
+          label: "Reload",
           $$slots: {
             default: [qe],
           },
@@ -1735,6 +1746,7 @@ var app = (function () {
     return (
       (D = new ae({
         props: {
+          label: e[18] ? "Pause" : "Play",
           $$slots: {
             default: [ht],
           },
@@ -1823,6 +1835,7 @@ var app = (function () {
               : (W.d(1), (W = I(e)), W && (W.c(), W.m(i, null))),
             (!P || 2048 & r[0]) && A !== (A = mt(e[11]) + "") && $(k, A);
           const s = {};
+          262144 & r[0] && (s.label = e[18] ? "Pause" : "Play"),
           (262144 & r[0]) | (128 & r[1]) &&
             (s.$$scope = {
               dirty: r,
