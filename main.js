@@ -380,7 +380,8 @@ var app = (function () {
             "px-2 py-2 uppercase tracking-widest bg-custom-mg border-none flex items-center font-semibold text-sm svelte-1r54uzk"
           ),
           Y(t, "bg-custom-positive", e[0]),
-          Y(t, "bg-custom-mg", e[1]);
+          Y(t, "bg-custom-mg", e[1]),
+          M(t, "aria-label", e[5]);
       },
       m(i, a) {
         g(i, t, a),
@@ -394,7 +395,8 @@ var app = (function () {
           (!n || 4 & r) &&
           f(o, i, e, e[2], n ? h(i, e[2], r, null) : m(e[2]), null),
           1 & r && Y(t, "bg-custom-positive", e[0]),
-          2 & r && Y(t, "bg-custom-mg", e[1]);
+          2 & r && Y(t, "bg-custom-mg", e[1]),
+          32 & r && M(t, "aria-label", e[5]);
       },
       i(e) {
         n || (Z(o, e), (n = !0));
@@ -411,11 +413,13 @@ var app = (function () {
   function oe(e, t, n) {
     let { $$slots: r = {}, $$scope: s } = t,
       { primary: i = !1 } = t,
-      { secondary: o = !1 } = t;
+      { secondary: o = !1 } = t,
+      { label: a = null } = t;
     return (
       (e.$$set = (e) => {
         "primary" in e && n(0, (i = e.primary)),
           "secondary" in e && n(1, (o = e.secondary)),
+          "label" in e && n(5, (a = e.label)),
           "$$scope" in e && n(2, (s = e.$$scope));
       }),
       [
@@ -426,6 +430,7 @@ var app = (function () {
         function (t) {
           L.call(this, e, t);
         },
+        a,
       ]
     );
   }
@@ -720,6 +725,7 @@ var app = (function () {
     return (
       (i = new ae({
         props: {
+          label: "About",
           $$slots: {
             default: [ge],
           },
@@ -731,6 +737,7 @@ var app = (function () {
       i.$on("click", e[1]),
       (a = new ae({
         props: {
+          label: "Support",
           $$slots: {
             default: [ye],
           },
@@ -742,6 +749,7 @@ var app = (function () {
       a.$on("click", e[2]),
       (h = new ae({
         props: {
+          label: "Stats",
           $$slots: {
             default: [ve],
           },
@@ -753,6 +761,7 @@ var app = (function () {
       h.$on("click", e[3]),
       (m = new ae({
         props: {
+          label: "Help",
           $$slots: {
             default: [we],
           },
@@ -1565,6 +1574,7 @@ var app = (function () {
     return (
       (s = new ae({
         props: {
+          label: "Reload",
           $$slots: {
             default: [qe],
           },
@@ -1735,6 +1745,7 @@ var app = (function () {
     return (
       (D = new ae({
         props: {
+          label: e[18] ? "Pause" : "Play",
           $$slots: {
             default: [ht],
           },
@@ -1828,6 +1839,7 @@ var app = (function () {
               dirty: r,
               ctx: e,
             }),
+            262144 & r[0] && (s.label = e[18] ? "Pause" : "Play"),
             D.$set(s),
             (!P || 33052 & r[0]) &&
               L !==
