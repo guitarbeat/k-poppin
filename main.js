@@ -435,6 +435,7 @@ var app = (function () {
         re(this, e, oe, ie, i, {
           primary: 0,
           secondary: 1,
+          ariaLabel: 5,
         });
     }
   }
