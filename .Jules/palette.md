@@ -1,0 +1,3 @@
+## 2025-04-08 - [Minified Svelte Accessibility Patching]
+**Learning:** Adding accessibility attributes to pre-bundled/minified Svelte components requires understanding the internal component lifecycle structure (`c`: create, `m`: mount, `p`: update, `d`: destroy). Specifically, props must be mapped to the component's internal state array indices (e.g., `e[5]`), and the render function must be manually patched to apply these attributes (e.g., `M(t, "aria-label", e[5])`).
+**Action:** When patching minified Svelte apps for accessibility, first identify the reusable component factory (like `ae` -> `oe`/`ie`), extend its state array to include the new prop (like `ariaLabel`), and then locate all instantiations (like `ke`, `Qe`) to pass the new prop.
