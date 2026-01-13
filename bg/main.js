@@ -3381,6 +3381,7 @@ var app = (function () {
               "focus:outline-none focus:border-custom-positive w-full p-3 pl-9 placeholder:text-custom-line bg-custom-bg text-custom-fg border-custom-mg"
             ),
             M(c, "id", "autoComplete"),
+            M(c, "aria-label", "Search for the song title"),
             M(c, "type", "search"),
             M(c, "dir", "ltr"),
             M(c, "spellcheck", "false"),
