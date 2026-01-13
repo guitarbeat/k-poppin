@@ -3315,6 +3315,7 @@ var app = (function () {
       (v = new ae({
         props: {
           secondary: !0,
+          label: "Skip current turn",
           $$slots: {
             default: [Mt],
           },
@@ -3327,6 +3328,7 @@ var app = (function () {
       (b = new ae({
         props: {
           primary: !0,
+          label: "Submit your guess",
           $$slots: {
             default: [$t],
           },
