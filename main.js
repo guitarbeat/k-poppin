@@ -4199,6 +4199,7 @@ var app = (function () {
       (d = new ae({
         props: {
           primary: !0,
+          label: "Share",
           $$slots: {
             default: [dn],
           },
@@ -4751,6 +4752,7 @@ var app = (function () {
       (u = new ae({
         props: {
           primary: !0,
+          label: "Play",
           $$slots: {
             default: [pn],
           },
