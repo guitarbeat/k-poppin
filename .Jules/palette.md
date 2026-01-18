@@ -9,3 +9,7 @@
 ## 2025-05-21 - [Search Input Accessibility]
 **Learning:** The autocomplete search input (autoComplete.js) relies on a placeholder and lacks an associated `<label>` or `aria-label`, making it inaccessible to screen readers.
 **Action:** Patched the `Dt` function in `main.js` and `bg/main.js` to explicitly add `aria-label="Search for the song title"` to the input element (variable `c`).
+
+## 2025-05-22 - [Progress Bar Accessibility]
+**Learning:** Custom progress bars implemented as nested divs lack semantic meaning for screen readers. They need `role="progressbar"` and `aria-valuenow` attributes that update dynamically with the visual width.
+**Action:** Patched the `Qe` component in `main.js` and `bg/main.js` to add ARIA attributes to the container (`i`) and update `aria-valuenow` in the component's update cycle (`p` function) alongside the style update.
