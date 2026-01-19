@@ -414,7 +414,7 @@ var app = (function () {
     let { $$slots: r = {}, $$scope: s } = t,
       { primary: i = !1 } = t,
       { secondary: o = !1 } = t,
-      { label: l = "" } = t;
+      { label: l = null } = t;
     return (
       (e.$$set = (e) => {
         "primary" in e && n(0, (i = e.primary)),
