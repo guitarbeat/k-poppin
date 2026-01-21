@@ -9,3 +9,7 @@
 ## 2025-05-21 - [Search Input Accessibility]
 **Learning:** The autocomplete search input (autoComplete.js) relies on a placeholder and lacks an associated `<label>` or `aria-label`, making it inaccessible to screen readers.
 **Action:** Patched the `Dt` function in `main.js` and `bg/main.js` to explicitly add `aria-label="Search for the song title"` to the input element (variable `c`).
+
+## 2025-05-21 - [Interactive Elements must be Buttons]
+**Learning:** Found a clickable `div` used for "Clear search" action. This breaks keyboard accessibility (no tab focus, no Enter/Space activation).
+**Action:** Converted `div` to `button`, added `type="button"`, `aria-label`, and reset styles (`bg-transparent`, `border-none`) to match the original design while enabling standard button behavior.
