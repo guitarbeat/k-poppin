@@ -1788,6 +1788,10 @@ var app = (function () {
             M(o, "class", "h-full absolute bg-custom-mg overflow-hidden"),
             T(o, "width", (e[15] ? e[16] : "100") + "%"),
             M(i, "class", "h-3 w-full relative overflow-hidden "),
+            M(i, "role", "progressbar"),
+            M(i, "aria-label", "Song progress"),
+            M(i, "aria-valuemin", "0"),
+            M(i, "aria-valuemax", "100"),
             M(r, "class", "max-w-screen-sm w-full mx-auto px-3 flex-col"),
             M(n, "class", "border-t border-custom-line"),
             M(m, "class", "flex items-center"),
@@ -1827,7 +1831,9 @@ var app = (function () {
           (e = n)[12] || 1 != e[0]
             ? N && (N.d(1), (N = null))
             : N || ((N = tt()), N.c(), N.m(t.parentNode, t)),
-            (!P || 1024 & r[0]) && T(a, "width", e[10] + "%"),
+            (!P || 1024 & r[0]) &&
+              (T(a, "width", e[10] + "%"),
+              M(i, "aria-valuenow", "" + Math.round(e[10]))),
             (!P || 98304 & r[0]) &&
               T(o, "width", (e[15] ? e[16] : "100") + "%"),
             I === (I = H(e)) && W
