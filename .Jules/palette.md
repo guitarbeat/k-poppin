@@ -13,3 +13,7 @@
 ## 2025-05-21 - [Reactive Progress Bar Accessibility]
 **Learning:** The custom progress bar uses `style.width` for visual updates but lacks semantic ARIA attributes (`role="progressbar"`, `aria-valuenow`).
 **Action:** Patched both the `c()` (creation) method to add static ARIA attributes and the `p()` (update) method to reactively update `aria-valuenow` based on the internal state variable `e[10]`.
+
+## 2025-05-21 - [Toast Accessibility]
+**Learning:** Dynamic "toast" messages (like "Copied to clipboard!") implemented as simple divs are not announced by screen readers.
+**Action:** Patched the `cn` function in `main.js` and `bg/main.js` to explicitly add `role="status"` (which implies `aria-live="polite"`) to the message container.

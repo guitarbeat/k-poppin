@@ -4538,6 +4538,7 @@ var app = (function () {
       c() {
         (t = w("div")),
           (t.textContent = "Copied to clipboard!"),
+          M(t, "role", "status"),
           M(
             t,
             "class",
