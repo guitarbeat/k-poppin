@@ -5156,6 +5156,8 @@ var app = (function () {
           M(r, "class", "absolute bg-custom-mg w-6"),
           T(r, "height", (e[15] / e[10]) * 100 + "%"),
           M(n, "class", "h-32 relative w-9 flex justify-center items-end"),
+          M(n, "role", "img"),
+          M(n, "aria-label", e[17] === e[9].length - 1 ? e[15] + " losses" : e[15] + " wins in " + (e[17] + 1) + " guess" + (0 === e[17] ? "" : "es")),
           M(
             a,
             "class",
@@ -5176,6 +5178,7 @@ var app = (function () {
       },
       p(e, t) {
         512 & t && u !== (u = (e[15] > 0 ? e[15] : " ") + "") && $(i, u),
+          512 & t && M(n, "aria-label", e[17] === e[9].length - 1 ? e[15] + " losses" : e[15] + " wins in " + (e[17] + 1) + " guess" + (0 === e[17] ? "" : "es")),
           22 & t &&
             Y(s, "bg-custom-positive", e[17] == e[1] - 1 && 0 != e[4] && e[2]),
           22 & t &&

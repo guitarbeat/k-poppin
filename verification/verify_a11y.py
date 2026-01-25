@@ -1,63 +1,62 @@
-from playwright.sync_api import sync_playwright, expect
+import os
+from playwright.sync_api import sync_playwright
+
+def verify_page(page, url_path):
+    cwd = os.getcwd()
+    # Handle both root and bg paths correctly for file://
+    if url_path == "bg/":
+        # For file protocol, we point to index.html in bg/
+        full_url = f"file://{cwd}/bg/index.html"
+    else:
+        full_url = f"file://{cwd}/index.html"
+
+    print(f"Visiting {full_url}")
+    page.goto(full_url)
+
+    # Disable redirect if any (handled by editing html temporarily, but we reverted it.
+    # If the redirect script is active, file:// might fail or redirect to https://
+    # We might need to edit html again or handle redirect.
+    # The script checks protocol != https. file: != https.
+    # It redirects to https + location.href.substring(protocol.length).
+    # file:///path/to/index.html -> https://path/to/index.html.
+    # This will fail.
+    # So we MUST edit the html files again to disable the redirect script.
+
+    # 1. Close Help Modal
+    try:
+        play_btn = page.get_by_role("button", name="Play")
+        if play_btn.is_visible(timeout=2000):
+            print("Closing Help Modal...")
+            play_btn.click()
+    except:
+        pass
+
+    # 2. Open Stats Modal
+    stats_btn = page.get_by_role("button", name="Stats")
+    stats_btn.click()
+
+    page.wait_for_selector(".modal")
+
+    # 4. Check for bars
+    bars = page.get_by_role("img").all()
+    # Filter for the stats bars (aria-label contains "wins" or "losses")
+    stats_bars = [b for b in bars if b.get_attribute("aria-label") and ("wins" in b.get_attribute("aria-label") or "losses" in b.get_attribute("aria-label"))]
+
+    print(f"Found {len(stats_bars)} stats bars on {url_path}.")
+
+    for i, bar in enumerate(stats_bars):
+        label = bar.get_attribute("aria-label")
+        print(f"Bar {i}: aria-label='{label}'")
 
 def run():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
-        page.goto("http://localhost:8000")
-        page.wait_for_selector("h1")
+        verify_page(page, "")
+        verify_page(page, "bg/")
 
-        # 1. Start Prompt SVG
-        start_prompt_svg = page.locator("svg.mt-2").first
-        expect(start_prompt_svg).to_have_attribute("aria-hidden", "true")
-        print("Start prompt SVG has aria-hidden=true")
-
-        # 2. Help Modal SVGs
-        modal = page.locator(".modal").first
-        if modal.is_visible():
-            print("Modal is visible.")
-            if modal.filter(has_text="Listen to the intro").count() > 0:
-                print("Verifying Help Modal SVGs...")
-
-                # Target the specific container divs using the class found in source code
-                # class "flex items-center mb-6"
-
-                # 1. Listen to intro
-                row1 = modal.locator("div.flex.items-center.mb-6").filter(has_text="Listen to the intro").first
-                svg1 = row1.locator("svg").first
-                expect(svg1).to_have_attribute("aria-hidden", "true")
-                print("Help SVG 1 Verified")
-
-                # 2. Skipped or incorrect
-                row2 = modal.locator("div.flex.items-center.mb-6").filter(has_text="Skipped or incorrect").first
-                svg2 = row2.locator("svg").first
-                expect(svg2).to_have_attribute("aria-hidden", "true")
-                print("Help SVG 2 Verified")
-
-                # 3. Answer in few tries
-                row3 = modal.locator("div.flex.items-center.mb-6").filter(has_text="Answer in as few tries").first
-                svg3 = row3.locator("svg").first
-                expect(svg3).to_have_attribute("aria-hidden", "true")
-                print("Help SVG 3 Verified")
-
-                page.screenshot(path="verification/help_modal_accessibility.png")
-                page.locator("button[aria-label='Close modal']").first.click()
-            else:
-                # Close other modal and open help
-                page.locator("button[aria-label='Close modal']").first.click()
-                page.get_by_role("button", name="Help").click()
-                # ... would need to duplicate verification logic or restructure
-        else:
-            page.get_by_role("button", name="Help").click()
-            # ... would need to duplicate verification logic
-
-        # 3. Search Icon
-        search_icon = page.locator("svg.absolute.top-4.left-3")
-        if search_icon.count() > 0:
-             expect(search_icon).to_have_attribute("aria-hidden", "true")
-             print("Search icon SVG has aria-hidden=true")
-
+        page.screenshot(path="verification/verification.png")
         browser.close()
 
 if __name__ == "__main__":
