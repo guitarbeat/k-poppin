@@ -593,6 +593,7 @@ var app = (function () {
     return {
       c() {
         (t = k("svg")),
+          M(t, "aria-hidden", "true"),
           (n = k("circle")),
           (r = k("line")),
           (s = k("line")),
@@ -631,6 +632,7 @@ var app = (function () {
     return {
       c() {
         (t = k("svg")),
+          M(t, "aria-hidden", "true"),
           (n = k("path")),
           M(
             n,
@@ -661,6 +663,7 @@ var app = (function () {
     return {
       c() {
         (t = k("svg")),
+          M(t, "aria-hidden", "true"),
           (n = k("path")),
           M(
             n,
@@ -691,6 +694,7 @@ var app = (function () {
     return {
       c() {
         (t = k("svg")),
+          M(t, "aria-hidden", "true"),
           (n = k("circle")),
           (r = k("path")),
           (s = k("line")),
@@ -1112,6 +1116,7 @@ var app = (function () {
     return {
       c() {
         (t = k("svg")),
+          M(t, "aria-hidden", "true"),
           (n = k("rect")),
           M(n, "x", "3"),
           M(n, "y", "3"),
@@ -1155,6 +1160,8 @@ var app = (function () {
           M(r, "x2", "18"),
           M(r, "y2", "18"),
           M(t, "class", "text-custom-negative"),
+          M(t, "role", "img"),
+          M(t, "aria-label", "Incorrect"),
           M(t, "xmlns", "http://www.w3.org/2000/svg"),
           M(t, "width", "24"),
           M(t, "height", "24"),
@@ -1626,6 +1633,7 @@ var app = (function () {
     return {
       c() {
         (t = k("svg")),
+          M(t, "aria-hidden", "true"),
           (n = k("path")),
           M(n, "d", "M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"),
           M(t, "xmlns", "http://www.w3.org/2000/svg"),
