@@ -3329,7 +3329,7 @@ var app = (function () {
       (v = new ae({
         props: {
           secondary: !0,
-          label: "Skip current turn",
+          label: "Skip current turn (+" + (e[0] || "1.5") + "s)",
           $$slots: {
             default: [Mt],
           },
@@ -3434,10 +3434,11 @@ var app = (function () {
           16 & t && D(c, e[4]);
           const n = {};
           32775 & t &&
-            (n.$$scope = {
+            ((n.$$scope = {
               dirty: t,
               ctx: e,
             }),
+            (n.label = "Skip current turn (+" + (e[0] || "1.5") + "s)")),
             v.$set(n);
           const r = {};
           32768 & t &&
