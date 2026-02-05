@@ -17,3 +17,7 @@
 ## 2025-05-21 - [Toast Accessibility]
 **Learning:** Dynamic "toast" messages (like "Copied to clipboard!") implemented as simple divs are not announced by screen readers.
 **Action:** Patched the `cn` function in `main.js` and `bg/main.js` to explicitly add `role="status"` (which implies `aria-live="polite"`) to the message container.
+
+## 2025-05-21 - [Button Name Calculation]
+**Learning:** The reusable button component defaulted to `label=""`, causing it to render `aria-label=""` even when content was present (like "Share" or "Play"), effectively silencing the button name for screen readers.
+**Action:** Patched the `oe` component factory in `main.js` and `bg/main.js` to default `label` to `null` instead of `""`, allowing the internal `M` helper to correctly remove the `aria-label` attribute when no label is provided.
