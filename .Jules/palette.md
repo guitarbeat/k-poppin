@@ -17,3 +17,7 @@
 ## 2025-05-21 - [Toast Accessibility]
 **Learning:** Dynamic "toast" messages (like "Copied to clipboard!") implemented as simple divs are not announced by screen readers.
 **Action:** Patched the `cn` function in `main.js` and `bg/main.js` to explicitly add `role="status"` (which implies `aria-live="polite"`) to the message container.
+
+## 2025-05-21 - [Invisible Focus States]
+**Learning:** `outline: none` in global CSS combined with `border-style: none` on buttons creates completely invisible focus states for keyboard users.
+**Action:** Always verify keyboard navigation. Fix by adding `button:focus-visible` with a high-contrast outline (using theme variables like `--color-line`) while keeping `outline: none` for mouse users if desired.
