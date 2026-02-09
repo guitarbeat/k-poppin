@@ -17,3 +17,7 @@
 ## 2025-05-21 - [Toast Accessibility]
 **Learning:** Dynamic "toast" messages (like "Copied to clipboard!") implemented as simple divs are not announced by screen readers.
 **Action:** Patched the `cn` function in `main.js` and `bg/main.js` to explicitly add `role="status"` (which implies `aria-live="polite"`) to the message container.
+
+## 2025-05-21 - [Interactive Elements must be Buttons]
+**Learning:** Found a clickable `div` used for "Clear search" action. This breaks keyboard accessibility (no tab focus, no Enter/Space activation).
+**Action:** Converted `div` to `button`, added `type="button"`, `aria-label`, and reset styles (`bg-transparent`, `border-none`) to match the original design while enabling standard button behavior.
