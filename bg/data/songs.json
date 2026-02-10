@@ -1,9 +1,4 @@
-// Boy Group K-Pop Heardle Songs Database
-// because of autocomplete bug
-// if the answer starts with a number, need to precede it with a space (" ")
-// otherwise it won't be available
-
-let songs = [
+[
   {
     "url": "https://soundcloud.com/schwd/really-really-winner?in=ap4zljw02nzh/sets/k-pop",
     "answer": "SONGABTME - REALLY REALLY - WINNER"
@@ -64,4 +59,4 @@ let songs = [
     "url": "https://soundcloud.com/user-879984599/say-my-name-say-yes-boys?in=ap4zljw02nzh/sets/k-pop",
     "answer": " ૮ ᴗ͈ ̫ ᴗ͈ ྀིა - Say My Name - Say Yes! 보이즈 플래닛 Boys Planet 원본 음원"
   }
-];
+]

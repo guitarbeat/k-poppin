@@ -3199,7 +3199,16 @@ var app = (function () {
       }),
         (e.exports = n());
     }),
-    kt = _t(2);
+    kt = (function() {
+      const c = new Map();
+      const i = _t(2);
+      return function(s) {
+        if (c.has(s)) return c.get(s);
+        const r = i(s);
+        c.set(s, r);
+        return r;
+      };
+    })();
 
   function _t(e) {
     if (
@@ -3498,6 +3507,7 @@ var app = (function () {
         const e = new wt({
           placeHolder: "Know it? Search for the title",
           threshold: 1,
+          debounce: 300,
           wrapper: !1,
           resultsList: {
             maxResults: 10,
@@ -9107,15 +9117,7 @@ var app = (function () {
       );
     })();
   });
-  const Cn = ue(
-      songs.map(song => song.answer)
-    ),
-    On = {
-      subscribe: ue(
-        songs,
-        Pn
-      ).subscribe,
-    };
+  let Cn, On;
   var Pn;
   const { document: An, window: Ln } = X;
 
@@ -9836,12 +9838,18 @@ var app = (function () {
       },
     ];
   }
-  return new (class extends se {
-    constructor(e) {
-      super(), re(this, e, jn, En, i, {}, null, [-1, -1]);
-    }
-  })({
-    target: document.body,
-    props: {},
+  fetch('data/songs.json').then(r=>r.json()).then(data => {
+      window.songs = data;
+      Cn = ue(data.map(song => song.answer));
+      On = { subscribe: ue(data, Pn).subscribe };
+
+      new (class extends se {
+        constructor(e) {
+          super(), re(this, e, jn, En, i, {}, null, [-1, -1]);
+        }
+      })({
+        target: document.body,
+        props: {},
+      });
   });
 })();
