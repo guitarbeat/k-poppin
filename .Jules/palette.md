@@ -21,3 +21,6 @@
 ## 2025-05-21 - [Button Name Calculation]
 **Learning:** The reusable button component defaulted to `label=""`, causing it to render `aria-label=""` even when content was present (like "Share" or "Play"), effectively silencing the button name for screen readers.
 **Action:** Patched the `oe` component factory in `main.js` and `bg/main.js` to default `label` to `null` instead of `""`, allowing the internal `M` helper to correctly remove the `aria-label` attribute when no label is provided.
+## 2025-10-24 - [Updating Dynamic Button Labels in Minified Svelte]
+**Learning:** To make the "Skip" button accessible with dynamic content (time penalty), I patched the `ae` component instantiation and its update (`p`) function in the minified `main.js`. Since `main.js` is the only source, direct patching is required.
+**Action:** When updating component props in this codebase, ensure both the initial `new Component({ props: ... })` and the reactive `$set` call in the `p` function are updated to handle dynamic values from the context (`e`).

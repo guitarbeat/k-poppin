@@ -3338,7 +3338,7 @@ var app = (function () {
       (v = new ae({
         props: {
           secondary: !0,
-          label: "Skip current turn",
+          label: "Skip current turn (+" + (e[0] || "1.5") + "s)",
           $$slots: {
             default: [Mt],
           },
@@ -3445,10 +3445,11 @@ var app = (function () {
           16 & t && D(c, e[4]);
           const n = {};
           32775 & t &&
-            (n.$$scope = {
+            ((n.$$scope = {
               dirty: t,
               ctx: e,
             }),
+            (n.label = "Skip current turn (+" + (e[0] || "1.5") + "s)")),
             v.$set(n);
           const r = {};
           32768 & t &&
@@ -9621,15 +9622,19 @@ var app = (function () {
   }
 
   function jn(e, t, n) {
-    if (x(Vt.startDate) >= songs.length) {
-      console.log('songs', songs.length)
-      console.log('day', x(Vt.startDate))
-      console.log('out of songs')
-    }
     let r, s, i, o;
     u(e, Cn, (e) => n(26, (r = e))), u(e, On, (e) => n(27, (s = e)));
-    let a = x(Vt.startDate),
-      l = {
+    let a = x(Vt.startDate);
+
+    // Handle case where day number exceeds available songs by using modulo
+    if (a >= songs.length) {
+      console.log('songs', songs.length)
+      console.log('day', a)
+      console.log('wrapping around to song', a % songs.length)
+      a = a % songs.length;
+    }
+
+    let l = {
         url: s[a].url,
         correctAnswer: s[a].answer,
         id: a,
@@ -9647,13 +9652,33 @@ var app = (function () {
         ((c = "webkitHidden"), (d = "webkitvisibilitychange")),
       void 0 === document.addEventListener ||
         void 0 === c ||
-        document.addEventListener(
-          d,
-          function () {
-            document[c] || a === x(Vt.startDate) || location.reload(!0);
-          },
-          !1
-        );
+        (function () {
+          var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+          var lastReloadTs = 0;
+          function maybeReloadOnVisible() {
+            try {
+              var now = Date.now();
+              if (now - lastReloadTs < 1500) return; // throttle
+              if (!document[c] && a !== x(Vt.startDate)) {
+                // Avoid aggressive reloads on iOS Safari which can fire repeatedly
+                if (isIOS) return;
+                lastReloadTs = now;
+                location.reload(!0);
+              }
+            } catch (e) {}
+          }
+          document.addEventListener(d, maybeReloadOnVisible, !1);
+          // Also handle bfcache restores safely
+          window.addEventListener(
+            "pageshow",
+            function (evt) {
+              if (evt && evt.persisted) {
+                maybeReloadOnVisible();
+              }
+            },
+            !1
+          );
+        })();
     let h,
       f,
       m = 0;
