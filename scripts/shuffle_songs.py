@@ -4,24 +4,23 @@ import os
 import random
 import json
 import shutil
-import sys
 from difflib import SequenceMatcher
 from urllib.parse import urlparse
 import unicodedata
 
 REPO_ROOT = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
-DEFAULT_INPUT = os.path.join(REPO_ROOT, 'data', 'songs.json')
+DEFAULT_INPUT = os.path.join(REPO_ROOT, "data", "songs.json")
 
 
 def normalize_string(s: str) -> str:
-    s = unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore').decode('ASCII')
-    return ' '.join(s.lower().split())
+    s = unicodedata.normalize("NFKD", s).encode("ASCII", "ignore").decode("ASCII")
+    return " ".join(s.lower().split())
 
 
 def normalize_url(url: str) -> str:
     try:
         parsed = urlparse(url)
-        path = parsed.path.rstrip('/')
+        path = parsed.path.rstrip("/")
         return path
     except Exception:
         return url
@@ -54,21 +53,23 @@ def find_duplicate_groups(songs, similarity_threshold=0.85):
     return groups
 
 
-def shuffle_songs(input_file, remove_duplicates=True, use_seed=None, backup=False, show_duplicates=False, similarity_threshold=0.85):
+def shuffle_songs(
+    input_file, remove_duplicates=True, use_seed=None, backup=False, show_duplicates=False, similarity_threshold=0.85
+):
     if use_seed is not None:
         random.seed(use_seed)
         print(f"Using random seed: {use_seed}")
 
     if backup:
         try:
-            previous_file = input_file + '.bak'
+            previous_file = input_file + ".bak"
             shutil.copy2(input_file, previous_file)
             print(f"Saved backup as {os.path.relpath(previous_file, REPO_ROOT)}")
         except Exception as e:
             print(f"Warning: Failed to create backup: {e}")
 
     try:
-        with open(input_file, 'r', encoding='utf-8') as f:
+        with open(input_file, "r", encoding="utf-8") as f:
             songs = json.load(f)
     except Exception as e:
         print(f"Error reading JSON file {input_file}: {e}")
@@ -124,21 +125,27 @@ def shuffle_songs(input_file, remove_duplicates=True, use_seed=None, backup=Fals
     random.shuffle(songs_to_shuffle)
 
     try:
-        with open(input_file, 'w', encoding='utf-8') as f:
+        with open(input_file, "w", encoding="utf-8") as f:
             json.dump(songs_to_shuffle, f, indent=2, ensure_ascii=False)
-        print(f"Successfully shuffled {len(songs_to_shuffle)} songs and updated {os.path.relpath(input_file, REPO_ROOT)}")
+        print(
+            f"Successfully shuffled {len(songs_to_shuffle)} songs and updated {os.path.relpath(input_file, REPO_ROOT)}"
+        )
     except Exception as e:
         print(f"Error writing to file {input_file}: {e}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Shuffle songs in data/songs.json')
-    parser.add_argument('--input', '-i', default=DEFAULT_INPUT, help='Input JSON file containing songs array')
-    parser.add_argument('--keep-duplicates', '-k', action='store_true', help='Keep duplicate songs (default: remove duplicates)')
-    parser.add_argument('--seed', '-s', type=int, help='Random seed for reproducible shuffling')
-    parser.add_argument('--backup', '-b', action='store_true', help='Create an additional .bak backup file')
-    parser.add_argument('--show-duplicates', '-d', action='store_true', help='Show duplicate songs')
-    parser.add_argument('--similarity-threshold', '-t', type=float, default=0.85, help='Similarity threshold (0.0..1.0)')
+    parser = argparse.ArgumentParser(description="Shuffle songs in data/songs.json")
+    parser.add_argument("--input", "-i", default=DEFAULT_INPUT, help="Input JSON file containing songs array")
+    parser.add_argument(
+        "--keep-duplicates", "-k", action="store_true", help="Keep duplicate songs (default: remove duplicates)"
+    )
+    parser.add_argument("--seed", "-s", type=int, help="Random seed for reproducible shuffling")
+    parser.add_argument("--backup", "-b", action="store_true", help="Create an additional .bak backup file")
+    parser.add_argument("--show-duplicates", "-d", action="store_true", help="Show duplicate songs")
+    parser.add_argument(
+        "--similarity-threshold", "-t", type=float, default=0.85, help="Similarity threshold (0.0..1.0)"
+    )
     args = parser.parse_args()
 
     shuffle_songs(
@@ -151,5 +158,5 @@ def main():
     )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

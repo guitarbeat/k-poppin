@@ -21,3 +21,13 @@ venv/
 # Backup songs list
 music-stuff/previous_songs.js
 node_modules
+node_modules/
+__pycache__/
+.pytest_cache/
+playwright-report/
+.ruff_cache/
+test-results/
+dist/
+build/
+.env
+verification/*.png

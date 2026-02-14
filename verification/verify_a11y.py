@@ -1,26 +1,25 @@
 import os
+import sys
 from playwright.sync_api import sync_playwright
 
-def verify_page(page, url_path):
+
+def get_base_url():
+    if "BASE_URL" in os.environ:
+        return os.environ["BASE_URL"]
     cwd = os.getcwd()
-    # Handle both root and bg paths correctly for file://
+    return f"file://{cwd}"
+
+
+def verify_page(page, url_path):
+    base_url = get_base_url()
+    # Handle both root and bg paths correctly
     if url_path == "bg/":
-        # For file protocol, we point to index.html in bg/
-        full_url = f"file://{cwd}/bg/index.html"
+        full_url = f"{base_url}/bg/index.html"
     else:
-        full_url = f"file://{cwd}/index.html"
+        full_url = f"{base_url}/index.html"
 
     print(f"Visiting {full_url}")
     page.goto(full_url)
-
-    # Disable redirect if any (handled by editing html temporarily, but we reverted it.
-    # If the redirect script is active, file:// might fail or redirect to https://
-    # We might need to edit html again or handle redirect.
-    # The script checks protocol != https. file: != https.
-    # It redirects to https + location.href.substring(protocol.length).
-    # file:///path/to/index.html -> https://path/to/index.html.
-    # This will fail.
-    # So we MUST edit the html files again to disable the redirect script.
 
     # 1. Close Help Modal
     try:
@@ -28,7 +27,7 @@ def verify_page(page, url_path):
         if play_btn.is_visible(timeout=2000):
             print("Closing Help Modal...")
             play_btn.click()
-    except:
+    except Exception:
         pass
 
     # 2. Open Stats Modal
@@ -40,7 +39,15 @@ def verify_page(page, url_path):
     # 4. Check for bars
     bars = page.get_by_role("img").all()
     # Filter for the stats bars (aria-label contains "wins" or "losses")
-    stats_bars = [b for b in bars if b.get_attribute("aria-label") and ("wins" in b.get_attribute("aria-label") or "losses" in b.get_attribute("aria-label"))]
+    stats_bars = [
+        b
+        for b in bars
+        if b.get_attribute("aria-label")
+        and (
+            "wins" in b.get_attribute("aria-label")
+            or "losses" in b.get_attribute("aria-label")
+        )
+    ]
 
     print(f"Found {len(stats_bars)} stats bars on {url_path}.")
 
@@ -48,16 +55,29 @@ def verify_page(page, url_path):
         label = bar.get_attribute("aria-label")
         print(f"Bar {i}: aria-label='{label}'")
 
+    if len(stats_bars) == 0:
+        raise Exception("No stats bars found!")
+
+
 def run():
+    success = False
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
-        verify_page(page, "")
-        verify_page(page, "bg/")
+        try:
+            verify_page(page, "")
+            verify_page(page, "bg/")
+            page.screenshot(path="verification/verification.png")
+            success = True
+        except Exception as e:
+            print(f"Verification failed: {e}")
 
-        page.screenshot(path="verification/verification.png")
         browser.close()
+
+    if not success:
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     run()
