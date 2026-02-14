@@ -1,8 +1,13 @@
 # K-Pop Girl Group Heardle
 
+[![CI](https://github.com/guitarbeat/k-poppin/actions/workflows/ci.yml/badge.svg)](https://github.com/guitarbeat/k-poppin/actions/workflows/ci.yml)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 Remixed and extended from the original K-Pop GG Heardle (which ran out of songs).
 
 ## How to add a song (for collaborators)
+
 - Edit `data/songs.js` and append a new entry like:
   ```js
   { url: "https://soundcloud.com/artist/track", answer: "ARTIST - Track Title" }
@@ -30,6 +35,7 @@ This project includes a Python script called `customize.py` that automates the c
 1. Open `customize.py` and edit the `DEFAULT_CONFIG` dictionary near the top of the file. Update the values for your project name, artist, start date and any other options you want to change.
 
 2. Run the script:
+
    ```
    python customize.py
    ```
@@ -71,6 +77,7 @@ Now you're done with all the necessary changes. Congrats! Read on for optional e
 All customization values live in the `DEFAULT_CONFIG` block inside `customize.py`. Edit that dictionary to change your Heardle game. Here's what you can configure:
 
 ### Project Information
+
 - `app_name`: The name of your app (used in URLs and file paths)
 - `app_display_name`: The display name of your app (shown to users)
 - `glitch_name`: Your Glitch username

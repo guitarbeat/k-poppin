@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run JS Linting
+        run: npm run lint
+
+      - name: Run JS Formatting Check
+        run: npm run format:check
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install ruff black
+
+      - name: Run Python Formatting Check
+        run: black --check .
+
+      - name: Run Python Linting
+        run: ruff check .
+
+      - name: Run Song Validation
+        run: python scripts/validate_songs.py
