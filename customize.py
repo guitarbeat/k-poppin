@@ -199,6 +199,7 @@ def locate_about_function(file_path):
         file_path, r'<p class="mb-3">A clone of <a href="[^"]+" title="Heardle">Heardle</a>'
     )
 
+
 def locate_kofi_function(file_path):
     return find_function_name_by_usage(file_path, r'ko-fi\.com/[^"]+')
 

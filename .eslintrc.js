@@ -82,6 +82,28 @@ module.exports = {
         'no-useless-concat': 'off',
         'prefer-promise-reject-errors': 'off',
         'no-self-compare': 'off',
+
+        // Formatting conflicts
+        indent: 'off',
+        quotes: 'off',
+        'operator-linebreak': 'off',
+        'comma-dangle': 'off',
+        'arrow-spacing': 'off',
+        'arrow-parens': 'off',
+        'wrap-iife': 'off',
+        'prefer-template': 'off',
+        'quote-props': 'off',
+        'no-else-return': 'off',
+        'array-callback-return': 'off',
+
+        // Remaining formatting conflicts
+        'space-in-parens': 'off',
+        'object-curly-newline': 'off',
+        'nonblock-statement-body-position': 'off',
+        curly: 'off',
+        'no-confusing-arrow': 'off',
+        'implicit-arrow-linebreak': 'off',
+        'function-paren-newline': 'off',
       },
     },
     {

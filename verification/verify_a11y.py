@@ -43,10 +43,7 @@ def verify_page(page, url_path):
         b
         for b in bars
         if b.get_attribute("aria-label")
-        and (
-            "wins" in b.get_attribute("aria-label")
-            or "losses" in b.get_attribute("aria-label")
-        )
+        and ("wins" in b.get_attribute("aria-label") or "losses" in b.get_attribute("aria-label"))
     ]
 
     print(f"Found {len(stats_bars)} stats bars on {url_path}.")
