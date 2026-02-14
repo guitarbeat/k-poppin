@@ -2,12 +2,20 @@ import os
 import sys
 from playwright.sync_api import sync_playwright
 
-def verify_page(page, url_path, screenshot_path):
+
+def get_base_url():
+    if "BASE_URL" in os.environ:
+        return os.environ["BASE_URL"]
     cwd = os.getcwd()
+    return f"file://{cwd}"
+
+
+def verify_page(page, url_path, screenshot_path):
+    base_url = get_base_url()
     if url_path == "bg/":
-        full_url = f"file://{cwd}/bg/index.html"
+        full_url = f"{base_url}/bg/index.html"
     else:
-        full_url = f"file://{cwd}/index.html"
+        full_url = f"{base_url}/index.html"
 
     print(f"Visiting {full_url}")
     page.goto(full_url)
@@ -24,7 +32,7 @@ def verify_page(page, url_path, screenshot_path):
     # 2. Check Skip Button Label
     try:
         page.wait_for_selector("button[aria-label^='Skip']", timeout=5000)
-    except:
+    except Exception:
         print("Could not find Skip button by selector.")
 
     buttons = page.get_by_role("button").all()
@@ -47,26 +55,36 @@ def verify_page(page, url_path, screenshot_path):
             print(f"Screenshot saved to {screenshot_path}")
         else:
             print("FAILURE: Label missing time penalty.")
-            sys.exit(1)
+            raise Exception("Label missing time penalty")
     else:
         print("FAILURE: Skip button not found.")
-        sys.exit(1)
+        raise Exception("Skip button not found")
+
 
 def run():
+    success = False
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
 
-        print("--- Verifying Girl Group Version ---")
-        page = browser.new_page()
-        verify_page(page, "", "verification/skip_label_verification_gg.png")
-        page.close()
+        try:
+            print("--- Verifying Girl Group Version ---")
+            page = browser.new_page()
+            verify_page(page, "", "verification/skip_label_verification_gg.png")
+            page.close()
 
-        print("\n--- Verifying Boy Group Version ---")
-        page = browser.new_page()
-        verify_page(page, "bg/", "verification/skip_label_verification_bg.png")
-        page.close()
+            print("\n--- Verifying Boy Group Version ---")
+            page = browser.new_page()
+            verify_page(page, "bg/", "verification/skip_label_verification_bg.png")
+            page.close()
+            success = True
+        except Exception as e:
+            print(f"Verification failed: {e}")
 
         browser.close()
+
+    if not success:
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     run()

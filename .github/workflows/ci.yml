@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Lint JavaScript
+        run: npm run lint
+
+      - name: Check JavaScript Formatting
+        run: npm run format:check
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: pip install ruff black
+
+      - name: Lint Python
+        run: ruff check .
+
+      - name: Check Python Formatting
+        run: black --check .
+
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Validate Songs JSON
+        run: python3 scripts/validate_songs.py
+
+      - name: Start HTTP Server
+        run: python3 -m http.server 8000 &
+
+      - name: Run Frontend Verification
+        env:
+          BASE_URL: http://localhost:8000
+        run: |
+          python3 verification/verify_load.py
+          python3 verification/verify_bg_load.py
+          python3 verification/verify_a11y.py
+          python3 verification/verify_skip_label.py
+
+  automerge:
+    needs: [lint, verify]
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Auto-merge
+        run: gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

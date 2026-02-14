@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@600&display=swap');
 *,
 ::before,
 ::after {
@@ -17,9 +17,16 @@ body {
   margin: 0;
 }
 body {
-  font-family: system-ui, -apple-system,
-    /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family:
+    system-ui,
+    -apple-system,
+    /* Firefox supports this but not yet `system-ui` */ 'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji';
 }
 hr {
   height: 0;
@@ -37,8 +44,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 1em;
 }
 small {
@@ -76,7 +82,7 @@ select {
   text-transform: none;
 }
 button,
-[type="button"] {
+[type='button'] {
   -webkit-appearance: button;
 }
 ::-moz-focus-inner {
@@ -93,7 +99,7 @@ progress {
 ::-webkit-outer-spin-button {
   height: auto;
 }
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
@@ -137,7 +143,10 @@ ul {
   padding: 0;
 }
 html {
-  font-family: Noto Sans, ui-sans-serif, system-ui;
+  font-family:
+    Noto Sans,
+    ui-sans-serif,
+    system-ui;
   line-height: 1.5;
 }
 body {
@@ -177,7 +186,7 @@ textarea::placeholder {
   color: #9ca3af;
 }
 button,
-[role="button"] {
+[role='button'] {
   cursor: pointer;
 }
 table {
@@ -209,8 +218,9 @@ pre,
 code,
 kbd,
 samp {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
 }
 img,
 svg,
@@ -660,7 +670,10 @@ video {
   text-align: center;
 }
 .font-serif {
-  font-family: Noto Serif Display, ui-serif, Georgia;
+  font-family:
+    Noto Serif Display,
+    ui-serif,
+    Georgia;
 }
 .text-xs {
   font-size: 0.75rem;
@@ -748,9 +761,8 @@ video {
   --tw-saturate: var(--tw-empty, /*!*/ /*!*/);
   --tw-sepia: var(--tw-empty, /*!*/ /*!*/);
   --tw-drop-shadow: var(--tw-empty, /*!*/ /*!*/);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
-    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
-    var(--tw-sepia) var(--tw-drop-shadow);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale)
+    var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 html,
 body {
@@ -786,13 +798,13 @@ a:active {
   text-indent: 0.25em;
 }
 :root {
-  --color-positive: #87CEEB; /* Submit button */
-  --color-negative: #4682B4; /* Incorrect answer */
-  --color-fg: #FFFFFF;       /* Font color and accents */
-  --color-mg: #333333;       /* Skip button, progress bar, line colour for inactive guesses */
-  --color-bg: #000000;       /* Page background colour */
-  --color-line: #87CEEB;     /* Line color for current guess box, top line, and song player lines */
-  --color-highlight: #4A90E2; /* Blue highlight for boy group version */
+  --color-positive: #87ceeb; /* Submit button */
+  --color-negative: #4682b4; /* Incorrect answer */
+  --color-fg: #ffffff; /* Font color and accents */
+  --color-mg: #333333; /* Skip button, progress bar, line colour for inactive guesses */
+  --color-bg: #000000; /* Page background colour */
+  --color-line: #87ceeb; /* Line color for current guess box, top line, and song player lines */
+  --color-highlight: #4a90e2; /* Blue highlight for boy group version */
 }
 @media (min-width: 640px) {
 }
@@ -841,11 +853,11 @@ a:active {
 }
 
 .version-button.boy-group {
-  color: #87CEEB;
+  color: #87ceeb;
 }
 
 .version-button.girl-group {
-  color: #FF69B4;
+  color: #ff69b4;
 }
 
 .version-button .emoji {
@@ -863,14 +875,14 @@ a:active {
     top: 8px;
     right: 8px;
   }
-  
+
   .version-button {
     padding: 10px 14px;
     font-size: 15px;
     min-height: 48px; /* Larger touch target for mobile */
     gap: 8px;
   }
-  
+
   .version-button .emoji {
     font-size: 18px;
   }
@@ -881,14 +893,14 @@ a:active {
     top: 6px;
     right: 6px;
   }
-  
+
   .version-button {
     padding: 12px 16px;
     font-size: 16px;
     min-height: 52px; /* Even larger for small screens */
     gap: 10px;
   }
-  
+
   .version-button .emoji {
     font-size: 20px;
   }
@@ -909,12 +921,12 @@ a:active {
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   }
-  
+
   .version-button:active {
     transform: scale(0.98);
     background: rgba(0, 0, 0, 0.95);
   }
-  
+
   /* Ensure button is always visible and accessible */
   .version-switcher {
     /* Prevent button from being cut off on small screens */
@@ -928,7 +940,7 @@ a:active {
     top: 4px;
     right: 4px;
   }
-  
+
   .version-button {
     padding: 8px 12px;
     min-height: 44px;
@@ -947,15 +959,17 @@ a:active {
 @media (hover: none) and (pointer: coarse) {
   .version-button {
     /* Remove hover effects on touch devices */
-    transition: transform 0.1s ease, background-color 0.1s ease;
+    transition:
+      transform 0.1s ease,
+      background-color 0.1s ease;
   }
-  
+
   .version-button:hover {
     transform: none;
     background: rgba(0, 0, 0, 0.85);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
-  
+
   .version-button:active {
     transform: scale(0.95);
     background: rgba(0, 0, 0, 0.95);
@@ -964,7 +978,7 @@ a:active {
 
 /* Focus states for keyboard navigation */
 .version-button:focus {
-  outline: 2px solid #4A90E2;
+  outline: 2px solid #4a90e2;
   outline-offset: 2px;
 }
 
@@ -1001,10 +1015,10 @@ a:active {
   background: var(--color-mg) !important;
   color: var(--color-fg);
 }
-.autoComplete_wrapper[aria-expanded="true"] #autoComplete {
+.autoComplete_wrapper[aria-expanded='true'] #autoComplete {
   border-radius: 0 0 4px 4px;
 }
-input[type="textfield"] {
+input[type='textfield'] {
   -webkit-appearance: none;
 }
 #autoComplete {
@@ -1082,7 +1096,7 @@ button.svelte-1r54uzk {
 }
 .gg-loadbar-sound.svelte-15swa4o::after,
 .gg-loadbar-sound.svelte-15swa4o::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
 }
