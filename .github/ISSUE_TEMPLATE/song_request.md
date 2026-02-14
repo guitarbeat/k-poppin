@@ -1,7 +1,7 @@
 ---
 name: Song request
 description: Suggest a song to add to the game
-labels: ["song request"]
+labels: ['song request']
 body:
   - type: input
     id: url

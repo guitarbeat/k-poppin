@@ -1,5 +1,7 @@
-from playwright.sync_api import sync_playwright
 import os
+
+from playwright.sync_api import sync_playwright
+
 
 def test_load():
     cwd = os.getcwd()
@@ -11,7 +13,10 @@ def test_load():
         page = browser.new_page()
 
         # Listen for console errors
-        page.on("console", lambda msg: print(f"CONSOLE: {msg.text}") if msg.type == "error" else None)
+        page.on(
+            "console",
+            lambda msg: print(f"CONSOLE: {msg.text}") if msg.type == "error" else None,
+        )
         page.on("pageerror", lambda err: print(f"PAGE ERROR: {err}"))
 
         page.goto(file_path)
@@ -30,6 +35,7 @@ def test_load():
             print(f"Failed to load app: {e}")
 
         browser.close()
+
 
 if __name__ == "__main__":
     test_load()

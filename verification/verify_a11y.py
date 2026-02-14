@@ -1,5 +1,7 @@
 import os
+
 from playwright.sync_api import sync_playwright
+
 
 def verify_page(page, url_path):
     cwd = os.getcwd()
@@ -40,13 +42,19 @@ def verify_page(page, url_path):
     # 4. Check for bars
     bars = page.get_by_role("img").all()
     # Filter for the stats bars (aria-label contains "wins" or "losses")
-    stats_bars = [b for b in bars if b.get_attribute("aria-label") and ("wins" in b.get_attribute("aria-label") or "losses" in b.get_attribute("aria-label"))]
+    stats_bars = [
+        b
+        for b in bars
+        if b.get_attribute("aria-label")
+        and ("wins" in b.get_attribute("aria-label") or "losses" in b.get_attribute("aria-label"))
+    ]
 
     print(f"Found {len(stats_bars)} stats bars on {url_path}.")
 
     for i, bar in enumerate(stats_bars):
         label = bar.get_attribute("aria-label")
         print(f"Bar {i}: aria-label='{label}'")
+
 
 def run():
     with sync_playwright() as p:
@@ -58,6 +66,7 @@ def run():
 
         page.screenshot(path="verification/verification.png")
         browser.close()
+
 
 if __name__ == "__main__":
     run()

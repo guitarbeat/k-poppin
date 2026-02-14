@@ -3,6 +3,7 @@
 Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for non‑developers and friends collaborating on the song list.
 
 ## The one thing that powers the game
+
 - The game reads its daily songs from `data/songs.js`.
 - Each entry looks like this:
   ```js
@@ -14,6 +15,7 @@ Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for n
 - Tip: If the answer starts with a number, add a leading space to work around an autocomplete quirk, e.g. `" 2NE1 - I Am the Best"`.
 
 ## Easiest way to add songs
+
 1. Open `data/songs.js`.
 2. Scroll to the bottom and add a new object with both `url` and `answer`.
 3. Keep the exact casing/spacing of the artist/title as you want it shown in results.
@@ -21,29 +23,60 @@ Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for n
 5. Run the validator locally (optional) or open a PR.
 
 ## Optional: Run checks locally
+
 If you have Python 3 installed:
+
 ```bash
 python scripts/validate_songs.py
 ```
+
 This checks for:
+
 - Duplicate URLs or answers
 - Missing fields
 - Leading‑number answers missing a leading space
 
 ## Pull requests
+
 - Use the PR template checklist that will appear when you open a PR.
 - The CI will automatically run validation on your changes.
 - A maintainer will merge once the checks pass.
 
 ## Song requests
+
 - If you don’t want to edit files yourself, open a “Song request” issue (template provided). Include the SoundCloud link and the display text.
 
 ## Style notes
+
 - Keep lines wrapped reasonably in Markdown files.
 - Do not reformat `main.js` or other compiled assets.
 
 ## What NOT to change
+
 - Do not rename or move `index.html`, `main.js`, or `data/songs.js` (the site depends on these paths).
 - Do not remove Google Analytics without discussing (you can disable locally).
+
+## Development
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   pip install ruff black pre-commit
+   ```
+
+2. Run linting and formatting:
+
+   ```bash
+   npm run lint
+   npm run format
+   black .
+   ruff check .
+   ```
+
+3. Setup pre-commit hooks (optional but recommended):
+   ```bash
+   pre-commit install
+   ```
 
 Thank you! 💜

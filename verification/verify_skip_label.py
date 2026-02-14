@@ -1,6 +1,8 @@
 import os
 import sys
+
 from playwright.sync_api import sync_playwright
+
 
 def verify_page(page, url_path, screenshot_path):
     cwd = os.getcwd()
@@ -52,6 +54,7 @@ def verify_page(page, url_path, screenshot_path):
         print("FAILURE: Skip button not found.")
         sys.exit(1)
 
+
 def run():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -67,6 +70,7 @@ def run():
         page.close()
 
         browser.close()
+
 
 if __name__ == "__main__":
     run()
