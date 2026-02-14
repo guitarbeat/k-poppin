@@ -1,0 +1,7 @@
+main.js
+bg/main.js
+*.min.js
+node_modules
+coverage
+dist
+build
