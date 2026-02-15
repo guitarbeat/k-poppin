@@ -31,3 +31,5 @@ dist/
 build/
 .env
 verification/*.png
+.coverage
+htmlcov/
