@@ -1,6 +1,8 @@
 # K-Pop Girl Group Heardle
 
 [![CI](https://github.com/guitarbeat/k-poppin/actions/workflows/ci.yml/badge.svg)](https://github.com/guitarbeat/k-poppin/actions/workflows/ci.yml)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Remixed and extended from the original K-Pop GG Heardle (which ran out of songs).
 
