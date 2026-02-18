@@ -1,57 +1,82 @@
 # Contributing
 
+Thank you for your interest in contributing to this project! We Acpreciate your effort and want to make the process as smooth as possible.
+
 ## Development Setup
 
-1.  Clone the repository.
-2.  Install Node.js dependencies:
-    ```bash
-    npm install
-    ```
-3.  Install Python dependencies:
-    ```bash
-    pip install -r requirements.txt # if exists, otherwise:
-    pip install ruff black playwright
-    playwright install chromium
-    ```
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
 
-## Linting & Formatting
+### Getting Started
 
-We use **ESLint** and **Prettier** for JavaScript, and **Ruff** and **Black** for Python.
+1. Fork the repository
+2. Clone your fork:
+   ```bash
+   git clone https://github.com/your-username/repo-name.git
+   cd repo-name
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### JavaScript
+## Linting and Code Standards
 
-- Lint: `npm run lint`
-- Fix Lint: `npm run lint:fix`
-- Format Check: `npm run format:check`
-- Format Write: `npm run format`
+We maintain consistent code quality using ESLint and Prettier.
 
-### Python
+### Running Linter
+```bash
+npm run lint
+```
 
-- Lint: `ruff check .`
-- Format: `black .`
+### Auto-formatting Code
+```bash
+npm run format
+```
+
+Pre-commit hooks automatically run linting on staged files.
 
 ## Testing
 
-Run the validation script to check `songs.json`:
+Before submitting a pull request, ensure all tests pass:
 
 ```bash
-python scripts/validate_songs.py
+npm test
 ```
 
-Run frontend verification (requires local server):
+## Making a Pull Request
 
-```bash
-python -m http.server 8000 &
-export BASE_URL=http://localhost:8000
-python verification/verify_load.py
-```
+1. Create a feature branch:
+   ```bash
+   git checkout -b feat/my-feature
+   ```
+2. Make your changes and commit them:
+   ```bash
+   git add .
+   git commit -m "feat: add my feature"
+   ```
+3. Push to your fork:
+   ```bash
+   git push origin feat/my-feature
+   ```
+4. Open a Pull Request with a clear description of your changes
 
-## Pre-commit Hooks
+## Code Style
 
-We use `pre-commit` to ensure code quality.
-Install pre-commit:
+- Follow the Airbnb JavaScript style guide (enforced by ESLint)
+- Use Prettier for automatic code formatting
+- Write meaningful commit messages
+- Include comments for complex logic
 
-```bash
-pip install pre-commit
-pre-commit install
-```
+## Pull Request Guidelines
+
+- Keep PRs focused on a single feature or fix
+- Write descriptive PR titles and descriptions
+- Ensure CI/CD checks pass
+- Request review from maintainers
+- Be responsive to feedback
+
+## Questions?
+
+Feel free to open an issue for questions or discussions.
