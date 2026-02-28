@@ -9126,7 +9126,7 @@ var app = (function () {
     (G(e[18]),
       (l = new me({
         props: {
-          properties: ['G-VC91QPG37E'],
+          properties: [window.HEARDLE_ANALYTICS_ID || 'YOUR_GA_ID_HERE'],
         },
       })));
     let L = e[10].isActive && Nn(e);
