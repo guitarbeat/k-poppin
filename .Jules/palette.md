@@ -32,3 +32,8 @@
 
 **Learning:** To make the "Skip" button accessible with dynamic content (time penalty), I patched the `ae` component instantiation and its update (`p`) function in the minified `main.js`. Since `main.js` is the only source, direct patching is required.
 **Action:** When updating component props in this codebase, ensure both the initial `new Component({ props: ... })` and the reactive `$set` call in the `p` function are updated to handle dynamic values from the context (`e`).
+
+## 2024-05-22 - [Keyboard Focus Styles using Custom CSS Variables]
+
+**Learning:** Buttons and interactive elements were lacking clear focus visible styling, and hardcoding colors for focus indicators (like a blue outline) breaks the specific theme of the app (which uses a custom pink line color `var(--color-line)`).
+**Action:** Always use existing CSS variables (like `var(--color-line)`) for focus indicators to ensure the UX improvements look cohesive with the app's established design system. Add `focus-visible` styles to `global.css` globally for interactive elements.
