@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-import re
-import os
-import sys
-import shutil
 import datetime
 import logging
-from urllib.request import urlretrieve
+import os
+import re
+import shutil
+import sys
 from functools import wraps
+from urllib.request import urlretrieve
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 logger = logging.getLogger("customize_heardle")
 
 # Embedded configuration data - Edit these values directly
@@ -76,7 +80,8 @@ def create_backup(file_path):
     backup_dir = "backups"
     os.makedirs(backup_dir, exist_ok=True)
     backup_path = os.path.join(
-        backup_dir, f"{os.path.basename(file_path)}.{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        backup_dir,
+        f"{os.path.basename(file_path)}.{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}",
     )
     shutil.copy2(file_path, backup_path)
     logger.info(f"Created backup: {backup_path}")
@@ -87,7 +92,7 @@ def check_js_syntax(js_content):
     brackets = {"(": ")", "[": "]", "{": "}"}
     stack, in_string, escaped = [], None, False
 
-    for _i, char in enumerate(js_content):
+    for _, char in enumerate(js_content):
         if in_string:
             if escaped:
                 escaped = False
@@ -207,11 +212,17 @@ def locate_kofi_function(file_path):
 @error_handler
 def update_app_name():
     main_patterns = [
-        (r'const HEARDLE_GLITCH_NAME = ".*?";', f'const HEARDLE_GLITCH_NAME = "{GLITCH_NAME}";'),
+        (
+            r'const HEARDLE_GLITCH_NAME = ".*?";',
+            f'const HEARDLE_GLITCH_NAME = "{GLITCH_NAME}";',
+        ),
         (r'const HEARDLE_URL = ".*?";', f'const HEARDLE_URL = "{GAME_URL}";'),
         (r'const HEARDLE_ARTIST = ".*?";', f'const HEARDLE_ARTIST = "{ARTIST_NAME}";'),
         (r"const HEARDLE_NAME = .*?;", f'const HEARDLE_NAME = "{GAME_NAME}";'),
-        (r'const HEARDLE_START_DATE = ".*?";', f'const HEARDLE_START_DATE = "{START_DATE}";'),
+        (
+            r'const HEARDLE_START_DATE = ".*?";',
+            f'const HEARDLE_START_DATE = "{START_DATE}";',
+        ),
         (r'startDate: ".*?"', f'startDate: "{START_DATE}"'),
         (r'copy\("https://heardle\.app', f'copy("{GAME_URL}'),
     ]
@@ -219,13 +230,23 @@ def update_app_name():
     if len(GAME_COMMENTS) >= 7:
         for i, comment in enumerate(GAME_COMMENTS[:7]):
             main_patterns.append(
-                (r'gameComments\[\d+\] = ".*?";', f'gameComments[{i}] = "{escape_js_string(comment)}";', 1)
+                (
+                    r'gameComments\[\d+\] = ".*?";',
+                    f'gameComments[{i}] = "{escape_js_string(comment)}";',
+                    1,
+                )
             )
 
     html_patterns = [
         (r"<title>.*?</title>", f"<title>{APP_DISPLAY_NAME}</title>"),
-        (r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{APP_DISPLAY_NAME}">'),
-        (r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{GAME_URL}">'),
+        (
+            r'<meta property="og:title" content=".*?">',
+            f'<meta property="og:title" content="{APP_DISPLAY_NAME}">',
+        ),
+        (
+            r'<meta property="og:url" content=".*?">',
+            f'<meta property="og:url" content="{GAME_URL}">',
+        ),
         (
             r'<meta name="description" content=".*?">',
             f'<meta name="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible.">',
@@ -304,13 +325,22 @@ def update_html_content():
             r'<meta name="description" content=".*?">',
             f'<meta name="description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible.">',
         ),
-        (r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{APP_DISPLAY_NAME}">'),
+        (
+            r'<meta property="og:title" content=".*?">',
+            f'<meta property="og:title" content="{APP_DISPLAY_NAME}">',
+        ),
         (
             r'<meta property="og:description" content=".*?">',
             f'<meta property="og:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible.">',
         ),
-        (r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{GAME_URL}">'),
-        (r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{APP_DISPLAY_NAME}">'),
+        (
+            r'<meta property="og:url" content=".*?">',
+            f'<meta property="og:url" content="{GAME_URL}">',
+        ),
+        (
+            r'<meta name="twitter:title" content=".*?">',
+            f'<meta name="twitter:title" content="{APP_DISPLAY_NAME}">',
+        ),
         (
             r'<meta name="twitter:description" content=".*?">',
             f'<meta name="twitter:description" content="Guess the {ARTIST_NAME} song from the intro in as few tries as possible.">',
@@ -388,7 +418,8 @@ def initialize_project():
 
     try:
         base_url = DEFAULT_CONFIG["project"].get(
-            "repository_url", "https://raw.githubusercontent.com/guitarbeat/k-poppin/main/"
+            "repository_url",
+            "https://raw.githubusercontent.com/guitarbeat/k-poppin/main/",
         )
         if not base_url.endswith("/"):
             base_url += "/"

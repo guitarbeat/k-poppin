@@ -8,7 +8,7 @@ Remixed and extended from the original K-Pop GG Heardle (which ran out of songs)
 
 ## How to add a song (for collaborators)
 
-- Edit `data/songs.json` and append a new entry like:
+- Edit `data/songs.js` and append a new entry like:
   ```js
   { url: "https://soundcloud.com/artist/track", answer: "ARTIST - Track Title" }
   ```

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import os
 import json
+import os
 import sys
 
 REPO_ROOT = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
@@ -49,7 +49,10 @@ def main():
         return 2
     entries = parse_songs_json(SONGS_JSON)
     if not entries:
-        print("No entries parsed from songs.json. Is the file empty or invalid?", file=sys.stderr)
+        print(
+            "No entries parsed from songs.json. Is the file empty or invalid?",
+            file=sys.stderr,
+        )
         return 2
     errors = validate(entries)
     if errors:

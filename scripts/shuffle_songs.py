@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import argparse
+import json
 import os
 import random
-import json
 import shutil
+import unicodedata
 from difflib import SequenceMatcher
 from urllib.parse import urlparse
-import unicodedata
 
 REPO_ROOT = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
 DEFAULT_INPUT = os.path.join(REPO_ROOT, "data", "songs.json")
@@ -54,7 +54,12 @@ def find_duplicate_groups(songs, similarity_threshold=0.85):
 
 
 def shuffle_songs(
-    input_file, remove_duplicates=True, use_seed=None, backup=False, show_duplicates=False, similarity_threshold=0.85
+    input_file,
+    remove_duplicates=True,
+    use_seed=None,
+    backup=False,
+    show_duplicates=False,
+    similarity_threshold=0.85,
 ):
     if use_seed is not None:
         random.seed(use_seed)
@@ -136,15 +141,32 @@ def shuffle_songs(
 
 def main():
     parser = argparse.ArgumentParser(description="Shuffle songs in data/songs.json")
-    parser.add_argument("--input", "-i", default=DEFAULT_INPUT, help="Input JSON file containing songs array")
     parser.add_argument(
-        "--keep-duplicates", "-k", action="store_true", help="Keep duplicate songs (default: remove duplicates)"
+        "--input",
+        "-i",
+        default=DEFAULT_INPUT,
+        help="Input JSON file containing songs array",
+    )
+    parser.add_argument(
+        "--keep-duplicates",
+        "-k",
+        action="store_true",
+        help="Keep duplicate songs (default: remove duplicates)",
     )
     parser.add_argument("--seed", "-s", type=int, help="Random seed for reproducible shuffling")
-    parser.add_argument("--backup", "-b", action="store_true", help="Create an additional .bak backup file")
+    parser.add_argument(
+        "--backup",
+        "-b",
+        action="store_true",
+        help="Create an additional .bak backup file",
+    )
     parser.add_argument("--show-duplicates", "-d", action="store_true", help="Show duplicate songs")
     parser.add_argument(
-        "--similarity-threshold", "-t", type=float, default=0.85, help="Similarity threshold (0.0..1.0)"
+        "--similarity-threshold",
+        "-t",
+        type=float,
+        default=0.85,
+        help="Similarity threshold (0.0..1.0)",
     )
     args = parser.parse_args()
 
