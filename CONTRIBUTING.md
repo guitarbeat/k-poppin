@@ -1,57 +1,91 @@
 # Contributing
 
-## Development Setup
+Thanks for helping grow K‑Pop Girl Group Heardle! This guide is designed for non‑developers and friends collaborating on the song list.
 
-1.  Clone the repository.
-2.  Install Node.js dependencies:
-    ```bash
-    npm install
-    ```
-3.  Install Python dependencies:
-    ```bash
-    pip install -r requirements.txt # if exists, otherwise:
-    pip install ruff black playwright
-    playwright install chromium
-    ```
+## The one thing that powers the game
 
-## Linting & Formatting
+- The game reads its daily songs from `data/songs.js`.
+- Each entry looks like this:
+  ```js
+  {
+    url: "https://soundcloud.com/artist/track",
+    answer: "ARTIST - Track Title"
+  }
+  ```
+- Tip: If the answer starts with a number, add a leading space to work around an autocomplete quirk, e.g. `" 2NE1 - I Am the Best"`.
 
-We use **ESLint** and **Prettier** for JavaScript, and **Ruff** and **Black** for Python.
+## Easiest way to add songs
 
-### JavaScript
+1. Open `data/songs.js`.
+2. Scroll to the bottom and add a new object with both `url` and `answer`.
+3. Keep the exact casing/spacing of the artist/title as you want it shown in results.
+4. Save.
+5. Run the validator locally (optional) or open a PR.
 
-- Lint: `npm run lint`
-- Fix Lint: `npm run lint:fix`
-- Format Check: `npm run format:check`
-- Format Write: `npm run format`
+## Optional: Run checks locally
 
-### Python
-
-- Lint: `ruff check .`
-- Format: `black .`
-
-## Testing
-
-Run the validation script to check `songs.json`:
+If you have Python 3 installed:
 
 ```bash
 python scripts/validate_songs.py
 ```
 
-Run frontend verification (requires local server):
+This checks for:
 
-```bash
-python -m http.server 8000 &
-export BASE_URL=http://localhost:8000
-python verification/verify_load.py
-```
+- Duplicate URLs or answers
+- Missing fields
+- Leading‑number answers missing a leading space
 
-## Pre-commit Hooks
+## Pull requests
 
-We use `pre-commit` to ensure code quality.
-Install pre-commit:
+- Use the PR template checklist that will appear when you open a PR.
+- The CI will automatically run validation on your changes.
+- A maintainer will merge once the checks pass.
 
-```bash
-pip install pre-commit
-pre-commit install
-```
+## Song requests
+
+- If you don't want to edit files yourself, open a "Song request" issue (template provided). Include the SoundCloud link and the display text.
+
+## Style notes
+
+- Keep lines wrapped reasonably in Markdown files.
+- Do not reformat `main.js` or other compiled assets.
+
+## What NOT to change
+
+- Do not rename or move `index.html`, `main.js`, or `data/songs.js` (the site depends on these paths).
+- Do not remove Google Analytics without discussing (you can disable locally).
+
+## Development
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   pip install ruff black pre-commit
+   playwright install chromium
+   ```
+
+2. Run linting and formatting:
+
+   ```bash
+   npm run lint
+   npm run format
+   black .
+   ruff check .
+   ```
+
+3. Run frontend verification (requires local server):
+
+   ```bash
+   python -m http.server 8000 &
+   export BASE_URL=http://localhost:8000
+   python verification/verify_load.py
+   ```
+
+4. Setup pre-commit hooks (optional but recommended):
+   ```bash
+   pre-commit install
+   ```
+
+Thank you! 💜
