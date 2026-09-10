@@ -9218,6 +9218,8 @@ var app = (function () {
             'max-w-screen-sm w-full mx-auto h-full flex flex-col justify-between overflow-auto',
           ),
           M(v, 'class', 'w-full flex flex-col flex-grow relative'),
+          M(c, 'id', 'main'),
+          M(c, 'tabindex', '-1'),
           M(c, 'class', 'bg-custom-bg text-custom-fg overflow-auto flex flex-col'),
           T(c, 'height', `${e[3]}px`));
       },
