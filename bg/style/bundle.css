@@ -1210,10 +1210,12 @@ a.svelte-1d3p4dy.svelte-1d3p4dy {
 }
 
 /* WCAG AA contrast compliance for positive/negative backgrounds */
-.bg-custom-positive, .bg-custom-negative {
+.bg-custom-positive,
+.bg-custom-negative {
   color: #000000 !important;
 }
-.bg-custom-positive .text-white, .bg-custom-negative .text-white {
+.bg-custom-positive .text-white,
+.bg-custom-negative .text-white {
   color: #000000 !important;
 }
 
