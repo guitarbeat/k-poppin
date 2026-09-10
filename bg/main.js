@@ -3848,7 +3848,7 @@ var app = (function () {
         ((n = w('div')),
           (r = w('a')),
           (r.innerHTML =
-            '<span class="kofitext svelte-1d3p4dy"><img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg mr-2 mb-1 svelte-1d3p4dy"/>Support me on Ko-Fi</span><svg xmlns="http://www.w3.org/2000/svg" class="ml-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>'),
+            '<span class="kofitext svelte-1d3p4dy"><img loading="lazy" data-src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg mr-2 mb-1 svelte-1d3p4dy lazy-image"/>Support me on Ko-Fi</span><svg xmlns="http://www.w3.org/2000/svg" class="ml-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>'),
           M(r, 'class', 'kofi-button py-2 px-3 rounded-lg items-center flex  svelte-1d3p4dy'),
           M(r, 'href', 'https://ko-fi.com/aaronwoods'),
           M(r, 'title', 'Support me on Ko-Fi'),
@@ -9595,4 +9595,72 @@ var app = (function () {
         props: {},
       });
     });
+})();
+
+// Bolt: Implement Intersection Observer for lazy loading off-screen images
+(function () {
+  const initLazyImages = () => {
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy-image');
+              observer.unobserve(img);
+            }
+          }
+        });
+      });
+
+      // Find all existing lazy images
+      const lazyImages = document.querySelectorAll('img.lazy-image');
+      lazyImages.forEach((img) => imageObserver.observe(img));
+
+      // Watch for dynamically added lazy images (e.g., in modals)
+      const mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              // Node is an element
+              if (node.tagName === 'IMG' && node.classList.contains('lazy-image')) {
+                imageObserver.observe(node);
+              }
+              // Also check children in case a whole tree was added
+              const childImages = node.querySelectorAll('img.lazy-image');
+              childImages.forEach((img) => imageObserver.observe(img));
+            }
+          });
+        });
+      });
+
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    } else {
+      // Fallback for older browsers: just load them immediately
+      const loadAllImages = () => {
+        document.querySelectorAll('img.lazy-image').forEach((img) => {
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.classList.remove('lazy-image');
+          }
+        });
+      };
+
+      // Load initially and when DOM changes
+      loadAllImages();
+      const mutationObserver = new MutationObserver(() => {
+        loadAllImages();
+      });
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
+  };
+
+  // Run initialization when DOM is ready or immediately if already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLazyImages);
+  } else {
+    initLazyImages();
+  }
 })();
