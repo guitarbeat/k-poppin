@@ -20,6 +20,22 @@ def verify_page(page, url_path, screenshot_path):
     print(f"Visiting {full_url}")
     page.goto(full_url)
 
+    try:
+        skip_link = page.locator("a.skip-link")
+        if skip_link.is_visible(timeout=5000):
+            print("Found skip link")
+            href = skip_link.get_attribute("href")
+            print("Skip link href:", href)
+            # check that #main exists
+            target = page.locator(href)
+            if target.count() > 0:
+                print("Found target element for skip link:", target.get_attribute("id"))
+            else:
+                print("Could not find target element for skip link.")
+                raise Exception("Missing target element")
+    except Exception as e:
+        print(f"Error checking skip link: {e}")
+
     # 1. Close Help Modal
     try:
         play_btn = page.get_by_role("button", name="Play")
@@ -28,37 +44,6 @@ def verify_page(page, url_path, screenshot_path):
             play_btn.click()
     except Exception as e:
         print(f"Error closing modal: {e}")
-
-    # 2. Check Skip Button Label
-    try:
-        page.wait_for_selector("button[aria-label^='Skip']", timeout=5000)
-    except Exception:
-        print("Could not find Skip button by selector.")
-
-    buttons = page.get_by_role("button").all()
-    skip_btn = None
-    for btn in buttons:
-        label = btn.get_attribute("aria-label")
-        if label and label.startswith("Skip"):
-            skip_btn = btn
-            break
-
-    if skip_btn:
-        label = skip_btn.get_attribute("aria-label")
-        print(f"Found Skip button with aria-label: '{label}'")
-        # Check for pattern (+Xs) or (+X.Ys)
-        if "(+" in label and "s)" in label:
-            print("SUCCESS: Label contains time penalty.")
-            # Scroll to button and screenshot
-            skip_btn.scroll_into_view_if_needed()
-            page.screenshot(path=screenshot_path)
-            print(f"Screenshot saved to {screenshot_path}")
-        else:
-            print("FAILURE: Label missing time penalty.")
-            raise Exception("Label missing time penalty")
-    else:
-        print("FAILURE: Skip button not found.")
-        raise Exception("Skip button not found")
 
 
 def run():

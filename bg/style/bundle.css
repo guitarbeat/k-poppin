@@ -1208,3 +1208,15 @@ a.svelte-1d3p4dy.svelte-1d3p4dy {
     transform: rotate(0) scale(1);
   }
 }
+
+/* WCAG AA contrast compliance for positive/negative backgrounds */
+.bg-custom-positive, .bg-custom-negative {
+  color: #000000 !important;
+}
+.bg-custom-positive .text-white, .bg-custom-negative .text-white {
+  color: #000000 !important;
+}
+
+#main:focus {
+  outline: none;
+}
